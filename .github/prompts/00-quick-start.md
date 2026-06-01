@@ -1,17 +1,32 @@
-# Prompt: Quick Start - Vibe Coding Template
+# Prompt: Quick Start - Base Project Template
 
-Quick reference for efficient development with GitHub Copilot using this template.
+Quick reference for efficient development with GitHub Copilot using this production-ready template.
 
-## Getting Started
+## 🚀 Getting Started
 
-### 1. Choose Your Project Type
+### 1. Initial Setup
+
+```bash
+# Clone and install
+git clone https://github.com/yourusername/base-project-template.git
+cd base-project-template
+npm install
+
+# Start development servers
+npm run dev --workspaces
+
+# Frontend: http://localhost:5173
+# Backend: http://localhost:3000
+```
+
+### 2. Choose Your Project Type
 
 ```
-Web Application (React/Vue/Svelte)     → /web
-Backend Service (Node.js/Python/.NET)  → /apps
-Desktop Application (Electron/Tauri)   → /desktop
-Command-Line Tool                      → /tools
-Shared Libraries                       → /shared
+Web Application (React + Express)      → /web
+Backend Services (Node.js + TypeScript) → /apps/*
+Desktop Application (Electron/Tauri)   → /desktop/*
+Command-Line Tool (Node.js CLI)        → /tools/*
+Shared Libraries (Types/Utils)         → /shared/*
 ```
 
 ### 2. Essential Copilot Commands
@@ -31,60 +46,68 @@ Shared Libraries                       → /shared
 - Create unit tests with mocks
 - Setup API endpoint with error handling
 
-### 3. Naming Your Prompts
+### 3. Follow Template Standards
 
-Be specific and provide context:
+Ensure consistency across workspaces:
 
+```bash
+# Naming: camelCase (vars), PascalCase (types), UPPER_SNAKE_CASE (constants)
+const userName = 'John';  ✓
+interface IUser {}        ✓
+const MAX_RETRIES = 3;    ✓
+
+# Formatting (auto-fixed on commit)
+npm run lint:fix
+
+# Type safety (strict mode)
+npm run type-check
+
+# Testing (80%+ coverage target)
+npm run test
+
+# Building all workspaces
+npm run build --workspaces
 ```
-✓ "Create a TypeScript utility function that validates user email addresses"
-✓ "Refactor this database query to use eager loading instead of N+1"
-✓ "Write unit tests for the payment processing edge cases"
-✗ "Make a function"
-✗ "Fix this"
-```
 
-## Common Vibe Coding Patterns
+## 📝 Development Patterns
 
 ### Pattern 1: Feature Development (30 mins)
 
 ```
-1. Define requirements clearly
-2. Create types/interfaces first
-3. Implement core logic
-4. Add error handling
-5. Write unit tests
-6. Document with JSDoc
+1. Understand requirements & code standards (.github/copilot-instructions.md)
+2. Create types in shared/types or feature types.ts
+3. Implement core logic with error handling
+4. Write unit tests (target: 80%+ coverage)
+5. Document with JSDoc @param, @returns, @throws
+6. Commit using Conventional Commits format
 ```
 
-Copilot prompt:
-```
-Create a [Feature] service with:
-- [Requirements]
-- Error handling for: [error cases]
-- Following: [code patterns from project]
-- Include: JSDoc, unit tests
-```
+Before starting, reference:
+- [Code Standards](./.github/copilot-instructions.md#code-standards--quality)
+- [Architecture Decisions](./docs/adr/001-monorepo-structure.md)
+- Similar implementations in same workspace
 
 ### Pattern 2: Bug Investigation (20 mins)
 
 ```
-1. Reproduce the issue
-2. Locate source code
-3. Analyze root cause
-4. Implement fix
-5. Add regression test
-6. Verify fix
+1. Verify issue with clear reproduction steps
+2. Check type safety (npm run type-check)
+3. Locate source code in appropriate workspace
+4. Analyze root cause with logs
+5. Implement fix with tests
+6. Verify with: npm run test -w [workspace]
 ```
 
-Copilot prompt:
-```
-Bug: [Symptom]
-File: [location]
-Root cause: [hypothesis]
+Tools to help debug:
+```bash
+# Check for type errors across all workspaces
+npm run type-check --workspaces
 
-Fix this by:
-- [approach]
-- Including: [test cases]
+# Run tests in watch mode
+npm run test:watch -w [workspace]
+
+# Check linting for specific file
+npm run lint -- src/file.ts
 ```
 
 ### Pattern 3: Code Review (10 mins)

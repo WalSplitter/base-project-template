@@ -1,35 +1,43 @@
-# Prompt: Refactoring & Code Quality - Vibe Coding
+# Prompt: Refactoring & Code Quality - Base Project Template
 
 Use this prompt template when improving code quality and refactoring with GitHub Copilot.
+
+## 📋 Before Refactoring
+
+Check:
+- [SOLID Principles](./docs/README.md#learning-resources) - Single Responsibility, Open/Closed
+- [Code Standards](./.github/copilot-instructions.md) - Naming, organization, patterns
+- Existing patterns in workspace for consistency
 
 ## Template
 
 ```
 Current State:
-File: [FILE_PATH]
+File: [FILE_PATH in WORKSPACE]
 Current code: [CODE_SNIPPET]
 Current issues:
-- [ISSUE_1]
+- [ISSUE_1: violates SOLID, hard to test, etc.]
 - [ISSUE_2]
 - [ISSUE_3]
 
 Goal:
 Refactor to: [TARGET_STATE]
-Following: [PATTERNS/PRINCIPLES]
-Constraints: [BACKWARD_COMPATIBILITY_REQUIREMENTS]
+Following: SOLID principles, code standards, monorepo best practices
+Constraints: [BACKWARD_COMPATIBILITY, PUBLIC_API_STABILITY]
 
 Quality Improvements:
-- Readability: [IMPROVEMENTS]
-- Maintainability: [IMPROVEMENTS]
-- Performance: [IMPROVEMENTS]
-- Type Safety: [IMPROVEMENTS]
-- Test Coverage: [IMPROVEMENTS]
+- Readability: Clear function names (camelCase), small focused functions
+- Maintainability: Follow SOLID, reduce coupling, improve organization
+- Performance: Measure before/after with profiling
+- Type Safety: Remove 'any' types, add strict interfaces from shared/types/
+- Test Coverage: Increase from X% to 80%+ (run npm run test:coverage)
 
 Deliverables:
-1. Refactored implementation
-2. Updated tests reflecting new structure
-3. Migration guide (if breaking changes)
-4. Performance comparison (before/after)
+1. Refactored implementation maintaining API compatibility
+2. Updated tests (vitest) with new structure coverage
+3. Migration guide (if breaking changes for workspace consumers)
+4. Performance comparison and benchmarks
+5. Commit: refactor(scope): description of improvements
 ```
 
 ## Example Usage

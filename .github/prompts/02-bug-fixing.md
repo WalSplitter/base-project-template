@@ -1,4 +1,4 @@
-# Prompt: Bug Fixing & Debugging - Vibe Coding
+# Prompt: Bug Fixing & Debugging - Base Project Template
 
 Use this prompt template when debugging and fixing issues with GitHub Copilot.
 
@@ -12,9 +12,11 @@ Current behavior: [WHAT_HAPPENS_NOW]
 Expected behavior: [WHAT_SHOULD_HAPPEN]
 
 Context:
+- Workspace: [WEB/APPS/DESKTOP/TOOLS/SHARED]
 - Related code: [CODE_SNIPPET]
 - Error message: [EXACT_ERROR_OR_LOG]
-- Environment: [DEV/PROD] on [NODE_VERSION/BROWSER]
+- Environment: [DEV/PROD] on Node.js 18+
+- Logs: Check with: npm run dev -w [workspace] or npm run test:watch -w [workspace]
 
 Investigation:
 - Affected functions: [FUNCTION_NAMES]
@@ -64,22 +66,24 @@ Deliverables:
 4. Linting rule to catch similar patterns
 ```
 
-## Debugging Checklist
+## 🔍 Debugging Checklist
 
 - [ ] Reproduction steps clearly documented
-- [ ] Error stack trace reviewed
-- [ ] Recent code changes checked
-- [ ] Type safety verified (TypeScript strict mode)
-- [ ] Edge cases identified
-- [ ] Unit test added for the bug
-- [ ] Similar code patterns checked for same issue
-- [ ] Performance impact assessed
+- [ ] Error stack trace reviewed and logs checked (Pino logger)
+- [ ] Type safety verified: npm run type-check
+- [ ] Linting checked: npm run lint -w [workspace]
+- [ ] Edge cases and race conditions identified
+- [ ] Regression test added (vitest)
+- [ ] Similar patterns checked in workspace
+- [ ] Performance impact assessed (use make docker-up for local testing)
+- [ ] Commit message: fix(scope): description of fix
 
 ## Common Fix Patterns
-
-### Race Condition
-- Use database transactions or atomic operations
-- Add optimistic/pessimistic locking
+ (especially in PostgreSQL)
+- Use database transactions or atomic operations with BEGIN/COMMIT
+- Add database-level constraints (UNIQUE, FOREIGN KEY)
+- Use pessimistic locking (SELECT FOR UPDATE)
+- Review concurrent request handling in Express middleware
 - Use queues for sequential processing
 
 ### Type Mismatch

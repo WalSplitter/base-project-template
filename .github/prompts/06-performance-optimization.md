@@ -1,4 +1,4 @@
-# Prompt: Performance Optimization - Vibe Coding
+# Prompt: Performance Optimization - Base Project Template
 
 Use this prompt template when optimizing performance with GitHub Copilot.
 
@@ -7,9 +7,11 @@ Use this prompt template when optimizing performance with GitHub Copilot.
 ```
 Performance Issue:
 Area: [FRONTEND/BACKEND/DATABASE/NETWORK]
+Workspace: [WEB/APPS/DESKTOP/TOOLS]
 Symptom: [OBSERVABLE_PROBLEM]
 Impact: [HOW_IT_AFFECTS_USERS]
 Current metric: [BASELINE_MEASUREMENT]
+Tools: Vite dev tools (frontend), Node.js inspector (backend), npm run dev
 
 Analysis:
 - Bottleneck identified: [WHERE_TIME_IS_SPENT]
@@ -18,9 +20,10 @@ Analysis:
 - User impact: [LATENCY/MEMORY/CPU]
 
 Optimization Strategy:
-- Approach: [CACHING/PAGINATION/LAZY_LOADING/INDEXING]
-- Trade-offs: [MEMORY_VS_SPEED/ACCURACY_VS_SPEED]
-- Complexity: [O(n) → O(log n), etc.]
+- Approach: [CACHING via Redis/PAGINATION/LAZY_LOADING/DATABASE_INDEXING]
+- Trade-offs: [MEMORY_VS_SPEED, EVENTUAL_CONSISTENCY, etc.]
+- Complexity: [O(n) → O(log n), N+1 → JOIN query, etc.]
+- Tools available: Redis (docker-compose.yml), PostgreSQL query analysis, Vite bundle analysis
 
 Target Metrics:
 - Latency: [TARGET_TIME]
@@ -30,10 +33,18 @@ Target Metrics:
 
 Deliverables:
 1. Optimized implementation
-2. Before/after performance comparison
-3. Monitoring/alerting setup
+2. Before/after performance comparison (metrics with units)
+3. Monitoring setup (optional: logging with Pino, GitHub Actions)
 4. Documentation of optimization strategy
-5. Regression tests
+5. Regression tests (vitest) to prevent regressions
+6. Commit: perf(scope): description of performance improvements
+
+Validate:
+\`\`\`bash
+npm run build --workspaces    # Check bundle size
+npm run test --workspaces     # Ensure no regressions
+make docker-up               # Test with services
+\`\`\`
 ```
 
 ## Example Usage

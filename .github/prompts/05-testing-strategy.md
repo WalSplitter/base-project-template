@@ -1,4 +1,4 @@
-# Prompt: Testing Strategy - Vibe Coding
+# Prompt: Testing Strategy - Base Project Template
 
 Use this prompt template when writing tests with GitHub Copilot.
 
@@ -6,9 +6,11 @@ Use this prompt template when writing tests with GitHub Copilot.
 
 ```
 Test Context:
+Workspace: [WEB/APPS/TOOLS/SHARED]
 Module: [MODULE_NAME]
 Function: [FUNCTION_NAME]
-File: [FILE_PATH]
+File: [FILE_PATH in workspace]
+Testing Framework: Vitest (npm run test -w [workspace])
 
 What to Test:
 - Happy path: [SUCCESSFUL_SCENARIO]
@@ -17,11 +19,12 @@ What to Test:
 - Integration: [EXTERNAL_DEPENDENCIES]
 
 Test Requirements:
-- Framework: [JEST/VITEST/MOCHA]
-- Type: Unit / Integration / E2E
-- Mock targets: [SERVICES/APIS/DATABASE]
-- Coverage goal: [PERCENTAGE]
-- Performance requirements: [IF_ANY]
+- Framework: Vitest (vitest.config.ts configured)
+- Type: Unit (jsdom for frontend, node for backend) / Integration
+- Mock targets: Database (PostgreSQL), external APIs, Redis
+- Coverage goal: 80%+ for business logic (run npm run test:coverage)
+- Performance: Tests should complete in < 30s per workspace
+- Organization: *.test.ts or *.spec.ts files alongside source
 
 Test Cases:
 1. [TEST_NAME]
@@ -35,10 +38,11 @@ Test Cases:
    - Assert: [EXPECTED_RESULT]
 
 Deliverables:
-1. Complete test file with all scenarios
-2. Mock/fixture setup
-3. Assertion coverage > [PERCENTAGE]%
-4. Performance benchmarks (if applicable)
+1. Complete test file (vitest format) with all scenarios
+2. Mock/fixture setup in __mocks__/ or test utilities
+3. Coverage report > 80% for business logic
+4. Performance benchmarks if critical path
+5. Commit: test(scope): description of tests added
 ```
 
 ## Example Usage
@@ -55,11 +59,11 @@ What to Test:
 - Error scenarios: Database down, user not found, auth failure
 - Integration: Database query, caching layer
 
-Test Requirements:
-- Framework: Jest
+Test RequiremVitest (configured in web/backend/vitest.config.ts)
 - Type: Unit + Integration
-- Mock targets: UserRepository, CacheService
-- Coverage goal: 90%
+- Mock targets: Database queries, Redis cache, external services
+- Coverage goal: 80%+ (measure with npm run test:coverage)
+- Performance: Each test < 100ms, full suite < 30
 - Performance requirements: Each test < 100ms
 
 Test Cases:
@@ -79,10 +83,17 @@ Test Cases:
    - Assert: Repository called once, cache hit on second call
 
 Deliverables:
-1. user-service.test.ts with all test cases
-2. Mock fixtures for User and database
-3. Coverage report showing 90%+
-4. Performance baseline (100ms target met)
+1. user-service.test.ts with vitest syntax
+2. Mock fixtures for User and database (vi.mock from vitest)
+3. Coverage report showing 80%+
+4. Performance baseline verified (< 30s full suite)
+
+Run tests:
+\`\`\`bash
+npm run test -w web              # Run tests in web workspace
+npm run test:watch -w web        # Watch mode
+npm run test:coverage -w web     # With coverage
+\`\`\`
 ```
 
 ## Testing Patterns

@@ -1,14 +1,21 @@
-# Prompt: Feature Implementation - Vibe Coding
+# Prompt: Feature Implementation - Base Project Template
 
 Use this prompt template when implementing new features with GitHub Copilot.
+
+## 📋 Before You Start
+
+Review:
+- [Code Standards](./.github/copilot-instructions.md#code-standards--quality) - Naming conventions, quality requirements
+- [Monorepo Structure](./docs/adr/001-monorepo-structure.md) - How workspaces are organized
+- Existing code in your workspace for patterns
 
 ## Template
 
 ```
 Context:
-I'm building a [PROJECT_TYPE] application for [USE_CASE].
-Current architecture: [BRIEF_ARCHITECTURE]
-Existing patterns: [REFERENCE_EXISTING_CODE]
+I'm building a [PROJECT_TYPE] feature in the [WORKSPACE] workspace.
+Monorepo structure: npm Workspaces (shared types, independent services)
+Existing patterns: [REFERENCE_EXISTING_CODE] - See shared/types/ and similar implementations
 
 Requirements:
 - Feature: [FEATURE_NAME]
@@ -18,25 +25,28 @@ Requirements:
 - Success criteria: [SUCCESS_CRITERIA]
 
 Constraints:
-- Technology stack: [TECH_STACK]
-- Must follow: [CODE_STANDARDS_FROM_guidelines]
-- Use existing types: [TYPE_REFERENCES]
-- Error handling: [ERROR_SCENARIOS]
+- Technology stack: [TECH_STACK] (See README Technology Stack section)
+- Must follow: Naming (camelCase/PascalCase/UPPER_SNAKE_CASE), SOLID principles, strict TypeScript
+- Use existing types: From shared/types/ for common interfaces
+- Error handling: Comprehensive try-catch, custom error classes, logging
+- Testing: Unit tests required, 80%+ coverage target
+- Documentation: JSDoc with @param, @returns, @throws
 
 Deliverables:
-1. Main implementation file with comprehensive error handling
-2. Unit tests with happy path and error scenarios
-3. JSDoc documentation
-4. Integration with existing services
+1. Implementation file in correct workspace with error handling
+2. Unit tests (vitest) covering happy path and edge cases
+3. JSDoc documentation with examples
+4. Integration with existing services in workspace
+5. Commit message using Conventional Commits format (feat/fix/docs)
 ```
 
 ## Example Usage
 
 ```
 Context:
-I'm building a TypeScript web application for user management.
-Current architecture: Service-based with dependency injection
-Existing patterns: BaseRepository<T> for data access, ValidationError for errors
+I'm building a user authentication feature in the web/backend workspace.
+Monorepo structure: npm Workspaces with shared types in shared/types/
+Existing patterns: Express middleware, error handlers in src/middleware/, services in src/services/
 
 Requirements:
 - Feature: Create user registration service
@@ -46,10 +56,10 @@ Requirements:
 - Success criteria: User saved with hashed password, validation errors caught
 
 Constraints:
-- Technology stack: TypeScript, Node.js, PostgreSQL
-- Must follow: Naming conventions (camelCase), SOLID principles
-- Use existing types: from /src/types/user.ts
-- Error handling: ValidationError for invalid input, NotFoundError for conflicts
+- Technology stack: TypeScript 5.0+, Express, PostgreSQL
+- Must follow: camelCase (vars), PascalCase (types), Helmet security, CORS, input validation with Joi
+- Use existing types: from shared/types/src/index.ts (IUser, IAuthPayload, IApiResponse)
+- Error handling: ValidationError for invalid input, use Pino logger, structured error responses
 
 Deliverables:
 1. UserService class with registerUser() method
@@ -58,13 +68,14 @@ Deliverables:
 4. Integration with existing UserRepository
 ```
 
-## Tips for Better Results
+## 🎯 Tips for Better Results
 
-1. **Be Specific**: Instead of "create a function", specify the exact signature and behavior
-2. **Provide Examples**: Show existing patterns or expected input/output
-3. **Set Constraints**: Define technology choices and code standards upfront
-4. **Reference Context**: Link to existing implementations for consistency
-5. **Define Success**: Be clear about what "done" looks like
+1. **Specify the Workspace**: Indicate which /web, /apps/*, /desktop/*, /tools/*, or /shared/* workspace
+2. **Reference Shared Types**: Point to shared/types/src/ for common interfaces
+3. **Follow Code Standards**: Use naming conventions from .github/copilot-instructions.md
+4. **Provide Existing Examples**: Show similar implementations in the same workspace
+5. **Include Testing**: Always ask for unit tests (vitest) with 80%+ coverage target
+6. **Set Constraints**: Mention security (Helmet, CORS), validation (Joi), logging (Pino)
 
 ## Refinement Prompts
 

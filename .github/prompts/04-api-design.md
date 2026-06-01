@@ -1,45 +1,68 @@
-# Prompt: API & Integration Design - Vibe Coding
+# Prompt: API & Integration Design - Base Project Template
 
 Use this prompt template when designing APIs and integrations with GitHub Copilot.
+
+## 📋 Before Designing API
+
+Review:
+- Existing endpoints in web/backend/src/routes/
+- Shared types in shared/types/src/index.ts (IApiResponse, IPaginatedResponse)
+- [Code Standards](./.github/copilot-instructions.md) - Naming conventions
+- Security: Helmet.js headers, CORS, rate limiting, input validation (Joi)
 
 ## Template
 
 ```
 API Specification:
-Endpoint: [METHOD] /api/[RESOURCE]/[ACTION]
+Endpoint: [METHOD] /api/v1/[RESOURCE]/[ACTION]
+Workspace: web/backend (or other service)
 Purpose: [WHAT_DOES_IT_DO]
 Use case: [WHEN_IS_IT_USED]
 
 Request:
 - Method: [GET/POST/PUT/DELETE/PATCH]
-- Path: [/api/path/with/:params]
+- Path: [/api/v1/path/with/:params]
 - Query params: [OPTIONAL_FILTERS]
-- Body schema:
-  ```
-  [REQUEST_SCHEMA]
-  ```
-- Authentication: [TYPE/REQUIRED]
-- Rate limiting: [IF_APPLICABLE]
+- Headers: Standard + Authorization (Bearer token if needed)
+- Body schema: Use Joi validation, reference shared/types/
+- Authentication: JWT (web/backend/src/middleware/auth.ts) or none for public
+- Rate limiting: Apply rate-limit middleware if needed
+- Content-Type: application/json
 
 Response:
-- Success (200): [RESPONSE_SCHEMA]
-- Error cases:
-  - [ERROR_CODE]: [ERROR_CONDITION]
-  - [ERROR_CODE]: [ERROR_CONDITION]
+- Success (200/201): Use IApiResponse<T> wrapper from shared/types/
+  ```
+  { success: true, data: {...}, message?: "..." }
+  ```
+- Error cases (structured error responses from error-handler.ts):
+  - 400: Validation error (Joi validation failed)
+  - 401: Unauthorized (missing/invalid token)
+  - 403: Forbidden (insufficient permissions)
+  - 404: Not found resource
+  - 409: Conflict (unique constraint, duplicate)
+  - 500: Server error (logged by Pino)
 
 Implementation requirements:
-- Input validation: [VALIDATION_RULES]
-- Authorization: [PERMISSION_CHECKS]
-- Database operations: [QUERIES_NEEDED]
-- External integrations: [IF_ANY]
-- Caching: [IF_APPLICABLE]
+- Input validation: Use Joi schemas, validate in middleware or route handler
+- Authorization: Check JWT payload, verify user permissions
+- Database operations: Use parameterized queries (PostgreSQL), prevent SQL injection
+- External integrations: Document API calls, add error handling, timeouts
+- Caching: Use Redis for frequently accessed data (optional, enable in docker-compose)
+- Logging: Use Pino logger for all operations (web/backend/src/utils/logger.ts)
 
 Deliverables:
-1. Route/endpoint handler with full error handling
-2. Request/response types with JSDoc
-3. Unit tests for success and error cases
-4. Integration tests with external services
-5. API documentation (OpenAPI/Swagger)
+1. Express route handler in web/backend/src/routes/ with Helmet security
+2. Request/response types in shared/types/src/index.ts with JSDoc
+3. Unit tests (vitest) covering success and error cases
+4. Integration tests with mocked external services
+5. Commit: feat(api): description of new endpoint
+6. Optional: Add OpenAPI/Swagger documentation
+
+Test with:
+\`\`\`bash
+npm run dev -w web  # Start backend on :3000
+curl http://localhost:3000/api/v1/endpoint
+\`\`\`
 ```
 
 ## Example Usage
