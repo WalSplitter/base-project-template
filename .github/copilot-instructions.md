@@ -100,6 +100,20 @@ import { helper } from '../utils';
 - [ ] Security vulnerabilities checked
 - [ ] Types are properly defined (TypeScript)
 
+## GitHub Copilot Resources
+
+Use the repository’s prompt templates and skill guides together to keep Copilot suggestions aligned with project conventions.
+
+- `.github/prompts/` contains structured prompt templates for feature implementation, bug fixing, refactoring, API design, testing, and performance.
+- `.github/skills/` contains domain-specific Copilot skill guides for web, backend, desktop, tools, docs, and shared package development.
+- Refer to `.github/skills/README.md` for an index of available skill guides.
+
+### Recommended workflow
+
+1. Start with the prompt structure from `.github/prompts/`.
+2. Reference the relevant skill guide in `.github/skills/` for domain-specific patterns.
+3. Use `copilot-instructions.md` for general standards, naming conventions, and review checklists.
+
 ## Prompt Engineering Best Practices
 
 ### Effective Prompts for Copilot
