@@ -1,51 +1,88 @@
 # Base Project Template
 
-A professional, production-ready GitHub template repository for building modern applications with best practices, GitHub Copilot optimization, and modular architecture.
+[![GitHub](https://img.shields.io/badge/GitHub-base--project--template-blue?logo=github)](https://github.com/yourusername/base-project-template)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green.svg)](https://nodejs.org/)
+[![npm workspaces](https://img.shields.io/badge/npm-workspaces-blue.svg)](https://docs.npmjs.com/cli/v8/using-npm/workspaces)
+[![GitHub Actions](https://img.shields.io/badge/CI/CD-GitHub%20Actions-blue.svg)](https://github.com/features/actions)
+
+> A production-ready, enterprise-grade template for building scalable applications with modern best practices, GitHub Copilot optimization, and professional development standards.
 
 ## 🎯 Overview
 
-This template provides a comprehensive foundation for creating web applications, backend services, desktop applications, CLI tools, and shared libraries. It includes professional development guidelines, Copilot-optimized prompts, programming skills documentation, and best practices aligned with Microsoft and industry standards.
+This comprehensive template repository provides everything you need to build professional applications at scale:
+
+- **🏗️ Monorepo Architecture**: Multiple project types in a single repository with shared dependencies
+- **📋 TypeScript-First**: Strict type safety, full IntelliSense, and excellent developer experience
+- **🤖 GitHub Copilot Integration**: Optimized prompts, skill guides, and development patterns
+- **🔄 CI/CD Ready**: Pre-configured GitHub Actions for testing, linting, security scanning
+- **🐳 Docker Support**: Multi-stage Dockerfile and docker-compose for local development
+- **📚 Complete Documentation**: Setup guides, deployment strategies, ADRs, and troubleshooting
 
 ### Perfect For
 
-- 🌐 Web applications (React, Vue, Svelte)
-- 🖥️ Backend services (Node.js, .NET, Python)
-- 💻 Desktop applications (Electron, Tauri)
-- 🔧 CLI tools and utilities
-- 📦 Shared libraries and packages
-- 🚀 Microservices architecture
-- 📱 Progressive web apps (PWA)
+- 🌐 **Web Applications** - Full-stack React/Vue/Svelte with Express/NestJS backends
+- 🖥️ **Backend Services** - Microservices, APIs, and scalable server applications
+- 💻 **Desktop Applications** - Cross-platform apps with Electron or Tauri
+- 🔧 **CLI Tools** - Command-line utilities and code generators
+- 📦 **Shared Libraries** - Reusable types, utilities, and components
+- 🚀 **Monorepo Projects** - Multiple applications with shared code
+- 📱 **Progressive Web Apps** - PWA and hybrid applications
 
 ## ✨ Key Features
 
-### Professional Guidelines
-- **GitHub Copilot Instructions** - Complete development standards following Microsoft practices
-- **Programming Skills** - Reference documentation for common patterns and techniques
-- **Code Quality Standards** - Naming conventions, SOLID principles, error handling
-- **Security Best Practices** - Authentication, authorization, data protection
+### 🎯 Out-of-the-Box Setup
+- ✅ **npm Workspaces** - Efficient monorepo management with unified dependencies
+- ✅ **TypeScript 5.0+** - Strict mode enabled with full ESLint configuration
+- ✅ **Code Quality** - ESLint, Prettier, and automated formatting pre-configured
+- ✅ **Git Ready** - .gitattributes, .gitignore, and conventional commits setup
+- ✅ **Environment Templates** - .env.example with sensible defaults
 
-### Development Productivity
-- **Prompt Templates** - Optimized prompts for different development scenarios
-- **Quick Start Guide** - Get productive in minutes
-- **Architecture Decisions** - Clear patterns and design guidelines
-- **Testing Strategies** - Comprehensive testing approaches
+### 🤖 GitHub Copilot Optimization
+- 📝 **Development Guidelines** - Complete coding standards and best practices
+- 🎓 **Skill Guides** - Domain-specific patterns (web, backend, desktop, tools)
+- 📋 **Prompt Templates** - Pre-written prompts for feature implementation, bug fixes, refactoring, testing
+- 🏗️ **Architecture Patterns** - SOLID principles, dependency injection, error handling
+- 📚 **Reference Documentation** - Type safety, async patterns, API design, performance optimization
 
-### Modular Architecture
-- **Web Projects** - Frontend and backend separation with shared code
-- **Applications & Services** - Backend services, microservices, workers
-- **Desktop Apps** - Electron, Tauri, WPF applications
-- **Tools & Utilities** - CLI tools, build scripts, generators
-- **Shared Libraries** - Common types, utilities, error handling
-- **Documentation** - Comprehensive docs and guides
+### 🚀 CI/CD & DevOps
+- 🔄 **GitHub Actions Workflows** - Automated testing, linting, building, and security scanning
+- 🐳 **Docker Support** - Multi-stage Dockerfile for production builds + docker-compose for local dev
+- 🎯 **Makefile** - Common development commands for quick access
+- 🔐 **Security Integration** - Dependabot config, vulnerability scanning, secret management
+- 📊 **Code Quality** - Automated code analysis and coverage reporting
 
-## 📁 Directory Structure
+### 📦 Project Templates
+- **Web Application** - React frontend + Express backend with TypeScript
+- **API Service** - RESTful API with middleware, routing, and error handling
+- **Shared Types** - Centralized TypeScript definitions for type-safe communication
+- **Desktop Ready** - Structure for Electron, Tauri, or WPF applications
+- **CLI Tools** - Scaffolding for command-line utilities
+
+### 📚 Complete Documentation
+- 🚀 [Quick Start Guide](./docs/getting-started/README.md) - Get running in 5 minutes
+- 🔧 [Environment Setup](./docs/getting-started/environment.md) - Development environment configuration
+- 🏗️ [Architecture Decisions](./docs/adr/) - ADRs for design choices
+- 📖 [Deployment Guides](./docs/guides/deployment.md) - Vercel, AWS, Railway, Docker
+- 🔐 [Security Policy](./SECURITY.md) - Best practices and vulnerability reporting
+- 📋 [Setup Instructions](./SETUP.md) - Detailed installation and configuration
+
+## 📁 Project Structure
 
 ```
 base-project-template/
 ├── .github/
-│   ├── copilot-instructions.md    # Development guidelines
-│   ├── SKILLS.md                  # Programming patterns reference
-│   ├── prompts/                   # Development prompt templates
+│   ├── workflows/                 # CI/CD pipelines
+│   │   ├── ci.yml                # Build, test, lint, security
+│   │   └── code-quality.yml       # Code quality analysis
+│   ├── ISSUE_TEMPLATE/            # Issue templates
+│   │   ├── bug.yml
+│   │   └── feature.yml
+│   ├── PULL_REQUEST_TEMPLATE.md   # PR template
+│   ├── copilot-instructions.md    # Development standards & guidelines
+│   ├── SKILLS.md                  # Programming patterns & techniques
+│   ├── prompts/                   # GitHub Copilot prompts
 │   │   ├── 00-quick-start.md
 │   │   ├── 01-feature-implementation.md
 │   │   ├── 02-bug-fixing.md
@@ -53,44 +90,127 @@ base-project-template/
 │   │   ├── 04-api-design.md
 │   │   ├── 05-testing-strategy.md
 │   │   └── 06-performance-optimization.md
+│   ├── skills/                    # Domain-specific guides
+│   │   ├── 01-web-development.md
+│   │   ├── 02-backend-development.md
+│   │   ├── 03-desktop-development.md
+│   │   └── README.md
 │   └── README.md                  # GitHub configuration guide
 │
-├── web/                           # Web applications
-│   ├── frontend/                  # Client application
-│   ├── backend/                   # Server application
+├── web/                           # Full-stack web application
+│   ├── frontend/                  # React + TypeScript + Vite
+│   │   ├── src/
+│   │   ├── public/
+│   │   ├── vite.config.ts
+│   │   ├── vitest.config.ts
+│   │   ├── index.html
+│   │   ├── tsconfig.json
+│   │   └── package.json
+│   ├── backend/                   # Express + TypeScript
+│   │   ├── src/
+│   │   │   ├── routes/
+│   │   │   ├── middleware/
+│   │   │   ├── utils/
+│   │   │   └── index.ts
+│   │   ├── tsconfig.json
+│   │   ├── vitest.config.ts
+│   │   └── package.json
+│   ├── package.json               # Workspace definition
 │   └── README.md
 │
-├── apps/                          # Backend services
-│   ├── api-service/
-│   ├── worker-service/
-│   ├── websocket-service/
+├── apps/                          # Backend services & APIs
+│   ├── api/                       # API service template
+│   │   └── package.json
+│   ├── mobile/                    # Mobile backend
+│   ├── admin/                     # Admin service
 │   └── README.md
 │
-├── desktop/                       # Desktop applications
-│   ├── electron-app/
-│   ├── tauri-app/
-│   └── README.md
-│
-├── tools/                         # CLI tools and utilities
-│   ├── build-automation/
-│   ├── code-generator/
-│   └── README.md
-│
-├── shared/                        # Shared libraries
-│   ├── types/
-│   ├── utils/
-│   ├── constants/
-│   ├── errors/
-│   └── README.md
-│
-├── docs/                          # Documentation
-│   ├── getting-started.md
-│   ├── architecture.md
-│   ├── guides/
-│   └── README.md
-│
-├── LICENSE
-└── README.md
+├── d️⃣ Create Your Project
+
+**Option A: Use as GitHub Template (Recommended)**
+```bash
+# Click "Use this template" on GitHub
+# or use GitHub CLI:
+gh repo create my-project --template base-project-template --public
+cd my-project
+```
+
+**Option B: Clone Repository**
+```bash
+git clone https://github.com/yourusername/base-project-template.git my-project
+cd my-project
+```
+
+### 2️⃣ Install & Setup (5 minutes)
+
+```bash
+# Install all dependencies (includes web, backend, shared)
+npm install
+
+# Copy environment template
+cp .env.example .env
+
+# Start development servers (frontend on :5173, backend on :3000)
+npm run dev
+```
+
+**Verify Setup:**
+- Frontend: http://localhost:5173
+- Backend API: http://localhost:3000/api/health
+- Check status: `npm run type-check`
+
+### 3️⃣ Choose Your Path
+
+| Goal | Directory | Command |
+|------|-----------|---------|
+| **Full-Stack Web** | `/web` | `npm run dev -w web` |
+| **Backend API Only** | `/apps/api` | `npm run dev -w apps/api` |
+| **Frontend Only** | `/web/frontend` | `npm run dev -w web/frontend` |
+| **Desktop App** | `/desktop` | See [desktop guide](./desktop/README.md) |
+| **CLI Tool** | `/tools` | See [tools guide](./tools/README.md) |
+
+### 4️⃣ Essential Reading
+
+1. 📖 **[Development Guidelines](./.github/copilot-instructions.md)** - Code standards & practices
+2. 🤖 **[Quick Start Prompts](./.github/prompts/00-quick-start.md)** - Using GitHub Copilot effectively
+3. 🏗️ **[Architecture Guide](./ARCHITECTURE.md)** - Design decisions & patterns
+4. 📚 **[Setup Instructions](./SETUP.md)** - Detailed configuration
+
+### 5️⃣ Common Commands
+
+```bash
+# Development
+npm run dev              # Start all servers
+npm run build           # Build all projects
+npm run test            # Run all tests
+npm run test:coverage   # Generate coverage report
+
+# Code Quality
+npm run lint            # Check code quality
+npm run lint:fix        # Auto-fix issues
+npm run format          # Format with Prettier
+npm run type-check      # TypeScript validation
+
+# Docker
+npm run docker-up       # Start PostgreSQL & Redis
+npm run docker-down     # Stop containers
+
+# Utilities
+make help               # Show all Makefile commands
+make setup              # Complete setup (install + docker)
+```
+
+### 6️⃣ First Contribution
+
+1. Create feature branch: `git checkout -b feature/my-feature`
+2. Make changes following [guidelines](./.github/copilot-instructions.md)
+3. Test locally: `npm run test && npm run lint`
+4. Commit using conventional format: `git commit -m "feat(module): add feature"`
+5. Push and create PR: `git push origin feature/my-feature─ SECURITY.md                    # Security policy & best practices
+├── SETUP.md                       # Detailed setup instructions
+├── PROJECT_TYPES.md               # Guide for choosing project type
+├── LICENSE                        # MIT License
+└── README.md                      # This file
 ```
 
 ## 🚀 Quick Start
@@ -152,24 +272,57 @@ npm run dev
 ## 📚 Documentation
 
 ### Getting Started
-- [Quick Start Guide](./.github/prompts/00-quick-start.md)
-- [Development Setup](./docs/getting-started.md)
-- [Project Structure Guide](./docs/architecture.md)
+- [Q🤖 With GitHub Copilot
 
-### Development
-- [GitHub Copilot Instructions](./.github/copilot-instructions.md)
-- [Programming Skills Reference](./.github/SKILLS.md)
-- [Code Standards & Conventions](./.github/copilot-instructions.md#code-standards)
+This template is optimized for GitHub Copilot with pre-written prompts and skill guides:
 
-### Project Types
-- [Web Applications](./web/README.md)
-- [Backend Services](./apps/README.md)
-- [Desktop Applications](./desktop/README.md)
-- [CLI Tools](./tools/README.md)
-- [Shared Libraries](./shared/README.md)
+1. **Select your task type:**
+   - Feature implementation → `.github/prompts/01-feature-implementation.md`
+   - Bug fixing → `.github/prompts/02-bug-fixing.md`
+   - Refactoring → `.github/prompts/03-refactoring.md`
+   - API design → `.github/prompts/04-api-design.md`
+   - Testing → `.github/prompts/05-testing-strategy.md`
+   - Performance → `.github/prompts/06-performance-optimization.md`
 
-### Tools & Resources
-- [Prompt Templates](./.github/prompts/)
+2. **Reference domain-specific guide:**
+   - Web development → `.github/skills/01-web-development.md`
+   - Backend → `.github/skills/02-backend-development.md`
+   - Desktop → `.github/skills/03-desktop-development.md`
+
+3. **Use Copilot Chat with structured prompts:**
+   ```
+   @copilot Follow the pattern in .github/prompts/01-feature-implementation.md
+   
+   Context: [Your context]
+   Requirements: [What to build]
+   Constraints: [Tech stack, patterns to follow]
+   Include: Error handling, types, tests, documentation
+   ```
+
+4. **Verify & commit:**
+   ```bash
+   npm run lint && npm run test && npm run type-check
+   git commit -m "feat(scope): description"
+   ```
+
+### Example Workflow: Add User Service
+
+```bash
+# 1. Read the template
+cat .github/prompts/01-feature-implementation.md
+
+# 2. Read patterns
+cat .github/skills/02-backend-development.md
+
+# 3. Use Copilot (copy the prompt template, customize with your context)
+
+# 4. Test & verify
+npm run test -w web/backend
+npm run lint:fix
+npm run type-check
+
+# 5. Commit
+git commit -m "feat(backend): add user service with validation and error handling")
   - Feature implementation
   - Bug fixing and debugging
   - Code refactoring
@@ -204,57 +357,93 @@ npm run dev
 ## 🛠️ Technology Stack
 
 ### Frontend
-- **Framework**: React / Vue / Svelte
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS / Styled Components
-- **State**: Zustand / Redux / Pinia
-- **Testing**: Jest / Vitest / React Testing Library
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 18+ | UI Framework |
+| **TypeScript** | 5.0+ | Type Safety |
+| **Vite** | 5.0+ | Build Tool |
+| **Vitest** | 1.0+ | Testing Framework |
+| **Zustand** | 4.4+ | State Management |
+| **Axios** | 1.6+ | HTTP Client |
 
 ### Backend
-- **Runtime**: Node.js / .NET / Python
-- **Framework**: Express / NestJS / FastAPI
-- **Database**: PostgreSQL / MongoDB / SQL Server
-- **API**: REST / GraphQL
-- **Testing**: Jest / pytest / unittest
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Express** | 4.18+ | Web Framework |
+| **TypeScript** | 5.0+ | Type Safety |
+| **PostgreSQL** | 14+ | Database |
+| **Redis** | 7.0+ | Caching |
+| **Pino** | 8.17+ | Logging |
+| **JWT** | 9.1+ | Authentication |
 
-### Desktop
-- **Framework**: Electron / Tauri / WPF
-- **Language**: TypeScript / C# / Rust
-- **UI**: React / Vue / XAML
+### DevOps & Tools
+| Tool | Version | Purpose |
+|------|---------|---------|
+| **Node.js** | 18.0+ | Runtime |
+| **npm** | 9.0+ | Package Manager |
+| **Docker** | 24.0+ | Containerization |
+| **GitHub Actions** | - | CI/CD |
+| **ESLint** | 8.0+ | Linting |
+| **Prettier** | 3.0+ | Formatting |
 
-### DevOps
-- **Version Control**: Git / GitHub
-- **CI/CD**: GitHub Actions
-- **Container**: Docker
-- **Deployment**: Vercel / Heroku / AWS / Docker
+### Optional Technologies
 
-## 📖 Code Standards
+**For Different Project Types:**
+- Vue / Svelte (alternative frontend frameworks)
+- NestJS / FastAPI (alternative backends)
+- Electron / Tauri (desktop applications)
+- Prisma / TypeORM (database ORM)
+- GraphQL (alternative API style)
+
+## � Code Standards & Quality
 
 ### Naming Conventions
-```
-Variables/Functions:     camelCase
-Classes/Types/Interfaces: PascalCase
-Constants:              UPPER_SNAKE_CASE
-Files/Folders:          kebab-case
+```typescript
+// Variables & Functions: camelCase
+const userName = 'John Doe';
+function calculateTotal() {}
+
+// Classes, Types, Interfaces: PascalCase  
+class UserService {}
+interface IUserProfile {}
+type TUserRole = 'admin' | 'user';
+
+// Constants: UPPER_SNAKE_CASE
+const MAX_RETRIES = 3;
+const DEFAULT_TIMEOUT = 5000;
+
+// Files & Directories: kebab-case
+src/user-service.ts
+components/user-profile.tsx
 ```
 
 ### Quality Standards
-- ✅ TypeScript strict mode
-- ✅ 80%+ test coverage for business logic
-- ✅ SOLID principles
-- ✅ Type safety first
-- ✅ Error handling by default
-- ✅ Comprehensive JSDoc documentation
+- ✅ **TypeScript**: Strict mode enabled globally
+- ✅ **Testing**: Minimum 80% coverage for business logic
+- ✅ **Linting**: ESLint with TypeScript support
+- ✅ **Formatting**: Prettier with consistent rules
+- ✅ **Type Safety**: Full type annotations required
+- ✅ **Error Handling**: Try-catch blocks everywhere
+- ✅ **Documentation**: JSDoc on public APIs
+
+### Pre-Commit Checks
+```bash
+# Automatically run before commit:
+npm run lint:fix   # Fix formatting issues
+npm run type-check # Verify types
+npm run format     # Format code
+```
 
 ### Code Review Checklist
 - [ ] Follows naming conventions
-- [ ] Type safe (strict TypeScript)
+- [ ] Type-safe (strict TypeScript)
 - [ ] Error handling complete
-- [ ] Tests pass (80%+ coverage)
+- [ ] Tests pass with 80%+ coverage
 - [ ] No code duplication
 - [ ] Security implications reviewed
-- [ ] Performance impact assessed
-- [ ] Documentation clear and current
+- [ ] Performance considered
+- [ ] Documentation updated
+- [ ] Changelog entry added (if applicable)
 
 ## 🔐 Security
 
@@ -291,67 +480,79 @@ npm run lint            # Check code quality
 ```
 
 ### Production Build
-```bash
-npm run build           # Compile/bundle
-npm run start           # Run production server
-npm run test:coverage   # Check coverage
-```
+```bContribution Process
 
-### Docker
-```bash
-docker build -t my-app .
-docker run -p 3000:3000 my-app
-```
+1. **Fork & Clone**
+   ```bash
+   git clone https://github.com/yourusername/base-project-template.git
+   cd base-project-template
+   npm install
+   ```
 
-### Cloud Platforms
-- **Vercel/Netlify**: Frontend hosting
-- **Heroku/Railway**: Backend hosting
-- **AWS/Azure/GCP**: Enterprise deployment
-- **Docker Hub**: Container registry
+2. **Create Feature Branch**
+   ```bash
+   git checkout -b feature/my-feature
+   ```
 
-See [Deployment Guide](./docs/guides/deployment.md) for cloud-specific instructions.
+3. **Follow Development Standards**
+   - Read [Development Guidelines](./.github/copilot-instructions.md)
+   - Use [Code Standards](#-code-standards--quality)
+   - Write tests for new features
 
-## 🤝 Contributing
+4. **Commit with Conventional Format**
+   ```bash
+   # Format: type(scope): subject
+   git commit -m "feat(auth): add JWT token refresh"
+   git commit -m "fix(api): handle null user gracefully"
+   git commit -m "docs(readme): update setup instructions"
+   ```
 
-### Development Standards
-1. Follow [Code Standards](./.github/copilot-instructions.md#code-standards)
-2. Write tests for all features
-3. Use [Conventional Commits](https://www.conventionalcommits.org/)
-4. Reference related issues/PRs
-5. Update documentation
+   **Types:** & Attribution
 
-### Commit Message Format
-```
-type(scope): subject
+This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
-body
+### License Summary
+✅ **Allowed:**
+- Commercial use
+- Modification
+- Distribution
+- Private use
 
-footer
-```
+❌ **Not Allowed:**
+- No warranty or liability
 
-**Types**: feat, fix, docs, style, refactor, perf, test, chore
+### Attribution
+While not required, we appreciate credit to [WalSplitter](https://github.com/yourusername/) and linking to this repository.
 
-### Pull Request Process
-1. Create feature branch: `git checkout -b feature/feature-name`
-2. Implement feature with tests
-3. Ensure tests pass: `npm run test`
-4. Check code quality: `npm run lint`
-5. Create pull request with description
-6. Address review feedback
-7. Merge when approved
+---
 
-## 📝 License
+## 🎉 Getting Started Now!
 
-This template is provided under the MIT License. See [LICENSE](LICENSE) for details.
+### Ready to Build?
 
-## 🤖 Using with GitHub Copilot
+1. **Clone or use as template** → Start with your project
+2. **Follow quick start** → Up and running in 5 minutes
+3. **Read guidelines** → Understand development standards
+4. **Start coding** → Build your amazing application
 
-### Best Practices
+### Next Steps
 
-1. **Be Specific**: Provide context and examples
-2. **Reference Patterns**: Link to existing implementations
-3. **Set Constraints**: Define tech stack and standards
-4. **Review Code**: Don't accept generated code without review
+- 📖 Read [Quick Start Guide](./docs/getting-started/README.md)
+- 🤖 Explore [GitHub Copilot Prompts](./.github/prompts/)
+- 🏗️ Review [Architecture Decisions](./docs/adr/)
+- 🚀 Deploy your first application
+
+---
+
+**Template Version:** 1.0  
+**Last Updated:** 2026-06-01  
+**Maintained by:** Development Community  
+**License:** MIT
+
+**Questions? Issues? Ideas?**  
+→ Create an [Issue](../../issues) or [Discussion](../../discussions)
+
+**Happy Coding! 🚀: Don't accept generated code without review
 5. **Iterate**: Ask Copilot to refine and improve
 
 ### Recommended Workflow
