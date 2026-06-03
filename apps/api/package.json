@@ -25,18 +25,18 @@
     "pg": "^8.11.0",
     "joi": "^17.11.0",
     "pino": "^8.17.0",
-    "jsonwebtoken": "^9.1.0"
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "@types/express": "^4.17.0",
     "@types/node": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
-    "eslint": "^8.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
     "rimraf": "^5.0.0",
     "tsx": "^4.7.0",
     "typescript": "^5.0.0",
-    "vitest": "^1.0.0"
+    "vitest": "^4.1.8"
   },
   "engines": {
     "node": ">=18.0.0"
