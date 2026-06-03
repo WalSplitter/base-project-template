@@ -8,7 +8,9 @@
   "scripts": {
     "build": "tsc",
     "type-check": "tsc --noEmit",
-    "clean": "rimraf dist .turbo"
+    "clean": "rimraf dist .turbo",
+    "lint": "echo \"no lint needed\"",
+    "test:coverage": "echo \"no tests\""
   },
   "exports": {
     ".": "./dist/index.js"

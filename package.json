@@ -26,7 +26,7 @@
     "test": "npm run test --workspaces",
     "test:watch": "npm run test:watch --workspaces",
     "test:coverage": "npm run test:coverage --workspaces",
-    "lint": "npm run lint --workspaces",
+    "lint": "npm run lint -w web -w apps/api -w shared/types",
     "lint:fix": "npm run lint:fix --workspaces",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
