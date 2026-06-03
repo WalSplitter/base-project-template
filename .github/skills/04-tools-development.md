@@ -112,5 +112,6 @@ program
 ---
 
 **Related Resources:**
+
 - Prompts: [Feature Implementation](../prompts/01-feature-implementation.md), [Testing Strategy](../prompts/05-testing-strategy.md)
 - Standards: [copilot-instructions.md](../copilot-instructions.md)

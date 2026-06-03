@@ -15,6 +15,7 @@ Professional development standards and best practices for this project using Git
 ### Naming Conventions
 
 #### Variables & Constants
+
 - Use **camelCase** for variables and functions
 - Use **UPPER_SNAKE_CASE** for constants
 - Use **PascalCase** for classes, types, and interfaces
@@ -34,6 +35,7 @@ function calc() {}
 ```
 
 #### File & Folder Organization
+
 - Use **kebab-case** for file and folder names
 - Group related functionality together
 - Keep modules focused and single-purpose
@@ -42,6 +44,7 @@ function calc() {}
 ### Code Organization
 
 #### File Structure
+
 ```
 module/
 ├── index.ts          # Public exports
@@ -54,6 +57,7 @@ module/
 ```
 
 #### Imports Organization
+
 ```typescript
 // 1. Standard library imports
 import fs from 'fs';
@@ -119,18 +123,21 @@ Use the repository’s prompt templates and skill guides together to keep Copilo
 ### Effective Prompts for Copilot
 
 #### 1. Be Specific and Clear
+
 ```
-✓ "Create a TypeScript utility function that validates email addresses using regex 
+✓ "Create a TypeScript utility function that validates email addresses using regex
    and returns both validation result and error message"
 ✗ "Make an email validator"
 ```
 
 #### 2. Provide Context
+
 - Show existing code patterns to maintain consistency
 - Include relevant type definitions
 - Reference related implementations
 
 #### 3. Include Examples
+
 ```
 ✓ "Create a function similar to calculateDiscount() that converts currencies
    Input: { amount: number, fromCurrency: string, toCurrency: string }
@@ -138,12 +145,14 @@ Use the repository’s prompt templates and skill guides together to keep Copilo
 ```
 
 #### 4. Specify Constraints
+
 - Technology stack (TypeScript, React, Vue, etc.)
 - Error handling requirements
 - Performance considerations
 - Specific libraries/frameworks to use or avoid
 
 #### 5. Request Iterative Refinement
+
 ```
 "Generate a basic version first, then optimize for performance"
 "Start with a simple implementation, add error handling next"
@@ -180,13 +189,13 @@ Use JSDoc format for public APIs:
 ```typescript
 /**
  * Fetches user data and applies caching strategy.
- * 
+ *
  * @param userId - The unique user identifier
  * @param useCache - Whether to use cached data (default: true)
  * @returns Promise resolving to user profile data
  * @throws {UserNotFoundError} When user doesn't exist
  * @throws {NetworkError} When API request fails
- * 
+ *
  * @example
  * const user = await getUserProfile('user123');
  * const freshUser = await getUserProfile('user123', false);
@@ -199,6 +208,7 @@ function getUserProfile(userId: string, useCache = true): Promise<IUserProfile> 
 ### Module README
 
 Each significant module should have a README.md explaining:
+
 - **Purpose**: What does this module do?
 - **Usage**: How to use it?
 - **API**: Public functions/classes
@@ -244,7 +254,10 @@ describe('UserService', () => {
 ```typescript
 // 1. Use custom error classes
 class ValidationError extends Error {
-  constructor(public field: string, message: string) {
+  constructor(
+    public field: string,
+    message: string
+  ) {
     super(message);
   }
 }
@@ -290,6 +303,7 @@ throw new ValidationError('email', 'Invalid email format. Expected: user@domain.
 ## Technology Stack Guidance
 
 ### Frontend
+
 - **Framework**: React, Vue, or Svelte
 - **Language**: TypeScript
 - **Styling**: CSS Modules, Tailwind, or Styled Components
@@ -297,6 +311,7 @@ throw new ValidationError('email', 'Invalid email format. Expected: user@domain.
 - **Testing**: Jest, Vitest, React Testing Library
 
 ### Backend
+
 - **Runtime**: Node.js, .NET, or Python
 - **Language**: TypeScript, C#, or Python
 - **Framework**: Express, NestJS, ASP.NET Core, or FastAPI
@@ -304,6 +319,7 @@ throw new ValidationError('email', 'Invalid email format. Expected: user@domain.
 - **Testing**: Jest, unittest, pytest
 
 ### Desktop
+
 - **Framework**: Electron, Tauri, or WPF
 - **Language**: TypeScript, C#, or Rust
 - **Build Tool**: Webpack, Vite, or MSBuild

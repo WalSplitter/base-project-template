@@ -61,9 +61,11 @@ tools/
 ### CLI Framework Options
 
 #### Commander.js (Node.js)
+
 ```bash
 npm install commander
 ```
+
 ```typescript
 import { Command } from 'commander';
 
@@ -82,28 +84,37 @@ program.parse(process.argv);
 ```
 
 #### Yargs (Node.js)
+
 ```bash
 npm install yargs
 ```
+
 ```typescript
 import yargs from 'yargs/yargs';
 
 yargs(process.argv.slice(2))
-  .command('generate <type>', 'Generate code', (yargs) => {
-    return yargs.positional('type', {
-      describe: 'Type of code to generate',
-      choices: ['service', 'component', 'test']
-    });
-  }, (argv) => {
-    console.log(`Generating ${argv.type}`);
-  })
+  .command(
+    'generate <type>',
+    'Generate code',
+    (yargs) => {
+      return yargs.positional('type', {
+        describe: 'Type of code to generate',
+        choices: ['service', 'component', 'test'],
+      });
+    },
+    (argv) => {
+      console.log(`Generating ${argv.type}`);
+    }
+  )
   .parse();
 ```
 
 #### Click (Python)
+
 ```bash
 pip install click
 ```
+
 ```python
 import click
 
@@ -134,12 +145,12 @@ program
   .option('-p, --prod', 'Production build')
   .action(async (target = 'default', options) => {
     console.log(`Building ${target} (prod: ${options.prod})`);
-    
+
     // Run build tasks
     const buildPath = path.resolve('dist');
     await fs.rm(buildPath, { recursive: true, force: true });
     await fs.mkdir(buildPath, { recursive: true });
-    
+
     console.log('✓ Build complete');
   });
 
@@ -171,7 +182,10 @@ export class ${this.pascalCase(name)}Service {
   }
 
   private pascalCase(str: string): string {
-    return str.split('-').map(s => s[0].toUpperCase() + s.slice(1)).join('');
+    return str
+      .split('-')
+      .map((s) => s[0].toUpperCase() + s.slice(1))
+      .join('');
   }
 
   private kebabCase(str: string): string {
@@ -190,7 +204,7 @@ import * as csv from 'fast-csv';
 export class CsvProcessor {
   async parseFile(filePath: string): Promise<Record<string, unknown>[]> {
     const rows: Record<string, unknown>[] = [];
-    
+
     return new Promise((resolve, reject) => {
       fs.createReadStream(filePath)
         .pipe(csv.parse({ headers: true }))
@@ -207,10 +221,7 @@ export class CsvProcessor {
     return data.map(transformer);
   }
 
-  async writeFile(
-    data: Record<string, unknown>[],
-    filePath: string
-  ): Promise<void> {
+  async writeFile(data: Record<string, unknown>[], filePath: string): Promise<void> {
     return new Promise((resolve, reject) => {
       const writeStream = fs.createWriteStream(filePath);
       csv
@@ -286,10 +297,7 @@ import { version } from '../package.json';
 
 const program = new Command();
 
-program
-  .name('my-tool')
-  .description('Description of your tool')
-  .version(version);
+program.name('my-tool').description('Description of your tool').version(version);
 
 program
   .command('do-something <target>')
@@ -348,14 +356,14 @@ import { execSync } from 'child_process';
 
 test('should show version', () => {
   const output = execSync('npm run cli -- --version', {
-    encoding: 'utf-8'
+    encoding: 'utf-8',
   });
   expect(output).toContain('1.0.0');
 });
 
 test('should execute command', () => {
   const output = execSync('npm run cli -- do-something test', {
-    encoding: 'utf-8'
+    encoding: 'utf-8',
   });
   expect(output).toContain('Doing something with test');
 });

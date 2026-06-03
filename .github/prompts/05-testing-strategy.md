@@ -110,7 +110,7 @@ describe('UserService', () => {
         id: userId,
         email: 'john@example.com',
         name: 'John Doe',
-        createdAt: new Date('2026-01-01')
+        createdAt: new Date('2026-01-01'),
       };
       userRepository.findById = jest.fn().mockResolvedValue(expectedUser);
 
@@ -136,11 +136,11 @@ describe('PaymentService', () => {
   beforeEach(() => {
     mockStripeApi = {
       charge: jest.fn(),
-      refund: jest.fn()
+      refund: jest.fn(),
     } as jest.Mocked<IStripeAPI>;
 
     mockEmailService = {
-      sendReceipt: jest.fn().mockResolvedValue(undefined)
+      sendReceipt: jest.fn().mockResolvedValue(undefined),
     } as jest.Mocked<IEmailService>;
 
     paymentService = new PaymentService(mockStripeApi, mockEmailService);
@@ -152,7 +152,10 @@ describe('PaymentService', () => {
     await paymentService.processPayment(100, 'user@example.com');
 
     expect(mockStripeApi.charge).toHaveBeenCalledWith(100);
-    expect(mockEmailService.sendReceipt).toHaveBeenCalledWith('user@example.com', expect.any(String));
+    expect(mockEmailService.sendReceipt).toHaveBeenCalledWith(
+      'user@example.com',
+      expect.any(String)
+    );
   });
 });
 ```
@@ -202,7 +205,7 @@ describe('UserService Integration', () => {
 
   it('should persist and retrieve user correctly', async () => {
     const userData = { email: 'test@example.com', name: 'Test User' };
-    
+
     const user = await userService.registerUser(userData);
     const retrieved = await userService.getUserProfile(user.id);
 
@@ -222,7 +225,7 @@ describe('AsyncOperations', () => {
 
   it('should timeout after specified duration', async () => {
     jest.useFakeTimers();
-    
+
     const promise = userService.fetchWithTimeout('url', 1000);
     jest.advanceTimersByTime(1001);
 
@@ -230,7 +233,8 @@ describe('AsyncOperations', () => {
   });
 
   it('should retry on failure', async () => {
-    const spy = jest.fn()
+    const spy = jest
+      .fn()
       .mockRejectedValueOnce(new Error('Network error'))
       .mockResolvedValueOnce({ id: 'user-123' });
 

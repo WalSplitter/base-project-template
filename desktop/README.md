@@ -72,6 +72,7 @@ npm install -D electron electron-builder
 ```
 
 **Architecture:**
+
 ```
 Main Process (Node.js)
     ↓
@@ -162,9 +163,9 @@ const template: MenuItemConstructorOptions[] = [
       {
         label: 'Exit',
         accelerator: 'CmdOrCtrl+Q',
-        click: () => app.quit()
-      }
-    ]
+        click: () => app.quit(),
+      },
+    ],
   },
   {
     label: 'Edit',
@@ -172,9 +173,9 @@ const template: MenuItemConstructorOptions[] = [
       { label: 'Undo', accelerator: 'CmdOrCtrl+Z' },
       { label: 'Redo', accelerator: 'CmdOrCtrl+Y' },
       { type: 'separator' },
-      { label: 'Cut', accelerator: 'CmdOrCtrl+X' }
-    ]
-  }
+      { label: 'Cut', accelerator: 'CmdOrCtrl+X' },
+    ],
+  },
 ];
 
 const menu = Menu.buildFromTemplate(template);
@@ -194,8 +195,8 @@ ipcMain.handle('file:open-dialog', async () => {
     properties: ['openFile'],
     filters: [
       { name: 'Text Files', extensions: ['txt', 'md'] },
-      { name: 'All Files', extensions: ['*'] }
-    ]
+      { name: 'All Files', extensions: ['*'] },
+    ],
   });
 
   if (!result.canceled) {
@@ -213,19 +214,17 @@ ipcMain.handle('file:open-dialog', async () => {
 import { Tray, Menu } from 'electron';
 import path from 'path';
 
-const tray = new Tray(
-  path.join(__dirname, 'assets', 'icon.png')
-);
+const tray = new Tray(path.join(__dirname, 'assets', 'icon.png'));
 
 const contextMenu = Menu.buildFromTemplate([
   {
     label: 'Show',
-    click: () => mainWindow.show()
+    click: () => mainWindow.show(),
   },
   {
     label: 'Exit',
-    click: () => app.quit()
-  }
+    click: () => app.quit(),
+  },
 ]);
 
 tray.setContextMenu(contextMenu);
@@ -247,8 +246,8 @@ const store = new Store<IStoreSchema>({
   defaults: {
     windowBounds: { width: 800, height: 600 },
     theme: 'light',
-    recentFiles: []
-  }
+    recentFiles: [],
+  },
 });
 
 // Usage

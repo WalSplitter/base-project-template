@@ -53,6 +53,7 @@ web/
 ### Frontend Framework
 
 #### React
+
 ```bash
 # Setup
 npx create-react-app web/frontend --template typescript
@@ -66,6 +67,7 @@ npx create-react-app web/frontend --template typescript
 ```
 
 #### Vue 3
+
 ```bash
 # Setup
 npm create vite@latest web/frontend -- --template vue-ts
@@ -79,6 +81,7 @@ npm create vite@latest web/frontend -- --template vue-ts
 ```
 
 #### Svelte
+
 ```bash
 # Setup
 npm create vite@latest web/frontend -- --template svelte-ts
@@ -93,6 +96,7 @@ npm create vite@latest web/frontend -- --template svelte-ts
 ### Backend Framework
 
 #### Express.js + TypeScript
+
 ```bash
 # Setup
 npm init -y && npm install express typescript @types/express
@@ -105,6 +109,7 @@ npm init -y && npm install express typescript @types/express
 ```
 
 #### NestJS
+
 ```bash
 # Setup
 npm i -g @nestjs/cli
@@ -118,6 +123,7 @@ nest new web/backend
 ```
 
 #### FastAPI (Python)
+
 ```bash
 # Setup
 pip install fastapi uvicorn
@@ -144,8 +150,8 @@ class ApiClient {
     this.client = axios.create({
       baseURL,
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     });
 
     this.setupInterceptors();
@@ -153,7 +159,7 @@ class ApiClient {
 
   private setupInterceptors(): void {
     this.client.interceptors.response.use(
-      response => response,
+      (response) => response,
       (error: AxiosError) => this.handleError(error)
     );
   }
@@ -182,7 +188,7 @@ class ApiClient {
 async registerUser(email: string, password: string) {
   const hashedPassword = await hashPassword(password);
   const user = await userRepository.create({ email, password: hashedPassword });
-  
+
   const token = generateToken({ userId: user.id });
   return { user, token };
 }
@@ -222,10 +228,10 @@ export const useUserStore = create<IUserState>((set) => ({
   user: null,
   isLoading: false,
   error: null,
-  
+
   setUser: (user) => set({ user }),
   setLoading: (isLoading) => set({ isLoading }),
-  
+
   fetchUser: async (id) => {
     set({ isLoading: true });
     try {
@@ -236,7 +242,7 @@ export const useUserStore = create<IUserState>((set) => ({
     } finally {
       set({ isLoading: false });
     }
-  }
+  },
 }));
 ```
 
@@ -252,6 +258,7 @@ export const useUserStore = create<IUserState>((set) => ({
    cd ../backend && npm install
    ```
 6. Start development:
+
    ```bash
    # Terminal 1: Frontend
    npm run dev

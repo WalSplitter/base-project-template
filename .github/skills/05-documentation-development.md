@@ -36,11 +36,13 @@ Professional guidance for creating clear, maintainable documentation, guides, an
 ## Documentation Strategy
 
 ### Structure
+
 - Keep documentation organized by purpose
 - Separate user guides, architecture, API docs, and troubleshooting
 - Use `docs/` for general project docs and `docs/adr/` for decisions
 
 ### Writing Style
+
 - Use simple, direct language
 - Prefer active voice and short sentences
 - Keep examples concrete and reproducible
@@ -55,6 +57,7 @@ Professional guidance for creating clear, maintainable documentation, guides, an
 - Keep line length readable (80-100 chars)
 
 ### Recommended Documents
+
 - `README.md`: High-level project overview
 - `docs/getting-started.md`: Setup and onboarding
 - `docs/architecture.md`: System design and patterns
@@ -99,5 +102,6 @@ Professional guidance for creating clear, maintainable documentation, guides, an
 ---
 
 **Related Resources:**
+
 - Prompts: [Refactoring](../prompts/03-refactoring.md), [Testing Strategy](../prompts/05-testing-strategy.md)
 - Standards: [copilot-instructions.md](../copilot-instructions.md)

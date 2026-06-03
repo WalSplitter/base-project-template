@@ -90,25 +90,23 @@ Deliverables:
 async function getUserWithPosts(userId: string) {
   const user = await db.users.findOne({ id: userId });
   const posts = await db.posts.find({ userId });
-  
+
   return {
     ...user,
     posts: await Promise.all(
-      posts.map(post => 
-        db.comments.find({ postId: post.id })  // N queries for comments
+      posts.map(
+        (post) => db.comments.find({ postId: post.id }) // N queries for comments
       )
-    )
+    ),
   };
 }
 
 // After: Single query with joins
 async function getUserWithPosts(userId: string) {
-  return db.users
-    .findOne({ id: userId })
-    .populate({
-      path: 'posts',
-      populate: { path: 'comments' }
-    });
+  return db.users.findOne({ id: userId }).populate({
+    path: 'posts',
+    populate: { path: 'comments' },
+  });
 }
 ```
 
@@ -175,7 +173,7 @@ async function getUsers(params: IPaginationParams): Promise<IPaginatedResult<IUs
       .skip(skip)
       .limit(take)
       .sort({ [sortBy]: sortOrder === 'desc' ? -1 : 1 }),
-    db.users.countDocuments()
+    db.users.countDocuments(),
   ]);
 
   const pageSize = take;
@@ -189,8 +187,8 @@ async function getUsers(params: IPaginationParams): Promise<IPaginatedResult<IUs
     pageInfo: {
       currentPage,
       totalPages,
-      pageSize
-    }
+      pageSize,
+    },
   };
 }
 ```
@@ -201,7 +199,7 @@ async function getUsers(params: IPaginationParams): Promise<IPaginatedResult<IUs
 // React example
 import { lazy, Suspense } from 'react';
 
-const HeavyComponent = lazy(() => 
+const HeavyComponent = lazy(() =>
   import('./HeavyComponent')
 );
 
@@ -281,11 +279,11 @@ import { performance } from 'perf_hooks';
 
 function benchmark(label: string, fn: () => void, iterations: number = 1000) {
   const start = performance.now();
-  
+
   for (let i = 0; i < iterations; i++) {
     fn();
   }
-  
+
   const duration = performance.now() - start;
   console.log(`${label}: ${(duration / iterations).toFixed(2)}ms per iteration`);
 }

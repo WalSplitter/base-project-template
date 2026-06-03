@@ -79,7 +79,9 @@ Deliverables:
 - [ ] Commit message: fix(scope): description of fix
 
 ## Common Fix Patterns
- (especially in PostgreSQL)
+
+(especially in PostgreSQL)
+
 - Use database transactions or atomic operations with BEGIN/COMMIT
 - Add database-level constraints (UNIQUE, FOREIGN KEY)
 - Use pessimistic locking (SELECT FOR UPDATE)
@@ -87,16 +89,19 @@ Deliverables:
 - Use queues for sequential processing
 
 ### Type Mismatch
+
 - Check TypeScript strict mode compatibility
 - Verify type definitions match usage
 - Add type guards for runtime validation
 
 ### Performance Issue
+
 - Profile with browser/Node.js DevTools
 - Identify bottlenecks (N+1 queries, loops, etc.)
 - Apply caching or pagination strategies
 
 ### Memory Leak
+
 - Check for unremoved event listeners
 - Verify cleanup in useEffect/destructors
 - Review circular references and weak maps

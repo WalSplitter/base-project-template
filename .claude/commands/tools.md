@@ -25,10 +25,7 @@ import { Command } from 'commander';
 
 const program = new Command();
 
-program
-  .name('my-tool')
-  .description('What this tool does')
-  .version('1.0.0');
+program.name('my-tool').description('What this tool does').version('1.0.0');
 
 program
   .command('generate <name>')
@@ -43,6 +40,7 @@ program.parse();
 ```
 
 ## UX principles for CLI
+
 - Exit 0 on success, non-zero on error
 - Print to `stdout` for data output, `stderr` for errors/logs
 - Support `--dry-run` for destructive operations
@@ -50,6 +48,7 @@ program.parse();
 - Colorize output but respect `NO_COLOR` env var
 
 ## File operations
+
 ```typescript
 import { promises as fs } from 'fs';
 import path from 'path';
@@ -58,7 +57,10 @@ import path from 'path';
 await fs.writeFile(path.resolve(outputDir, filename), content, 'utf-8');
 
 // Check before overwrite
-const exists = await fs.access(filePath).then(() => true).catch(() => false);
+const exists = await fs
+  .access(filePath)
+  .then(() => true)
+  .catch(() => false);
 if (exists && !options.force) {
   console.error(`File already exists: ${filePath}. Use --force to overwrite.`);
   process.exit(1);
@@ -66,6 +68,7 @@ if (exists && !options.force) {
 ```
 
 ## Error handling in CLI
+
 ```typescript
 // Top-level error handler
 process.on('uncaughtException', (error) => {
@@ -86,6 +89,7 @@ try {
 ```
 
 ## Testing CLI tools
+
 ```bash
 npm run test -w tools/<tool>
 # Test commands by calling the action functions directly, not via shell

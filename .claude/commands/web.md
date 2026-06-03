@@ -5,6 +5,7 @@ Domain-specific guidance for the `/web` workspace (React frontend + Express back
 ## Frontend (React + TypeScript)
 
 **Component structure:**
+
 ```typescript
 // Functional components only, no class components
 interface IUserCardProps {
@@ -29,6 +30,7 @@ export function UserCard({ userId, onSelect }: IUserCardProps) {
 **Data fetching:** Custom hooks wrapping fetch calls. Debounce search inputs (300ms).
 
 **Lazy loading:**
+
 ```typescript
 const HeavyPage = lazy(() => import('./pages/HeavyPage'));
 // Wrap in <Suspense fallback={<Spinner />}> at router level
@@ -37,6 +39,7 @@ const HeavyPage = lazy(() => import('./pages/HeavyPage'));
 ## Backend (Express + TypeScript)
 
 **Route structure:**
+
 ```
 web/backend/src/
 ├── routes/         ← Express routers
@@ -49,6 +52,7 @@ web/backend/src/
 **Middleware stack (global):** Helmet → CORS → rate-limit → body-parser → routes → error-handler
 
 **Controller pattern:**
+
 ```typescript
 export async function getUser(req: Request, res: Response, next: NextFunction) {
   try {
@@ -61,11 +65,13 @@ export async function getUser(req: Request, res: Response, next: NextFunction) {
 ```
 
 ## Auth flow
+
 - JWT issued on login, stored in httpOnly cookie or Authorization header
 - Verify via `web/backend/src/middleware/auth.ts`
 - Refresh tokens for long sessions
 
 ## Testing in web workspace
+
 ```bash
 npm run test -w web               # All tests
 npm run test:watch -w web/frontend  # Frontend only, watch

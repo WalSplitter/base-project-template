@@ -1,18 +1,18 @@
 name: Feature Request
 description: Suggest an idea for this project
-labels: ["enhancement"]
+labels: ['enhancement']
 
 body:
   - type: markdown
     attributes:
-      value: "Thank you for suggesting a feature! Please describe your idea below."
+      value: 'Thank you for suggesting a feature! Please describe your idea below.'
 
   - type: input
     id: title
     attributes:
       label: Title
       description: Brief title for the feature
-      placeholder: "Feature: Add support for ..."
+      placeholder: 'Feature: Add support for ...'
     validations:
       required: true
 
@@ -37,7 +37,7 @@ body:
     attributes:
       label: Proposed Solution
       description: How should this feature work
-      placeholder: "The feature should..."
+      placeholder: 'The feature should...'
 
   - type: textarea
     id: alternatives

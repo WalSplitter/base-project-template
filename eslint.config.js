@@ -33,7 +33,12 @@ export default tseslint.config(
         { selector: 'default', format: ['camelCase'] },
         { selector: 'variable', format: ['camelCase', 'UPPER_CASE'] },
         { selector: 'parameter', format: ['camelCase'], leadingUnderscore: 'allow' },
-        { selector: 'memberLike', modifiers: ['private'], format: ['camelCase'], leadingUnderscore: 'allow' },
+        {
+          selector: 'memberLike',
+          modifiers: ['private'],
+          format: ['camelCase'],
+          leadingUnderscore: 'allow',
+        },
         { selector: 'typeLike', format: ['PascalCase'] },
         { selector: 'enumMember', format: ['UPPER_CASE'] },
       ],
@@ -50,6 +55,13 @@ export default tseslint.config(
 
   // Ignore patterns
   {
-    ignores: ['dist/**', 'build/**', 'coverage/**', 'node_modules/**', '**/*.config.js', '**/*.config.ts'],
-  },
+    ignores: [
+      'dist/**',
+      'build/**',
+      'coverage/**',
+      'node_modules/**',
+      '**/*.config.js',
+      '**/*.config.ts',
+    ],
+  }
 );

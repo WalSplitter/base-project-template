@@ -35,7 +35,8 @@ Recent changes:   [if any]
 **Memory leak** → Check for unremoved event listeners, unresolved promises, circular references
 
 ## Deliverables
-1. Corrected implementation with root-cause comment explaining *why*, not just *what*
+
+1. Corrected implementation with root-cause comment explaining _why_, not just _what_
 2. Regression test covering the exact bug scenario (Vitest)
 3. Prevention note (linting rule, type constraint, or code pattern to avoid recurrence)
 4. Conventional commit: `fix(<scope>): <description>`

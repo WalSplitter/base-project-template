@@ -56,6 +56,7 @@ For database and service management:
 For local development with PostgreSQL:
 
 **Option 1: Docker (Recommended)**
+
 ```bash
 docker run --name postgres \
   -e POSTGRES_PASSWORD=password \
@@ -64,6 +65,7 @@ docker run --name postgres \
 ```
 
 **Option 2: Direct Installation**
+
 - **Windows**: Download from https://www.postgresql.org/download/windows/
 - **macOS**: Use Homebrew: `brew install postgresql`
 - **Linux**: `sudo apt-get install postgresql`
@@ -245,12 +247,14 @@ npm install -g tsx         # TypeScript execute
 ### Browser Extensions
 
 **Chrome/Edge:**
+
 - React Developer Tools
 - Redux DevTools
 - JSON Viewer
 - REST Client
 
 **Firefox:**
+
 - React Developer Tools
 - Redux DevTools
 - JSONView

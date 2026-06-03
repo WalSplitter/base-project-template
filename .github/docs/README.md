@@ -122,24 +122,28 @@ Check against these standards:
 ## Key Principles
 
 ### Professionalism
+
 - Follow Microsoft code analysis style rules
 - Implement SOLID principles consistently
 - Maintain high code quality standards
 - Document decisions and trade-offs
 
 ### Consistency
+
 - Use naming conventions across the project
 - Apply same patterns for similar problems
 - Follow established code structure
 - Keep dependencies organized
 
 ### Quality
+
 - Type safety first (TypeScript strict mode)
 - Test-driven development mindset
 - Error handling by default
 - Performance-conscious implementation
 
 ### Maintainability
+
 - Small, focused functions
 - Clear separation of concerns
 - Comprehensive documentation
@@ -148,6 +152,7 @@ Check against these standards:
 ## Technology Stack Guidance
 
 ### Frontend Development
+
 - **Framework**: React, Vue, or Svelte
 - **Language**: TypeScript
 - **Styling**: CSS Modules, Tailwind CSS, or Styled Components
@@ -155,6 +160,7 @@ Check against these standards:
 - **Testing**: Jest, Vitest, or React Testing Library
 
 ### Backend Development
+
 - **Runtime**: Node.js, .NET, or Python
 - **Language**: TypeScript, C#, or Python
 - **Framework**: Express, NestJS, ASP.NET Core, or FastAPI
@@ -162,6 +168,7 @@ Check against these standards:
 - **Testing**: Jest, pytest, or unittest
 
 ### Desktop Development
+
 - **Framework**: Electron, Tauri, or WPF
 - **Language**: TypeScript, C#, or Rust
 - **Build Tool**: Webpack, Vite, or MSBuild
@@ -181,6 +188,7 @@ footer
 **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
 
 **Example**:
+
 ```
 feat(auth): implement two-factor authentication
 

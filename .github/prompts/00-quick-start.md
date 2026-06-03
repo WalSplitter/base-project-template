@@ -32,6 +32,7 @@ Shared Libraries (Types/Utils)         → /shared/*
 ### 2. Essential Copilot Commands
 
 #### Feature Development
+
 ```
 @copilot /explain [function]           # Understand existing code
 @copilot /refactor                     # Improve code quality
@@ -40,6 +41,7 @@ Shared Libraries (Types/Utils)         → /shared/*
 ```
 
 #### Quick Patterns
+
 - Create new service with dependency injection
 - Implement error handling with try-catch
 - Add validation with Zod schemas
@@ -83,6 +85,7 @@ npm run build --workspaces
 ```
 
 Before starting, reference:
+
 - [Code Standards](./.github/copilot-instructions.md#code-standards--quality)
 - [Architecture Decisions](./docs/adr/001-monorepo-structure.md)
 - Similar implementations in same workspace
@@ -99,6 +102,7 @@ Before starting, reference:
 ```
 
 Tools to help debug:
+
 ```bash
 # Check for type errors across all workspaces
 npm run type-check --workspaces
@@ -121,6 +125,7 @@ npm run lint -- src/file.ts
 ```
 
 Copilot prompt:
+
 ```
 Review this code for:
 - SOLID principles compliance
@@ -140,6 +145,7 @@ Review this code for:
 ```
 
 Copilot prompt:
+
 ```
 Optimize [code] for [metric]:
 - Current: [baseline]
@@ -185,18 +191,21 @@ app-name/
 ## Troubleshooting
 
 ### Copilot Generating Wrong Code?
+
 1. **Be more specific**: Add example input/output
 2. **Reference patterns**: Link to similar implementations
 3. **Set constraints**: Mention tech stack and requirements
 4. **Ask for iterations**: "Start simple, then optimize"
 
 ### Type Errors in Generated Code?
+
 1. Check imports are complete
 2. Verify interface definitions match
 3. Review TypeScript compiler errors
 4. Ask Copilot to add type safety
 
 ### Tests Not Passing?
+
 1. Verify mocks match actual service signatures
 2. Check async/await handling
 3. Review error message details
@@ -205,6 +214,7 @@ app-name/
 ## Best Practices
 
 ### ✓ DO
+
 - Ask Copilot to explain before changing code
 - Test generated code before committing
 - Reference existing patterns in prompts
@@ -212,6 +222,7 @@ app-name/
 - Review security/performance implications
 
 ### ✗ DON'T
+
 - Accept generated code without review
 - Skip unit tests for generated functions
 - Ignore TypeScript warnings/errors

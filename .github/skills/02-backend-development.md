@@ -92,10 +92,10 @@ import { UserModule } from './modules/user/user.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       synchronize: false,
-      migrations: ['src/migrations/*.ts']
+      migrations: ['src/migrations/*.ts'],
     }),
-    UserModule
-  ]
+    UserModule,
+  ],
 })
 export class AppModule {}
 
@@ -163,7 +163,7 @@ export class UserService {
 
     return this.repository.create({
       ...input,
-      password: hashedPassword
+      password: hashedPassword,
     });
   }
 }
@@ -200,28 +200,24 @@ export class UserRepository implements IUserRepository {
   constructor(private db: Database) {}
 
   async findById(id: string): Promise<IUser | null> {
-    return this.db.query<IUser>(
-      'SELECT * FROM users WHERE id = $1',
-      [id]
-    ).then(rows => rows[0] || null);
+    return this.db
+      .query<IUser>('SELECT * FROM users WHERE id = $1', [id])
+      .then((rows) => rows[0] || null);
   }
 
   async findByEmail(email: string): Promise<IUser | null> {
-    return this.db.query<IUser>(
-      'SELECT * FROM users WHERE email = $1',
-      [email]
-    ).then(rows => rows[0] || null);
+    return this.db
+      .query<IUser>('SELECT * FROM users WHERE email = $1', [email])
+      .then((rows) => rows[0] || null);
   }
 
   async findAll(skip: number, take: number): Promise<IPaginatedResult<IUser>> {
     const [users, countResult] = await Promise.all([
-      this.db.query<IUser>(
-        'SELECT * FROM users ORDER BY created_at DESC LIMIT $1 OFFSET $2',
-        [take, skip]
-      ),
-      this.db.query<{ count: string }>(
-        'SELECT COUNT(*) as count FROM users'
-      )
+      this.db.query<IUser>('SELECT * FROM users ORDER BY created_at DESC LIMIT $1 OFFSET $2', [
+        take,
+        skip,
+      ]),
+      this.db.query<{ count: string }>('SELECT COUNT(*) as count FROM users'),
     ]);
 
     const total = parseInt(countResult[0]?.count || '0');
@@ -231,7 +227,7 @@ export class UserRepository implements IUserRepository {
       total,
       hasMore: skip + take < total,
       page: Math.floor(skip / take) + 1,
-      pageSize: take
+      pageSize: take,
     };
   }
 
@@ -247,11 +243,11 @@ export class UserRepository implements IUserRepository {
 
   async update(id: string, data: Partial<IUser>): Promise<IUser> {
     const updateFields = Object.keys(data)
-      .filter(k => data[k as keyof IUser] !== undefined)
+      .filter((k) => data[k as keyof IUser] !== undefined)
       .map((k, i) => `${k} = $${i + 2}`)
       .join(', ');
 
-    const values = Object.values(data).filter(v => v !== undefined);
+    const values = Object.values(data).filter((v) => v !== undefined);
 
     const result = await this.db.query<IUser>(
       `UPDATE users SET ${updateFields}, updated_at = NOW()
@@ -263,10 +259,7 @@ export class UserRepository implements IUserRepository {
   }
 
   async delete(id: string): Promise<void> {
-    await this.db.query(
-      'DELETE FROM users WHERE id = $1',
-      [id]
-    );
+    await this.db.query('DELETE FROM users WHERE id = $1', [id]);
   }
 }
 ```
@@ -280,22 +273,23 @@ async function transferFunds(fromUserId: string, toUserId: string, amount: numbe
     await client.query('BEGIN');
 
     // Deduct from source
-    await client.query(
-      'UPDATE accounts SET balance = balance - $1 WHERE user_id = $2',
-      [amount, fromUserId]
-    );
+    await client.query('UPDATE accounts SET balance = balance - $1 WHERE user_id = $2', [
+      amount,
+      fromUserId,
+    ]);
 
     // Add to destination
-    await client.query(
-      'UPDATE accounts SET balance = balance + $1 WHERE user_id = $2',
-      [amount, toUserId]
-    );
+    await client.query('UPDATE accounts SET balance = balance + $1 WHERE user_id = $2', [
+      amount,
+      toUserId,
+    ]);
 
     // Record transaction
-    await client.query(
-      'INSERT INTO transactions (from_id, to_id, amount) VALUES ($1, $2, $3)',
-      [fromUserId, toUserId, amount]
-    );
+    await client.query('INSERT INTO transactions (from_id, to_id, amount) VALUES ($1, $2, $3)', [
+      fromUserId,
+      toUserId,
+      amount,
+    ]);
 
     await client.query('COMMIT');
   } catch (error) {
@@ -332,7 +326,7 @@ export class AuthService {
       {
         userId: user.id,
         email: user.email,
-        role: user.role
+        role: user.role,
       },
       process.env.JWT_SECRET!,
       { expiresIn: '24h' }
@@ -349,11 +343,7 @@ export class AuthService {
 }
 
 // Middleware
-export function authMiddleware(
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function authMiddleware(req: Request, res: Response, next: NextFunction) {
   const authHeader = req.headers.authorization;
   if (!authHeader?.startsWith('Bearer ')) {
     return res.status(401).json({ error: 'No token provided' });
@@ -391,17 +381,21 @@ import Redis from 'ioredis';
 
 const redis = new Redis({
   host: process.env.REDIS_HOST,
-  port: parseInt(process.env.REDIS_PORT!)
+  port: parseInt(process.env.REDIS_PORT!),
 });
 
 const emailQueue = new Queue('emails', { connection: redis });
 
 // Add job
 export async function sendWelcomeEmail(userId: string, email: string) {
-  await emailQueue.add('welcome', { userId, email }, {
-    attempts: 3,
-    backoff: { type: 'exponential', delay: 2000 }
-  });
+  await emailQueue.add(
+    'welcome',
+    { userId, email },
+    {
+      attempts: 3,
+      backoff: { type: 'exponential', delay: 2000 },
+    }
+  );
 }
 
 // Process jobs
@@ -412,7 +406,7 @@ const emailWorker = new Worker(
       await emailService.send({
         to: job.data.email,
         subject: 'Welcome!',
-        template: 'welcome'
+        template: 'welcome',
       });
       job.log('Email sent successfully');
     } catch (error) {
@@ -446,7 +440,7 @@ export class EventsGateway {
 
   constructor(server: http.Server) {
     this.io = new Server(server, {
-      cors: { origin: process.env.CORS_ORIGIN }
+      cors: { origin: process.env.CORS_ORIGIN },
     });
 
     this.setupMiddleware();
@@ -477,7 +471,7 @@ export class EventsGateway {
         try {
           const message = await messageService.create({
             ...data,
-            userId
+            userId,
           });
           this.io.to(`user:${data.recipientId}`).emit('message:new', message);
         } catch (error) {
@@ -509,12 +503,7 @@ export class EventsGateway {
 
 ```typescript
 // src/middleware/error-handler.ts
-export function errorHandler(
-  error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function errorHandler(error: Error, req: Request, res: Response, next: NextFunction) {
   const statusCode = getStatusCode(error);
   const message = getMessage(error);
 
@@ -523,7 +512,7 @@ export function errorHandler(
     stack: error.stack,
     url: req.url,
     method: req.method,
-    statusCode
+    statusCode,
   });
 
   res.status(statusCode).json({
@@ -532,9 +521,9 @@ export function errorHandler(
       message,
       timestamp: new Date().toISOString(),
       ...(process.env.NODE_ENV === 'development' && {
-        stack: error.stack
-      })
-    }
+        stack: error.stack,
+      }),
+    },
   });
 }
 
@@ -575,13 +564,10 @@ export const logger = winston.createLogger({
     new winston.transports.File({ filename: 'logs/combined.log' }),
     ...(process.env.NODE_ENV !== 'production' && [
       new winston.transports.Console({
-        format: winston.format.combine(
-          winston.format.colorize(),
-          winston.format.simple()
-        )
-      })
-    ])
-  ]
+        format: winston.format.combine(winston.format.colorize(), winston.format.simple()),
+      }),
+    ]),
+  ],
 });
 ```
 
@@ -608,13 +594,13 @@ describe('UserService', () => {
       const input = {
         email: 'test@example.com',
         name: 'Test User',
-        password: 'password123'
+        password: 'password123',
       };
 
       userRepository.findByEmail.mockResolvedValue(null);
       userRepository.create.mockResolvedValue({
         id: 'user-123',
-        ...input
+        ...input,
       });
 
       const result = await userService.createUser(input);
@@ -628,14 +614,14 @@ describe('UserService', () => {
     it('should throw for duplicate email', async () => {
       userRepository.findByEmail.mockResolvedValue({
         id: 'existing',
-        email: 'test@example.com'
+        email: 'test@example.com',
       } as IUser);
 
       await expect(
         userService.createUser({
           email: 'test@example.com',
           name: 'Test',
-          password: 'pwd'
+          password: 'pwd',
         })
       ).rejects.toThrow(ConflictError);
     });
@@ -656,6 +642,7 @@ describe('UserService', () => {
 ---
 
 **Related Resources**:
+
 - Prompts: [Feature Implementation](../prompts/01-feature-implementation.md), [API Design](../prompts/04-api-design.md)
 - Skills: [Error Handling](error-handling.md), [Database Design](database-design.md)
 - Standards: See [copilot-instructions.md](../copilot-instructions.md)

@@ -9,6 +9,7 @@ If you discover a security vulnerability, please **do not** open a public GitHub
 Send an email to: **security@example.com** (replace with your contact)
 
 Please include:
+
 - Description of the vulnerability
 - Steps to reproduce
 - Potential impact
@@ -59,24 +60,28 @@ Please include:
 ## Security Features
 
 ### Authentication & Authorization
+
 - JWT-based authentication
 - Role-based access control (RBAC)
 - Session management
 - Secure password handling
 
 ### Input Validation
+
 - All user input is validated
 - SQL injection prevention
 - XSS protection
 - CSRF tokens
 
 ### Data Protection
+
 - Encrypted sensitive data
 - Secure communication (HTTPS/TLS)
 - Data privacy compliance (GDPR, CCPA)
 - Audit logging
 
 ### Infrastructure Security
+
 - Environment-based configuration
 - No hardcoded secrets
 - Security headers enabled
@@ -89,14 +94,15 @@ None currently known.
 
 ## Supported Versions
 
-| Version | Supported | Notes |
-|---------|-----------|-------|
-| 1.0+    | ✅        | Current version |
+| Version | Supported | Notes               |
+| ------- | --------- | ------------------- |
+| 1.0+    | ✅        | Current version     |
 | < 1.0   | ❌        | Use current version |
 
 ## Security Updates
 
 Security updates are released as:
+
 - Patch versions for security-only fixes
 - Released to npm and GitHub Releases
 - Announced in GitHub Discussions

@@ -3,7 +3,9 @@
 Optimize the following performance issue: $ARGUMENTS
 
 ## Diagnosis first
+
 Before optimizing, measure the baseline:
+
 ```bash
 npm run dev -w <workspace>          # Run with Node.js inspector
 npm run build --workspaces          # Check bundle size
@@ -11,6 +13,7 @@ make docker-up                      # Start Postgres + Redis for realistic testi
 ```
 
 ## Issue template
+
 ```
 Area:            [frontend | backend | database | network]
 Workspace:       [web | apps/* | desktop/* | tools/*]
@@ -23,12 +26,11 @@ Root cause:      [e.g. N+1 queries, no caching, large bundle]
 ## Common optimizations
 
 **N+1 queries** → Replace loops with JOIN queries or batch loading
+
 ```typescript
 // Before: N+1
 const posts = await db.posts.find({ userId });
-const withComments = await Promise.all(
-  posts.map(p => db.comments.find({ postId: p.id }))
-);
+const withComments = await Promise.all(posts.map((p) => db.comments.find({ postId: p.id })));
 // After: single query with populate/join
 const posts = await db.posts.find({ userId }).populate('comments');
 ```
@@ -42,12 +44,14 @@ const posts = await db.posts.find({ userId }).populate('comments');
 **Slow pagination** → Use cursor-based or offset pagination, add DB indexes
 
 ## Validation
+
 ```bash
 npm run test --workspaces     # No regressions
 npm run build --workspaces    # Bundle size check
 ```
 
 ## Deliverables
+
 1. Optimized implementation
 2. Before/after metrics (concrete numbers with units)
 3. Regression tests to prevent performance degradation

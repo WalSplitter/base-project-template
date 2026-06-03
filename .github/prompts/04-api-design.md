@@ -5,6 +5,7 @@ Use this prompt template when designing APIs and integrations with GitHub Copilo
 ## 📋 Before Designing API
 
 Review:
+
 - Existing endpoints in web/backend/src/routes/
 - Shared types in shared/types/src/index.ts (IApiResponse, IPaginatedResponse)
 - [Code Standards](./.github/copilot-instructions.md) - Naming conventions
@@ -31,16 +32,18 @@ Request:
 
 Response:
 - Success (200/201): Use IApiResponse<T> wrapper from shared/types/
-  ```
-  { success: true, data: {...}, message?: "..." }
-  ```
+```
+
+{ success: true, data: {...}, message?: "..." }
+
+```
 - Error cases (structured error responses from error-handler.ts):
-  - 400: Validation error (Joi validation failed)
-  - 401: Unauthorized (missing/invalid token)
-  - 403: Forbidden (insufficient permissions)
-  - 404: Not found resource
-  - 409: Conflict (unique constraint, duplicate)
-  - 500: Server error (logged by Pino)
+- 400: Validation error (Joi validation failed)
+- 401: Unauthorized (missing/invalid token)
+- 403: Forbidden (insufficient permissions)
+- 404: Not found resource
+- 409: Conflict (unique constraint, duplicate)
+- 500: Server error (logged by Pino)
 
 Implementation requirements:
 - Input validation: Use Joi schemas, validate in middleware or route handler
@@ -86,7 +89,7 @@ Request:
 - Rate limiting: 5 requests per 10 minutes per IP
 
 Response:
-- Success (201): 
+- Success (201):
   {
     userId: string (UUID)
     email: string
@@ -117,6 +120,7 @@ Deliverables:
 ## REST API Best Practices
 
 ### URL Design
+
 ```
 ✓ /api/v1/users                    # Resource collection
 ✓ /api/v1/users/:id               # Resource by ID
@@ -128,6 +132,7 @@ Deliverables:
 ```
 
 ### HTTP Methods
+
 ```typescript
 POST   /api/resource          // Create
 GET    /api/resource          // List
@@ -138,6 +143,7 @@ DELETE /api/resource/:id      // Delete
 ```
 
 ### Status Codes
+
 ```
 2xx Success
   200 OK              - GET, PUT, PATCH, DELETE successful
@@ -158,6 +164,7 @@ DELETE /api/resource/:id      // Delete
 ```
 
 ### Error Response Format
+
 ```typescript
 interface IErrorResponse {
   error: {

@@ -3,6 +3,7 @@
 Implement the following feature: $ARGUMENTS
 
 ## Context to gather first
+
 - Which workspace? (`web`, `apps/*`, `desktop/*`, `tools/*`, `shared/*`)
 - Are there existing similar implementations to reference?
 - Which shared types from `shared/types/src/index.ts` apply?
@@ -17,6 +18,7 @@ Implement the following feature: $ARGUMENTS
 6. **Integration** – Wire into existing services/routes in the workspace
 
 ## Constraints
+
 - TypeScript strict mode – no `any` types
 - Naming: `camelCase` (vars/functions), `PascalCase` (types/classes), `UPPER_SNAKE_CASE` (constants)
 - Logging via Pino (`web/backend/src/utils/logger.ts`)
@@ -24,6 +26,7 @@ Implement the following feature: $ARGUMENTS
 - Tests in `*.test.ts` alongside source
 
 ## Deliverables
+
 1. Implementation file in the correct workspace
 2. Unit tests covering happy path + edge cases
 3. JSDoc with examples

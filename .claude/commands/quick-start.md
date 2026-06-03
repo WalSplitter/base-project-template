@@ -25,6 +25,7 @@ Shared Libraries (Types/Utils)          → /shared/*
 ## Development Patterns
 
 ### Feature Development (~30 min)
+
 1. Define types in `shared/types/src/` first
 2. Implement core logic with error handling
 3. Write unit tests (Vitest, 80%+ coverage)
@@ -32,6 +33,7 @@ Shared Libraries (Types/Utils)          → /shared/*
 5. Commit: `feat(scope): description`
 
 ### Bug Investigation (~20 min)
+
 1. Reproduce with clear steps
 2. Run `npm run type-check --workspaces`
 3. Locate source in correct workspace
@@ -39,6 +41,7 @@ Shared Libraries (Types/Utils)          → /shared/*
 5. Commit: `fix(scope): description`
 
 ### Code Review (~10 min)
+
 - Naming conventions followed?
 - Error handling complete?
 - Types strict (no `any`)?

@@ -1,6 +1,6 @@
 name: Bug Report
 description: Report a bug to help us improve
-labels: ["bug", "triage"]
+labels: ['bug', 'triage']
 
 body:
   - type: markdown
@@ -13,7 +13,7 @@ body:
     attributes:
       label: Title
       description: Brief description of the issue
-      placeholder: "Bug: [Feature] does not work as expected"
+      placeholder: 'Bug: [Feature] does not work as expected'
     validations:
       required: true
 
@@ -63,7 +63,7 @@ body:
     id: environment
     attributes:
       label: Environment
-      placeholder: "OS: Windows 11, Node: 20.x, Browser: Chrome 123"
+      placeholder: 'OS: Windows 11, Node: 20.x, Browser: Chrome 123'
     validations:
       required: false
 
@@ -79,10 +79,10 @@ body:
     attributes:
       label: Severity
       options:
-        - "Critical (application crash)"
-        - "High (feature broken)"
-        - "Medium (reduced functionality)"
-        - "Low (minor issue)"
+        - 'Critical (application crash)'
+        - 'High (feature broken)'
+        - 'Medium (reduced functionality)'
+        - 'Low (minor issue)'
     validations:
       required: true
 

@@ -66,6 +66,7 @@ apps/
 ### Backend Framework
 
 #### Express.js
+
 ```bash
 npm install express express-async-errors dotenv cors helmet
 npm install -D @types/express typescript
@@ -74,6 +75,7 @@ npm install -D @types/express typescript
 ```
 
 #### NestJS
+
 ```bash
 npm install -g @nestjs/cli
 nest new apps/api-service
@@ -83,6 +85,7 @@ nest new apps/api-service
 ```
 
 #### FastAPI (Python)
+
 ```bash
 pip install fastapi uvicorn sqlalchemy pydantic
 
@@ -91,6 +94,7 @@ pip install fastapi uvicorn sqlalchemy pydantic
 ```
 
 #### ASP.NET Core (C#)
+
 ```bash
 dotnet new webapi -n apps/ApiService
 # Best for: Enterprise applications, .NET ecosystem
@@ -99,15 +103,18 @@ dotnet new webapi -n apps/ApiService
 ### Database & ORM
 
 #### TypeScript/Node.js
+
 - **ORM**: TypeORM, Prisma, Sequelize
 - **Query Builder**: Knex.js, QueryBuilder
 - **Database**: PostgreSQL, MongoDB, MySQL
 
 #### Python
+
 - **ORM**: SQLAlchemy, Django ORM
 - **Database**: PostgreSQL, MySQL, SQLite
 
 #### C#
+
 - **ORM**: Entity Framework Core
 - **Database**: SQL Server, PostgreSQL, MySQL
 
@@ -122,15 +129,23 @@ const redisConnection = new Redis();
 const emailQueue = new Queue('emails', { connection: redisConnection });
 
 // Add job
-await emailQueue.add('send-email', {
-  to: 'user@example.com',
-  subject: 'Welcome!'
-}, { delay: 5000 });
+await emailQueue.add(
+  'send-email',
+  {
+    to: 'user@example.com',
+    subject: 'Welcome!',
+  },
+  { delay: 5000 }
+);
 
 // Process job
-const emailWorker = new Worker('emails', async (job) => {
-  await sendEmail(job.data);
-}, { connection: redisConnection });
+const emailWorker = new Worker(
+  'emails',
+  async (job) => {
+    await sendEmail(job.data);
+  },
+  { connection: redisConnection }
+);
 ```
 
 ### Real-time Communication
@@ -168,13 +183,9 @@ interface IAuthRequest extends Request {
   user?: { userId: string; role: string };
 }
 
-export const authMiddleware = (
-  req: IAuthRequest,
-  res: Response,
-  next: NextFunction
-) => {
+export const authMiddleware = (req: IAuthRequest, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
-  
+
   if (!token) {
     return res.status(401).json({ error: 'No token provided' });
   }
@@ -206,19 +217,19 @@ const authorize = (allowedRoles: string[]) => {
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   if (error instanceof ValidationError) {
     return res.status(400).json({
-      error: { type: 'VALIDATION_ERROR', message: error.message }
+      error: { type: 'VALIDATION_ERROR', message: error.message },
     });
   }
 
   if (error instanceof NotFoundError) {
     return res.status(404).json({
-      error: { type: 'NOT_FOUND', message: error.message }
+      error: { type: 'NOT_FOUND', message: error.message },
     });
   }
 
   logger.error('Unhandled error:', error);
   res.status(500).json({
-    error: { type: 'INTERNAL_ERROR', message: 'Internal server error' }
+    error: { type: 'INTERNAL_ERROR', message: 'Internal server error' },
   });
 });
 ```
@@ -235,7 +246,7 @@ async function transferFunds(fromId: string, toId: string, amount: number) {
   try {
     await queryRunner.manager.decrement(User, { id: fromId }, 'balance', amount);
     await queryRunner.manager.increment(User, { id: toId }, 'balance', amount);
-    
+
     await queryRunner.commitTransaction();
   } catch (error) {
     await queryRunner.rollbackTransaction();
@@ -257,8 +268,8 @@ const logger = winston.createLogger({
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({ filename: 'error.log', level: 'error' }),
-    new winston.transports.File({ filename: 'combined.log' })
-  ]
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
 });
 
 // Usage
@@ -307,23 +318,27 @@ npm run test:coverage    # Coverage report
 ## Deployment
 
 ### Local Development
+
 ```bash
 npm run dev              # Start with hot reload
 ```
 
 ### Production
+
 ```bash
 npm run build           # Compile TypeScript
 npm run start           # Start production server
 ```
 
 ### Docker
+
 ```bash
 docker build -t my-service .
 docker run -p 3000:3000 my-service
 ```
 
 ### Cloud Platforms
+
 - **Heroku**: `git push heroku main`
 - **AWS**: ECS, Lambda, EC2
 - **DigitalOcean**: App Platform, Droplets

@@ -21,6 +21,7 @@ Closes #(issue)
 ## Testing
 
 Please describe the tests you ran and how to reproduce them:
+
 - [ ] I have tested these changes locally
 - [ ] I have added/updated unit tests
 - [ ] I have added/updated integration tests
@@ -44,6 +45,7 @@ If applicable, add screenshots or videos demonstrating the changes.
 ## Breaking Changes
 
 If this is a breaking change, please describe:
+
 - What is the change?
 - Why is this change necessary?
 - How should users migrate to the new API?

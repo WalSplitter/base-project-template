@@ -63,11 +63,13 @@ const result = await withRetry(() => externalApiCall(), 3);
 ```
 
 ## Inter-service communication
+
 - REST for synchronous calls – use `HttpClient` wrapper from shared utils
 - Always set timeouts on external calls (`AbortSignal.timeout(5000)`)
 - Log all outbound calls with Pino
 
 ## Testing services
+
 ```bash
 npm run test -w apps/<service>
 npm run test:coverage -w apps/<service>

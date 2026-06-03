@@ -128,13 +128,15 @@ export const useUserStore = create<IUserStore>((set) => ({
     }
   },
 
-  addUser: (user) => set((state) => ({
-    users: [...state.users, user]
-  })),
+  addUser: (user) =>
+    set((state) => ({
+      users: [...state.users, user],
+    })),
 
-  removeUser: (id) => set((state) => ({
-    users: state.users.filter(u => u.id !== id)
-  }))
+  removeUser: (id) =>
+    set((state) => ({
+      users: state.users.filter((u) => u.id !== id),
+    })),
 }));
 ```
 
@@ -142,10 +144,7 @@ export const useUserStore = create<IUserStore>((set) => ({
 
 ```typescript
 // Reusable logic extraction
-export function useAsync<T>(
-  asyncFunction: () => Promise<T>,
-  immediate = true
-) {
+export function useAsync<T>(asyncFunction: () => Promise<T>, immediate = true) {
   const [status, setStatus] = useState<'idle' | 'pending' | 'success' | 'error'>('idle');
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<Error | null>(null);
@@ -189,14 +188,14 @@ class ApiClient {
   private getHeaders(): HeadersInit {
     return {
       'Content-Type': 'application/json',
-      ...(this.token && { Authorization: `Bearer ${this.token}` })
+      ...(this.token && { Authorization: `Bearer ${this.token}` }),
     };
   }
 
   async get<T>(path: string): Promise<T> {
     const response = await fetch(`${this.baseURL}${path}`, {
       method: 'GET',
-      headers: this.getHeaders()
+      headers: this.getHeaders(),
     });
     return this.handleResponse<T>(response);
   }
@@ -205,7 +204,7 @@ class ApiClient {
     const response = await fetch(`${this.baseURL}${path}`, {
       method: 'POST',
       headers: this.getHeaders(),
-      body: JSON.stringify(body)
+      body: JSON.stringify(body),
     });
     return this.handleResponse<T>(response);
   }
@@ -254,7 +253,7 @@ export class UserService {
     // Create and persist
     return this.userRepository.create({
       ...input,
-      password: hashedPassword
+      password: hashedPassword,
     });
   }
 }
@@ -288,12 +287,8 @@ export class UserController {
 }
 
 // Route setup
-router.get('/users/:id', (req, res, next) => 
-  controller.getUser(req, res, next)
-);
-router.post('/users', (req, res, next) => 
-  controller.createUser(req, res, next)
-);
+router.get('/users/:id', (req, res, next) => controller.getUser(req, res, next));
+router.post('/users', (req, res, next) => controller.createUser(req, res, next));
 ```
 
 ### 3. Middleware Pipeline
@@ -303,19 +298,19 @@ router.post('/users', (req, res, next) =>
 app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
   if (error instanceof ValidationError) {
     return res.status(400).json({
-      error: { code: 'VALIDATION_ERROR', message: error.message }
+      error: { code: 'VALIDATION_ERROR', message: error.message },
     });
   }
 
   if (error instanceof NotFoundError) {
     return res.status(404).json({
-      error: { code: 'NOT_FOUND', message: error.message }
+      error: { code: 'NOT_FOUND', message: error.message },
     });
   }
 
   logger.error('Unexpected error:', error);
   res.status(500).json({
-    error: { code: 'INTERNAL_ERROR', message: 'Internal server error' }
+    error: { code: 'INTERNAL_ERROR', message: 'Internal server error' },
   });
 });
 
@@ -391,14 +386,12 @@ app.post('/auth/login', async (req, res) => {
 
 // Frontend: Store and use token
 function useAuth() {
-  const [token, setToken] = useState<string | null>(
-    localStorage.getItem('auth_token')
-  );
+  const [token, setToken] = useState<string | null>(localStorage.getItem('auth_token'));
 
   const login = async (email: string, password: string) => {
     const { token, user } = await apiClient.post('/auth/login', {
       email,
-      password
+      password,
     });
     localStorage.setItem('auth_token', token);
     apiClient.setToken(token);
@@ -453,7 +446,7 @@ describe('UserService', () => {
     const user = await userService.createUser({
       email: 'test@example.com',
       name: 'Test',
-      password: 'password123'
+      password: 'password123',
     });
 
     expect(user.id).toBeDefined();
@@ -465,7 +458,7 @@ describe('UserService', () => {
       userService.createUser({
         email: 'invalid',
         name: 'Test',
-        password: 'password123'
+        password: 'password123',
       })
     ).rejects.toThrow(ValidationError);
   });
@@ -571,6 +564,7 @@ export const UserCard = memo(function UserCard({ user, onEdit }: Props) {
 ---
 
 **Related Resources**:
+
 - Prompts: [Feature Implementation](../prompts/01-feature-implementation.md), [API Design](../prompts/04-api-design.md)
 - Skills: [Error Handling](error-handling.md), [API Integration](api-integration.md)
 - Standards: See [copilot-instructions.md](../copilot-instructions.md)

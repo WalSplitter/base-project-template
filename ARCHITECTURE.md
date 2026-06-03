@@ -5,30 +5,35 @@ This document outlines the architectural principles and design decisions made in
 ## Core Principles
 
 ### 1. Modularity
+
 - Separate concerns into distinct modules
 - Each module has a single, well-defined responsibility
 - Modules can be developed and tested independently
 - Clear dependencies between modules
 
 ### 2. Scalability
+
 - Design for growth from day one
 - Support horizontal scaling (multiple instances)
 - Use caching for performance
 - Plan for database scaling
 
 ### 3. Maintainability
+
 - Clear code structure and organization
 - Comprehensive documentation
 - Consistent naming and patterns
 - Type safety with TypeScript
 
 ### 4. Security
+
 - Input validation everywhere
 - Secure authentication/authorization
 - Environment-based configuration
 - No hardcoded secrets
 
 ### 5. Developer Experience
+
 - Fast development feedback loop
 - Clear error messages
 - Good testing support
@@ -48,7 +53,8 @@ docs/      → Project documentation
 .github/   → GitHub-specific configuration
 ```
 
-**Rationale**: 
+**Rationale**:
+
 - Separates different types of projects
 - Enables independent development
 - Supports monorepo structure while maintaining clarity
@@ -67,6 +73,7 @@ src/
 ```
 
 **Rationale**:
+
 - **Domain**: Core business logic independent of frameworks
 - **Infrastructure**: External concerns isolated for testability
 - **API**: Request/response handling
@@ -81,7 +88,7 @@ src/
 // Good: Dependencies injected
 class UserService {
   constructor(private repository: IUserRepository) {}
-  
+
   async getUser(id: string): Promise<IUser> {
     return this.repository.findById(id);
   }
@@ -95,6 +102,7 @@ class UserService {
 ```
 
 **Rationale**:
+
 - Loose coupling between modules
 - Easy to test (mock dependencies)
 - Easy to change implementations
@@ -108,6 +116,7 @@ Controller → Service → Repository → Database
 ```
 
 **Rationale**:
+
 - Separates concerns
 - Reusable services (can be called from API, CLI, etc.)
 - Business logic testable without HTTP layer
@@ -125,6 +134,7 @@ interface IUserRepository {
 ```
 
 **Rationale**:
+
 - Abstract data access layer
 - Easy to switch databases
 - Mockable for testing
@@ -143,6 +153,7 @@ AppError (abstract)
 ```
 
 **Rationale**:
+
 - Type-safe error handling
 - Consistent error format
 - Easy to map to HTTP status codes
@@ -152,13 +163,15 @@ AppError (abstract)
 
 ### TypeScript
 
-**Why**: 
+**Why**:
+
 - Type safety catches errors at compile time
 - Better IDE support and refactoring
 - Self-documenting through types
 - Mature ecosystem
 
 **Trade-offs**:
+
 - Build step required
 - Learning curve for JavaScript developers
 - Slightly larger bundle size
@@ -166,6 +179,7 @@ AppError (abstract)
 ### Monorepo Structure
 
 **Why**:
+
 - Shared code reuse
 - Single source of truth for types
 - Coordinated releases
@@ -174,12 +188,14 @@ AppError (abstract)
 **Tools**: Yarn workspaces or npm workspaces
 
 **Trade-offs**:
+
 - More complex setup
 - Requires discipline in dependency management
 
 ### Async/Await
 
 **Why**:
+
 - More readable than callbacks/promises
 - Easier error handling with try-catch
 - Better for sequential operations
@@ -208,16 +224,19 @@ function fetchUser(id, callback) {
 ### Testing Strategy
 
 **Unit Tests**: Test business logic in isolation
+
 - Use mocks for dependencies
 - Fast execution
 - High coverage (80%+)
 
 **Integration Tests**: Test components working together
+
 - Real database/services
 - Slower but more realistic
 - Cover critical workflows
 
 **E2E Tests**: Test complete user workflows
+
 - Test in production-like environment
 - Slowest but most realistic
 - Test main user paths
@@ -400,6 +419,7 @@ Backwards Compatibility
 ## Deployment Architecture
 
 ### Development Environment
+
 ```
 Local Machine
 ├── Frontend: npm run dev (Vite/CRA)
@@ -409,6 +429,7 @@ Local Machine
 ```
 
 ### Production Environment
+
 ```
 Cloud Platform
 ├── Frontend: CDN + Static hosting (Vercel, Netlify)

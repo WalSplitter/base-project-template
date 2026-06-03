@@ -31,11 +31,13 @@ docs/
 
 ```markdown
 # Main Heading (H1)
+
 ## Section Heading (H2)
+
 ### Subsection (H3)
 
 **Bold text** for emphasis
-*Italic text* for alternatives
+_Italic text_ for alternatives
 
 - Bullet point
 - Another point
@@ -54,11 +56,12 @@ code block
 \`\`\`
 
 | Header 1 | Header 2 |
-|----------|----------|
+| -------- | -------- |
 | Cell 1   | Cell 2   |
 ```
 
 ### File Naming
+
 - Use lowercase with hyphens: `my-document.md`
 - Be descriptive: `user-authentication-flow.md`
 - Prefix ADRs: `001-decision-name.md`
@@ -71,6 +74,7 @@ code block
 # Getting Started
 
 ## Prerequisites
+
 - Node.js 18+
 - npm or yarn
 - Git
@@ -78,27 +82,28 @@ code block
 ## Installation
 
 1. Clone the repository
-\`\`\`bash
-git clone <url>
-cd project-name
-\`\`\`
+   \`\`\`bash
+   git clone <url>
+   cd project-name
+   \`\`\`
 
 2. Install dependencies
-\`\`\`bash
-npm install
-\`\`\`
+   \`\`\`bash
+   npm install
+   \`\`\`
 
 3. Configure environment
-\`\`\`bash
-cp .env.example .env
-\`\`\`
+   \`\`\`bash
+   cp .env.example .env
+   \`\`\`
 
 4. Start development
-\`\`\`bash
-npm run dev
-\`\`\`
+   \`\`\`bash
+   npm run dev
+   \`\`\`
 
 ## Next Steps
+
 - Read [Development Guide](guides/development.md)
 - Check [API Documentation](api/endpoints.md)
 - Review [Architecture](architecture.md)
@@ -110,27 +115,33 @@ npm run dev
 # System Architecture
 
 ## Overview
+
 [High-level description]
 
 ## Components
 
 ### Frontend
+
 - React application
 - State management: Zustand
 - API client: Axios
 
 ### Backend
+
 - Node.js/Express
 - Database: PostgreSQL
 - Cache: Redis
 
 ## Data Flow
+
 [Describe how data flows through system]
 
 ## Database Schema
+
 [Include ER diagram]
 
 ## Deployment Architecture
+
 [Infrastructure diagram]
 ```
 
@@ -140,6 +151,7 @@ npm run dev
 # API Reference
 
 ## Authentication
+
 All requests require Bearer token in Authorization header:
 \`\`\`
 Authorization: Bearer <token>
@@ -148,21 +160,24 @@ Authorization: Bearer <token>
 ## Endpoints
 
 ### GET /api/users/:id
+
 Fetch user by ID.
 
 **Parameters:**
+
 - \`id\` (string, required) - User ID
 
 **Response (200 OK):**
 \`\`\`json
 {
-  "id": "user-123",
-  "email": "user@example.com",
-  "name": "John Doe"
+"id": "user-123",
+"email": "user@example.com",
+"name": "John Doe"
 }
 \`\`\`
 
 **Errors:**
+
 - \`404\` - User not found
 - \`401\` - Unauthorized
 ```
@@ -177,24 +192,29 @@ Fetch user by ID.
 **Context:** Build robust, maintainable applications with type safety
 
 ## Decision
+
 We will use TypeScript for all new projects.
 
 ## Rationale
+
 - Type safety catches errors at compile time
 - Better IDE support and autocomplete
 - Self-documenting code through types
 - Popular ecosystem with mature tooling
 
 ## Consequences
+
 - Positive: Fewer runtime errors, better developer experience
 - Negative: Build step required, slightly longer development time
 - Neutral: Requires team learning for TypeScript concepts
 
 ## Alternatives Considered
+
 1. Flow - Less mature than TypeScript
 2. No typing - Too error-prone for large projects
 
 ## Related Decisions
+
 - ADR-002: Use ESLint for code quality
 ```
 
@@ -214,6 +234,7 @@ We will use TypeScript for all new projects.
 # New Document
 
 ## For Feature Documentation
+
 - What does it do?
 - Why was it built?
 - How to use it?
@@ -221,6 +242,7 @@ We will use TypeScript for all new projects.
 - Related features
 
 ## For Architecture Docs
+
 - Problem being solved
 - Solution chosen
 - Alternatives considered
@@ -228,6 +250,7 @@ We will use TypeScript for all new projects.
 - Implementation details
 
 ## For Troubleshooting
+
 - Problem description
 - Symptoms
 - Root cause
@@ -242,21 +265,21 @@ We will use TypeScript for all new projects.
 ```markdown
 \`\`\`mermaid
 graph TD
-    A[User] -->|Login| B[Auth Service]
-    B -->|Token| C[API Gateway]
-    C -->|Request| D[Application]
-    D -->|Query| E[Database]
+A[User] -->|Login| B[Auth Service]
+B -->|Token| C[API Gateway]
+C -->|Request| D[Application]
+D -->|Query| E[Database]
 \`\`\`
 
 \`\`\`mermaid
 sequenceDiagram
-    participant Frontend
-    participant Backend
-    participant Database
-    Frontend->>Backend: POST /users
-    Backend->>Database: INSERT user
-    Database-->>Backend: Confirm
-    Backend-->>Frontend: User created
+participant Frontend
+participant Backend
+participant Database
+Frontend->>Backend: POST /users
+Backend->>Database: INSERT user
+Database-->>Backend: Confirm
+Backend-->>Frontend: User created
 \`\`\`
 ```
 

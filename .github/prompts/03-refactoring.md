@@ -5,6 +5,7 @@ Use this prompt template when improving code quality and refactoring with GitHub
 ## 📋 Before Refactoring
 
 Check:
+
 - [SOLID Principles](./docs/README.md#learning-resources) - Single Responsibility, Open/Closed
 - [Code Standards](./.github/copilot-instructions.md) - Naming, organization, patterns
 - Existing patterns in workspace for consistency
@@ -75,6 +76,7 @@ Deliverables:
 ## Refactoring Strategies
 
 ### Extract Method
+
 ```typescript
 // Before: Large function
 function processUserData(data: unknown) {
@@ -84,28 +86,46 @@ function processUserData(data: unknown) {
 }
 
 // After: Clear responsibilities
-function validateUserData(data: unknown): IUserData { /* ... */ }
-function transformUserData(data: IUserData): IUserDataDTO { /* ... */ }
-async function persistUserData(data: IUserDataDTO): Promise<void> { /* ... */ }
+function validateUserData(data: unknown): IUserData {
+  /* ... */
+}
+function transformUserData(data: IUserData): IUserDataDTO {
+  /* ... */
+}
+async function persistUserData(data: IUserDataDTO): Promise<void> {
+  /* ... */
+}
 ```
 
 ### Extract Class
+
 ```typescript
 // Before: God object with many responsibilities
-class UserManager { /* 500 lines */ }
+class UserManager {
+  /* 500 lines */
+}
 
 // After: Focused classes
-class UserValidator { /* validation logic */ }
-class UserTransformer { /* transformation logic */ }
-class UserRepository { /* persistence logic */ }
-class UserService { /* orchestration */ }
+class UserValidator {
+  /* validation logic */
+}
+class UserTransformer {
+  /* transformation logic */
+}
+class UserRepository {
+  /* persistence logic */
+}
+class UserService {
+  /* orchestration */
+}
 ```
 
 ### Replace Type Coercion with Type Safety
+
 ```typescript
 // Before: Loose typing
 function process(data: any): any {
-  return data.map((item: any) => ({...item}));
+  return data.map((item: any) => ({ ...item }));
 }
 
 // After: Strict typing
@@ -115,13 +135,14 @@ interface IProcessableItem {
 }
 
 function process(data: IProcessableItem[]): IProcessableItem[] {
-  return data.map(item => ({...item}));
+  return data.map((item) => ({ ...item }));
 }
 ```
 
 ### Apply Design Patterns
 
 #### Observer Pattern
+
 ```typescript
 // Before: Tight coupling
 class UserService {
@@ -142,7 +163,7 @@ class UserService {
 
   async save(user: User) {
     await db.save(user);
-    this.observers.forEach(observer => observer.onUserSaved(user));
+    this.observers.forEach((observer) => observer.onUserSaved(user));
   }
 }
 ```

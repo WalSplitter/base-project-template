@@ -37,17 +37,20 @@ Guidance for creating reusable shared libraries and common packages across multi
 ## Shared Package Architecture
 
 ### Package Separation
+
 - Keep shared code grouped by concern: `types`, `utils`, `constants`, `errors`, `logger`
 - Each package should expose a clean public API
 - Avoid circular dependencies between shared packages
 
 ### TypeScript Best Practices
+
 - Use strict compiler options
 - Export only type-safe interfaces
 - Prefer `types/` for shared contract definitions
 - Use `index.ts` for package exports
 
 ### Utility Libraries
+
 - Keep helpers small and focused
 - Document expected input/output
 - Avoid global state in shared utilities
@@ -91,5 +94,6 @@ Guidance for creating reusable shared libraries and common packages across multi
 ---
 
 **Related Resources:**
+
 - Prompts: [Feature Implementation](../prompts/01-feature-implementation.md), [Refactoring](../prompts/03-refactoring.md)
 - Standards: [copilot-instructions.md](../copilot-instructions.md)

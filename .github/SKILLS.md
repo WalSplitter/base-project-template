@@ -30,18 +30,16 @@ interface IUserProfile {
 }
 
 // Use discriminated unions for type safety
-type ApiResponse<T> = 
-  | { success: true; data: T }
-  | { success: false; error: string; code: number };
+type ApiResponse<T> = { success: true; data: T } | { success: false; error: string; code: number };
 
 // Use const assertions for type narrowing
 const ROLES = {
   ADMIN: 'admin',
   USER: 'user',
-  GUEST: 'guest'
+  GUEST: 'guest',
 } as const;
 
-type UserRole = typeof ROLES[keyof typeof ROLES];
+type UserRole = (typeof ROLES)[keyof typeof ROLES];
 ```
 
 ### Generics & Reusability
@@ -57,11 +55,11 @@ interface IRepository<T> {
 
 class BaseRepository<T extends { id: string }> implements IRepository<T> {
   constructor(private readonly collection: T[]) {}
-  
+
   async findById(id: string): Promise<T | null> {
-    return this.collection.find(item => item.id === id) ?? null;
+    return this.collection.find((item) => item.id === id) ?? null;
   }
-  
+
   async create(data: Partial<T>): Promise<T> {
     const item = { ...data, id: generateId() } as T;
     this.collection.push(item);
@@ -69,14 +67,14 @@ class BaseRepository<T extends { id: string }> implements IRepository<T> {
   }
 
   async update(id: string, data: Partial<T>): Promise<T> {
-    const index = this.collection.findIndex(item => item.id === id);
+    const index = this.collection.findIndex((item) => item.id === id);
     if (index === -1) throw new NotFoundError();
     this.collection[index] = { ...this.collection[index], ...data };
     return this.collection[index];
   }
 
   async delete(id: string): Promise<void> {
-    const index = this.collection.findIndex(item => item.id === id);
+    const index = this.collection.findIndex((item) => item.id === id);
     if (index === -1) throw new NotFoundError();
     this.collection.splice(index, 1);
   }
@@ -97,14 +95,14 @@ async function processSequential(items: string[]): Promise<void> {
 
 // 2. Parallel execution (when order doesn't matter)
 async function processParallel(items: string[]): Promise<void> {
-  await Promise.all(items.map(item => processItem(item)));
+  await Promise.all(items.map((item) => processItem(item)));
 }
 
 // 3. Concurrent with limit
 async function processConcurrent(items: string[], concurrency: number): Promise<void> {
   for (let i = 0; i < items.length; i += concurrency) {
     const batch = items.slice(i, i + concurrency);
-    await Promise.all(batch.map(item => processItem(item)));
+    await Promise.all(batch.map((item) => processItem(item)));
   }
 }
 
@@ -112,7 +110,7 @@ async function processConcurrent(items: string[], concurrency: number): Promise<
 async function fetchWithTimeout(url: string, timeout: number): Promise<Response> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), timeout);
-  
+
   try {
     return await fetch(url, { signal: controller.signal });
   } finally {
@@ -130,7 +128,7 @@ async function withRetry<T>(
   baseDelay: number = 1000
 ): Promise<T> {
   let lastError: Error | null = null;
-  
+
   for (let attempt = 0; attempt < maxAttempts; attempt++) {
     try {
       return await fn();
@@ -139,11 +137,11 @@ async function withRetry<T>(
       if (attempt < maxAttempts - 1) {
         // Exponential backoff
         const delay = baseDelay * Math.pow(2, attempt);
-        await new Promise(resolve => setTimeout(resolve, delay));
+        await new Promise((resolve) => setTimeout(resolve, delay));
       }
     }
   }
-  
+
   throw lastError || new Error('Max retries exceeded');
 }
 
@@ -172,7 +170,7 @@ abstract class AppError extends Error {
 class ValidationError extends AppError {
   readonly statusCode = 400;
   readonly isOperational = true;
-  
+
   constructor(
     public readonly field: string,
     message: string
@@ -184,7 +182,7 @@ class ValidationError extends AppError {
 class NotFoundError extends AppError {
   readonly statusCode = 404;
   readonly isOperational = true;
-  
+
   constructor(resource: string, identifier: string) {
     super(`${resource} with identifier "${identifier}" not found`);
   }
@@ -218,19 +216,19 @@ app.use((error: Error, req: Request, res: Response, next: NextFunction) => {
     return res.status(error.statusCode).json({
       error: {
         message: error.message,
-        type: error.constructor.name
-      }
+        type: error.constructor.name,
+      },
     });
   }
 
   // Log unexpected errors
   logger.error('Unexpected error:', error);
-  
+
   res.status(500).json({
     error: {
       message: 'Internal server error',
-      type: 'InternalServerError'
-    }
+      type: 'InternalServerError',
+    },
   });
 });
 ```
@@ -257,7 +255,7 @@ class HttpClient implements IHttpClient {
     const response = await fetch(this.buildUrl(url), {
       method: 'GET',
       headers: this.buildHeaders(config?.headers),
-      signal: AbortSignal.timeout(this.timeout)
+      signal: AbortSignal.timeout(this.timeout),
     });
     return this.handleResponse<T>(response);
   }
@@ -267,7 +265,7 @@ class HttpClient implements IHttpClient {
       method: 'POST',
       headers: this.buildHeaders(config?.headers),
       body: JSON.stringify(data),
-      signal: AbortSignal.timeout(this.timeout)
+      signal: AbortSignal.timeout(this.timeout),
     });
     return this.handleResponse<T>(response);
   }
@@ -279,7 +277,7 @@ class HttpClient implements IHttpClient {
   private buildHeaders(custom?: Record<string, string>): HeadersInit {
     return {
       'Content-Type': 'application/json',
-      ...custom
+      ...custom,
     };
   }
 
@@ -306,7 +304,7 @@ const UserSchema = z.object({
   email: z.string().email(),
   name: z.string().min(1).max(100),
   age: z.number().int().min(0).max(150).optional(),
-  roles: z.array(z.enum(['admin', 'user', 'guest'])).default(['user'])
+  roles: z.array(z.enum(['admin', 'user', 'guest'])).default(['user']),
 });
 
 type User = z.infer<typeof UserSchema>;
@@ -321,7 +319,7 @@ try {
 } catch (error) {
   if (error instanceof z.ZodError) {
     const errorMessage = error.errors
-      .map(err => `${err.path.join('.')}: ${err.message}`)
+      .map((err) => `${err.path.join('.')}: ${err.message}`)
       .join(', ');
     throw new ValidationError('userData', errorMessage);
   }
@@ -344,7 +342,7 @@ class MemoryCache<T> {
   set(key: string, value: T, ttlMs: number = 5 * 60 * 1000): void {
     this.cache.set(key, {
       value,
-      expiresAt: Date.now() + ttlMs
+      expiresAt: Date.now() + ttlMs,
     });
   }
 
@@ -369,17 +367,17 @@ class MemoryCache<T> {
 function Cacheable(ttlMs: number = 5 * 60 * 1000) {
   const cache = new MemoryCache<unknown>();
 
-  return function(
+  return function (
     target: unknown,
     propertyKey: string,
     descriptor: PropertyDescriptor
   ): PropertyDescriptor {
     const originalMethod = descriptor.value;
 
-    descriptor.value = async function(...args: unknown[]) {
+    descriptor.value = async function (...args: unknown[]) {
       const cacheKey = `${propertyKey}:${JSON.stringify(args)}`;
       const cached = cache.get(cacheKey);
-      
+
       if (cached !== null) {
         return cached;
       }
@@ -428,9 +426,7 @@ describe('UserService', () => {
       mockRepository.findById.mockResolvedValue(null);
 
       // Act & Assert
-      await expect(userService.getUserProfile('invalid-id'))
-        .rejects
-        .toThrow(NotFoundError);
+      await expect(userService.getUserProfile('invalid-id')).rejects.toThrow(NotFoundError);
     });
   });
 });
@@ -484,10 +480,7 @@ async function hashPassword(password: string): Promise<string> {
   return bcrypt.hash(password, SALT_ROUNDS);
 }
 
-async function verifyPassword(
-  password: string,
-  hash: string
-): Promise<boolean> {
+async function verifyPassword(password: string, hash: string): Promise<boolean> {
   return bcrypt.compare(password, hash);
 }
 ```
@@ -512,7 +505,7 @@ class TokenService {
 
   generateToken(payload: Omit<ITokenPayload, 'iat' | 'exp'>): string {
     return jwt.sign(payload, this.jwtSecret, {
-      expiresIn: this.tokenExpiryMs / 1000
+      expiresIn: this.tokenExpiryMs / 1000,
     });
   }
 
@@ -549,9 +542,7 @@ class Container {
 // Usage
 const container = new Container();
 container.register('userRepository', () => new UserRepository());
-container.register('userService', () => 
-  new UserService(container.get('userRepository'))
-);
+container.register('userService', () => new UserService(container.get('userRepository')));
 ```
 
 ### Observer Pattern
@@ -571,7 +562,7 @@ class Observable<T> {
   }
 
   notify(data: T): void {
-    this.observers.forEach(observer => observer.update(data));
+    this.observers.forEach((observer) => observer.update(data));
   }
 }
 ```

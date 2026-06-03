@@ -15,10 +15,6 @@
       "Bash(node *)",
       "Bash(npx *)"
     ],
-    "deny": [
-      "Bash(rm -rf *)",
-      "Bash(curl * | bash)",
-      "Bash(wget * | bash)"
-    ]
+    "deny": ["Bash(rm -rf *)", "Bash(curl * | bash)", "Bash(wget * | bash)"]
   }
 }

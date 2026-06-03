@@ -271,6 +271,7 @@ curl https://api.example.com/api/health
 ```
 
 Response:
+
 ```json
 {
   "status": "ok",
@@ -281,6 +282,7 @@ Response:
 ### Log Aggregation
 
 Set up with:
+
 - **CloudWatch** (AWS)
 - **New Relic**
 - **Datadog**

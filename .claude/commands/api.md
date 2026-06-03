@@ -3,6 +3,7 @@
 Design and implement the following API endpoint: $ARGUMENTS
 
 ## Before starting
+
 - Check existing endpoints in `web/backend/src/routes/`
 - Review shared types in `shared/types/src/index.ts` (`IApiResponse`, `IPaginatedResponse`)
 - Confirm auth requirements (JWT via `web/backend/src/middleware/auth.ts` or public)
@@ -32,6 +33,7 @@ Error cases:
 ```
 
 ## Implementation requirements
+
 - **Validation**: Joi schema in middleware or route handler
 - **Security**: Helmet headers already configured globally
 - **Logging**: Pino logger for all operations
@@ -39,6 +41,7 @@ Error cases:
 - **Caching**: Redis for frequently-read data (optional, configured in docker-compose)
 
 ## REST conventions
+
 ```
 GET    /api/v1/users          # List
 POST   /api/v1/users          # Create
@@ -49,6 +52,7 @@ DELETE /api/v1/users/:id      # Delete
 ```
 
 ## Test with
+
 ```bash
 npm run dev -w web
 curl -X POST http://localhost:3000/api/v1/<endpoint> \
@@ -57,6 +61,7 @@ curl -X POST http://localhost:3000/api/v1/<endpoint> \
 ```
 
 ## Deliverables
+
 1. Express route handler in `web/backend/src/routes/`
 2. Request/response types added to `shared/types/src/index.ts`
 3. Unit tests covering success + all error cases (Vitest)

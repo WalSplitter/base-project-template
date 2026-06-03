@@ -7,6 +7,7 @@ Professional development standards and best practices for this project.
 Monorepo with npm workspaces using TypeScript 5.0+ strict mode.
 
 **Workspaces:**
+
 ```
 web/frontend     → React (port 5173)
 web/backend      → Express (port 3000)
@@ -17,6 +18,7 @@ tools/           → CLI utilities
 ```
 
 **Key commands:**
+
 ```bash
 npm install                          # Install all dependencies
 npm run dev --workspaces             # Start all services
@@ -32,12 +34,14 @@ make docker-up                       # Start PostgreSQL + Redis
 ## Code Standards
 
 ### Naming Conventions
+
 - `camelCase` → variables, functions
 - `PascalCase` → classes, types, interfaces (prefix interfaces with `I`)
 - `UPPER_SNAKE_CASE` → constants
 - `kebab-case` → file and folder names
 
 ### File Structure per Module
+
 ```
 module/
 ├── index.ts          # Public exports
@@ -50,6 +54,7 @@ module/
 ```
 
 ### Import Order
+
 ```typescript
 // 1. Standard library
 import fs from 'fs';
@@ -77,14 +82,15 @@ Always define shared types in `shared/types/src/index.ts`.
 
 ```typescript
 // Discriminated unions for API responses
-type ApiResponse<T> =
-  | { success: true; data: T }
-  | { success: false; error: string; code: number };
+type ApiResponse<T> = { success: true; data: T } | { success: false; error: string; code: number };
 
 // Custom error classes
 class ValidationError extends AppError {
   readonly statusCode = 400;
-  constructor(public readonly field: string, message: string) {
+  constructor(
+    public readonly field: string,
+    message: string
+  ) {
     super(message);
   }
 }
@@ -128,6 +134,7 @@ describe('UserService', () => {
 ## Git Workflow
 
 Conventional Commits format:
+
 ```
 feat(auth): add two-factor authentication
 fix(api): handle null user in getUserProfile
@@ -141,6 +148,7 @@ Branch naming: `feature/`, `bugfix/`, `docs/`, `refactor/`
 ## Domain-Specific Guides
 
 Use Claude slash commands for domain-specific patterns:
+
 - `/project:web` – Frontend & full-stack web patterns
 - `/project:backend` – Backend & microservices patterns
 - `/project:desktop` – Electron/Tauri/WPF patterns
@@ -148,4 +156,5 @@ Use Claude slash commands for domain-specific patterns:
 - `/project:shared` – Shared library patterns
 
 ---
+
 **Version**: 1.0 | **Last Updated**: 2026

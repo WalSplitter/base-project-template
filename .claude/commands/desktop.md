@@ -5,6 +5,7 @@ Domain-specific guidance for the `/desktop/*` workspace (Electron, Tauri, WPF).
 ## Architecture by framework
 
 ### Electron
+
 ```
 desktop/electron/
 ├── src/
@@ -17,6 +18,7 @@ desktop/electron/
 ```
 
 **Security – always use contextBridge, never `nodeIntegration: true`:**
+
 ```typescript
 // preload.ts
 contextBridge.exposeInMainWorld('api', {
@@ -26,6 +28,7 @@ contextBridge.exposeInMainWorld('api', {
 ```
 
 ### Tauri
+
 ```
 desktop/tauri/
 ├── src-tauri/        ← Rust backend
@@ -35,6 +38,7 @@ desktop/tauri/
 ```
 
 **Tauri commands:**
+
 ```rust
 #[tauri::command]
 async fn read_file(path: String) -> Result<String, String> {
@@ -57,12 +61,14 @@ interface IFileApi {
 ```
 
 ## Performance considerations
+
 - Heavy computation → move to main process or Web Worker
 - File I/O → always async
 - Large data → stream instead of loading entirely into memory
 - Window startup → lazy-load renderer content
 
 ## Testing desktop apps
+
 ```bash
 npm run test -w desktop/<app>
 # Integration tests: use @playwright/test with Electron driver

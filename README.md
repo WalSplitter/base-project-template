@@ -33,16 +33,19 @@ This comprehensive template repository provides everything you need to build pro
 ## 🔗 Quick Links
 
 **Start Here:**
+
 - 🚀 [Quick Start (5 min)](./docs/getting-started/README.md)
 - ⚙️ [Environment Setup](./docs/getting-started/environment.md)
 - 📖 [Development Guidelines](./.github/docs/README.md)
 
 **Development:**
+
 - 🤖 [GitHub Copilot Prompts](./.github/docs/README.md)
 - 🏗️ [Architecture & ADRs](./docs/adr/)
 - 📋 [API Design Guide](./.github/prompts/04-api-design.md)
 
 **Deployment & DevOps:**
+
 - 🐳 [Docker Setup](./docs/guides/deployment.md#local-development-with-docker)
 - 🚢 [Deploy to Production](./docs/guides/deployment.md)
 - 🔐 [Security Best Practices](./SECURITY.md)
@@ -50,6 +53,7 @@ This comprehensive template repository provides everything you need to build pro
 ## ✨ Key Features
 
 ### 🎯 Out-of-the-Box Setup
+
 - ✅ **npm Workspaces** - Efficient monorepo management with unified dependencies
 - ✅ **TypeScript 5.0+** - Strict mode enabled with full ESLint configuration
 - ✅ **Code Quality** - ESLint, Prettier, and automated formatting pre-configured
@@ -57,6 +61,7 @@ This comprehensive template repository provides everything you need to build pro
 - ✅ **Environment Templates** - .env.example with sensible defaults
 
 ### 🤖 GitHub Copilot Optimization
+
 - 📝 **Development Guidelines** - Complete coding standards and best practices
 - 🎓 **Skill Guides** - Domain-specific patterns (web, backend, desktop, tools)
 - 📋 **Prompt Templates** - Pre-written prompts for feature implementation, bug fixes, refactoring, testing
@@ -64,6 +69,7 @@ This comprehensive template repository provides everything you need to build pro
 - 📚 **Reference Documentation** - Type safety, async patterns, API design, performance optimization
 
 ### 🚀 CI/CD & DevOps
+
 - 🔄 **GitHub Actions Workflows** - Automated testing, linting, building, and security scanning
 - 🐳 **Docker Support** - Multi-stage Dockerfile for production builds + docker-compose for local dev
 - 🎯 **Makefile** - Common development commands for quick access
@@ -71,6 +77,7 @@ This comprehensive template repository provides everything you need to build pro
 - 📊 **Code Quality** - Automated code analysis and coverage reporting
 
 ### 📦 Project Templates
+
 - **Web Application** - React frontend + Express backend with TypeScript
 - **API Service** - RESTful API with middleware, routing, and error handling
 - **Shared Types** - Centralized TypeScript definitions for type-safe communication
@@ -78,6 +85,7 @@ This comprehensive template repository provides everything you need to build pro
 - **CLI Tools** - Scaffolding for command-line utilities
 
 ### 📚 Complete Documentation
+
 - 🚀 [Quick Start Guide](./docs/getting-started/README.md) - Get running in 5 minutes
 - 🔧 [Environment Setup](./docs/getting-started/environment.md) - Development environment configuration
 - 🏗️ [Architecture Decisions](./docs/adr/) - ADRs for design choices
@@ -88,15 +96,18 @@ This comprehensive template repository provides everything you need to build pro
 ## ✅ Prerequisites
 
 **Required:**
+
 - **Node.js 18+** - [Download](https://nodejs.org/)
 - **npm 9+** - Comes with Node.js
 - **Git** - [Download](https://git-scm.com/)
 
 **Optional (for full setup):**
+
 - **Docker 24+** - [Download](https://www.docker.com/products/docker-desktop) (for PostgreSQL + Redis)
 - **Visual Studio Code** - [Download](https://code.visualstudio.com/) (recommended)
 
 **Verify Installation:**
+
 ```bash
 node --version   # Should be 18.0+
 npm --version    # Should be 9.0+
@@ -108,6 +119,7 @@ git --version    # Any recent version
 ### 1️⃣ Create Your Project from Template
 
 **Option A: GitHub Template (Recommended)**
+
 ```bash
 # Use "Use this template" button on GitHub:
 # https://github.com/yourusername/base-project-template
@@ -119,6 +131,7 @@ cd my-project
 ```
 
 **Option B: GitHub CLI**
+
 ```bash
 # Create new repo from template
 gh repo create my-project --template base-project-template --public
@@ -126,6 +139,7 @@ cd my-project
 ```
 
 **Option C: Direct Clone & Update Remote**
+
 ```bash
 # Clone this template
 git clone https://github.com/yourusername/base-project-template.git my-project
@@ -152,6 +166,7 @@ npm run dev
 ```
 
 **Verify Setup:**
+
 - Frontend: http://localhost:5173
 - Backend API: http://localhost:3000/api/health
 - Check status: `npm run type-check`
@@ -159,6 +174,7 @@ npm run dev
 ### 3️⃣ Environment Configuration
 
 **Essential .env Variables:**
+
 ```bash
 # Backend (.env, web/backend/.env)
 NODE_ENV=development
@@ -182,14 +198,14 @@ VITE_ENV=development
 
 ### 4️⃣ Choose Your Path
 
-| Goal | Workspace | Command | Port |
-|------|-----------|---------|------|
-| **Full-Stack Web** | `/web` | `npm run dev -w web` | 5173 (frontend) + 3000 (backend) |
-| **Backend API Only** | `/apps/api` | `npm run dev -w apps/api` | 3000 |
-| **Frontend Only** | `/web/frontend` | `npm run dev -w web/frontend` | 5173 |
-| **All Workspaces** | `/` | `npm run dev --workspaces` | All |
-| **Desktop App** | `/desktop` | See [desktop guide](./desktop/README.md) | Varies |
-| **CLI Tool** | `/tools` | See [tools guide](./tools/README.md) | N/A |
+| Goal                 | Workspace       | Command                                  | Port                             |
+| -------------------- | --------------- | ---------------------------------------- | -------------------------------- |
+| **Full-Stack Web**   | `/web`          | `npm run dev -w web`                     | 5173 (frontend) + 3000 (backend) |
+| **Backend API Only** | `/apps/api`     | `npm run dev -w apps/api`                | 3000                             |
+| **Frontend Only**    | `/web/frontend` | `npm run dev -w web/frontend`            | 5173                             |
+| **All Workspaces**   | `/`             | `npm run dev --workspaces`               | All                              |
+| **Desktop App**      | `/desktop`      | See [desktop guide](./desktop/README.md) | Varies                           |
+| **CLI Tool**         | `/tools`        | See [tools guide](./tools/README.md)     | N/A                              |
 
 ### 5️⃣ Workspace Commands Reference
 
@@ -366,17 +382,20 @@ base-project-template/
 ## 📚 Documentation
 
 ### Getting Started
+
 - [Quick Start Guide](./docs/getting-started/README.md) - Get up and running in 5 minutes
 - [Environment Setup](./docs/getting-started/environment.md) - Node.js, PostgreSQL, Docker configuration
 - [Setup Instructions](./SETUP.md) - Detailed step-by-step installation
 
 ### Architecture & Design
+
 - [Architecture Guide](./ARCHITECTURE.md) - Design principles and patterns
 - [Architecture Decisions (ADRs)](./docs/adr/) - Technical decisions documented
   - [ADR-001: Monorepo Structure](./docs/adr/001-monorepo-structure.md)
   - [ADR Template](./docs/adr/template.md)
 
 ### Development
+
 - [Development Guidelines](./.github/docs/README.md) - Code standards, conventions, practices
 - [Programming Skills](./.github/SKILLS.md) - Patterns, best practices, design patterns
 - [Contributing Guide](./CONTRIBUTING.md) - How to contribute and submit PRs
@@ -384,11 +403,13 @@ base-project-template/
 - [Skill Guides](./.github/skills/) - Domain-specific development guides
 
 ### Deployment & Operations
+
 - [Deployment Guide](./docs/guides/deployment.md) - Deploy to Vercel, AWS, Railway, Docker
 - [Security Policy](./SECURITY.md) - Security best practices and vulnerability reporting
 - [Project Types Guide](./PROJECT_TYPES.md) - Choose the right project type for your needs
 
 ### Project Guides
+
 - [Web Application](./web/README.md) - React frontend + Express backend setup
 - [Backend Services](./apps/README.md) - Microservices and API structure
 - [Desktop Applications](./desktop/README.md) - Electron and Tauri templates
@@ -413,9 +434,10 @@ This template is optimized for GitHub Copilot with pre-written prompts and skill
    - Desktop → `.github/skills/03-desktop-development.md`
 
 3. **Use Copilot Chat with structured prompts:**
+
    ```
    @copilot Follow the pattern in .github/prompts/01-feature-implementation.md
-   
+
    Context: [Your context]
    Requirements: [What to build]
    Constraints: [Tech stack, patterns to follow]
@@ -458,7 +480,6 @@ This repository also includes guidance and quick commands tailored for Claude us
 
 If you use both GitHub Copilot and Claude, prefer Copilot for inline code suggestions and Claude for higher-level planning and multi-step tasks.
 
-
 ## 💡 Development Workflow
 
 ### With GitHub Copilot
@@ -484,38 +505,42 @@ If you use both GitHub Copilot and Claude, prefer Copilot for inline code sugges
 ## 🛠️ Technology Stack
 
 ### Frontend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **React** | 18+ | UI Framework |
-| **TypeScript** | 5.0+ | Type Safety |
-| **Vite** | 5.0+ | Build Tool |
-| **Vitest** | 1.0+ | Testing Framework |
-| **Zustand** | 4.4+ | State Management |
-| **Axios** | 1.6+ | HTTP Client |
+
+| Technology     | Version | Purpose           |
+| -------------- | ------- | ----------------- |
+| **React**      | 18+     | UI Framework      |
+| **TypeScript** | 5.0+    | Type Safety       |
+| **Vite**       | 5.0+    | Build Tool        |
+| **Vitest**     | 1.0+    | Testing Framework |
+| **Zustand**    | 4.4+    | State Management  |
+| **Axios**      | 1.6+    | HTTP Client       |
 
 ### Backend
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| **Express** | 4.18+ | Web Framework |
-| **TypeScript** | 5.0+ | Type Safety |
-| **PostgreSQL** | 14+ | Database |
-| **Redis** | 7.0+ | Caching |
-| **Pino** | 8.17+ | Logging |
-| **JWT** | 9.1+ | Authentication |
+
+| Technology     | Version | Purpose        |
+| -------------- | ------- | -------------- |
+| **Express**    | 4.18+   | Web Framework  |
+| **TypeScript** | 5.0+    | Type Safety    |
+| **PostgreSQL** | 14+     | Database       |
+| **Redis**      | 7.0+    | Caching        |
+| **Pino**       | 8.17+   | Logging        |
+| **JWT**        | 9.1+    | Authentication |
 
 ### DevOps & Tools
-| Tool | Version | Purpose |
-|------|---------|---------|
-| **Node.js** | 18.0+ | Runtime |
-| **npm** | 9.0+ | Package Manager |
-| **Docker** | 24.0+ | Containerization |
-| **GitHub Actions** | - | CI/CD |
-| **ESLint** | 8.0+ | Linting |
-| **Prettier** | 3.0+ | Formatting |
+
+| Tool               | Version | Purpose          |
+| ------------------ | ------- | ---------------- |
+| **Node.js**        | 18.0+   | Runtime          |
+| **npm**            | 9.0+    | Package Manager  |
+| **Docker**         | 24.0+   | Containerization |
+| **GitHub Actions** | -       | CI/CD            |
+| **ESLint**         | 8.0+    | Linting          |
+| **Prettier**       | 3.0+    | Formatting       |
 
 ### Optional Technologies
 
 **For Different Project Types:**
+
 - Vue / Svelte (alternative frontend frameworks)
 - NestJS / FastAPI (alternative backends)
 - Electron / Tauri (desktop applications)
@@ -525,12 +550,13 @@ If you use both GitHub Copilot and Claude, prefer Copilot for inline code sugges
 ## 📋 Code Standards & Quality
 
 ### Naming Conventions
+
 ```typescript
 // Variables & Functions: camelCase
 const userName = 'John Doe';
 function calculateTotal() {}
 
-// Classes, Types, Interfaces: PascalCase  
+// Classes, Types, Interfaces: PascalCase
 class UserService {}
 interface IUserProfile {}
 type TUserRole = 'admin' | 'user';
@@ -540,11 +566,12 @@ const MAX_RETRIES = 3;
 const DEFAULT_TIMEOUT = 5000;
 
 // Files & Directories: kebab-case
-src/user-service.ts
-components/user-profile.tsx
+src / user - service.ts;
+components / user - profile.tsx;
 ```
 
 ### Quality Standards
+
 - ✅ **TypeScript**: Strict mode enabled globally
 - ✅ **Testing**: Minimum 80% coverage for business logic
 - ✅ **Linting**: ESLint with TypeScript support
@@ -554,6 +581,7 @@ components/user-profile.tsx
 - ✅ **Documentation**: JSDoc on public APIs
 
 ### Pre-Commit Checks
+
 ```bash
 # Automatically run before commit:
 npm run lint:fix   # Fix formatting issues
@@ -562,6 +590,7 @@ npm run format     # Format code
 ```
 
 ### Code Review Checklist
+
 - [ ] Follows naming conventions
 - [ ] Type-safe (strict TypeScript)
 - [ ] Error handling complete
@@ -598,7 +627,7 @@ npm run lint -w shared/types
   "workspaces": [
     "web",           # Full-stack web app
     "apps/*",        # Backend services
-    "desktop/*",     # Desktop applications  
+    "desktop/*",     # Desktop applications
     "tools/*",       # CLI tools
     "shared/*"       # Shared libraries
   ]
@@ -606,6 +635,7 @@ npm run lint -w shared/types
 ```
 
 **Benefits:**
+
 - 📦 Unified dependency management
 - 🔄 Efficient link packages for shared code
 - 🚀 Single build process
@@ -617,6 +647,7 @@ npm run lint -w shared/types
 This template implements production-grade security:
 
 ### Built-In Security
+
 - 🔐 **JWT Authentication** - Secure token-based auth with expiry
 - 🛡️ **Helmet.js** - HTTP security headers
 - 🚫 **CORS Configuration** - Controlled cross-origin requests
@@ -627,6 +658,7 @@ This template implements production-grade security:
 - 🛡️ **XSS Protection** - Input sanitization
 
 ### GitHub Security Features
+
 - 🔄 **Dependabot** - Automated dependency updates
 - 🔍 **Security Scanning** - Trivy vulnerability scan
 - 📋 **SECURITY.md** - Responsible disclosure policy
@@ -650,6 +682,7 @@ npm run test:coverage
 ```
 
 ### Test Strategy
+
 - **Unit Tests**: Individual function/component testing
 - **Integration Tests**: Module interaction testing
 - **E2E Tests**: User workflow testing (optional, add Cypress/Playwright)
@@ -657,16 +690,17 @@ npm run test:coverage
 
 ### Code Quality Tools
 
-| Tool | Purpose | Config |
-|------|---------|--------|
-| **ESLint** | Linting | `.eslintrc.json` |
-| **Prettier** | Formatting | `.prettierrc.json` |
-| **TypeScript** | Type checking | `tsconfig.json` |
-| **Vitest** | Unit testing | `vitest.config.ts` |
+| Tool           | Purpose       | Config             |
+| -------------- | ------------- | ------------------ |
+| **ESLint**     | Linting       | `.eslintrc.json`   |
+| **Prettier**   | Formatting    | `.prettierrc.json` |
+| **TypeScript** | Type checking | `tsconfig.json`    |
+| **Vitest**     | Unit testing  | `vitest.config.ts` |
 
 ### Automated Quality Checks
 
 GitHub Actions runs on every push:
+
 - ✅ Lint code
 - ✅ Run tests
 - ✅ Type checking
@@ -689,23 +723,25 @@ npm run dev
 
 ### Cloud Deployment Options
 
-| Platform | Best For | Setup Time | Cost |
-|----------|----------|-----------|------|
-| **Vercel** | Frontend | < 5 min | Free tier available |
-| **Railway** | Backend | < 10 min | Pay-as-you-go |
-| **AWS (ECS)** | Production | 15-30 min | Pay-per-use |
-| **Heroku** | Rapid MVP | < 10 min | Free tier ended |
-| **Docker Hub** | Any | varies | Flexible |
+| Platform       | Best For   | Setup Time | Cost                |
+| -------------- | ---------- | ---------- | ------------------- |
+| **Vercel**     | Frontend   | < 5 min    | Free tier available |
+| **Railway**    | Backend    | < 10 min   | Pay-as-you-go       |
+| **AWS (ECS)**  | Production | 15-30 min  | Pay-per-use         |
+| **Heroku**     | Rapid MVP  | < 10 min   | Free tier ended     |
+| **Docker Hub** | Any        | varies     | Flexible            |
 
 ### Quick Deploy
 
 **Vercel (Frontend):**
+
 ```bash
 npm install -g vercel
 vercel --prod
 ```
 
 **Railway (Backend):**
+
 ```bash
 # Connect repository on railway.app
 # Select /web/backend as root directory
@@ -713,6 +749,7 @@ vercel --prod
 ```
 
 **Docker (Any Platform):**
+
 ```bash
 docker build -t my-app .
 docker run -p 3000:3000 my-app
@@ -725,6 +762,7 @@ See [Deployment Guide](./docs/guides/deployment.md) for detailed instructions.
 ### Contribution Process
 
 1. **Fork & Clone**
+
    ```bash
    git clone https://github.com/yourusername/base-project-template.git
    cd base-project-template
@@ -732,6 +770,7 @@ See [Deployment Guide](./docs/guides/deployment.md) for detailed instructions.
    ```
 
 2. **Create Feature Branch**
+
    ```bash
    git checkout -b feature/my-feature
    ```
@@ -742,6 +781,7 @@ See [Deployment Guide](./docs/guides/deployment.md) for detailed instructions.
    - Write tests for new features
 
 4. **Commit with Conventional Format**
+
    ```bash
    # Format: type(scope): subject
    git commit -m "feat(auth): add JWT token refresh"
@@ -752,6 +792,7 @@ See [Deployment Guide](./docs/guides/deployment.md) for detailed instructions.
    **Types:** `feat` | `fix` | `docs` | `style` | `refactor` | `perf` | `test` | `chore`
 
 5. **Run Quality Checks**
+
    ```bash
    npm run lint:fix
    npm run type-check
@@ -776,14 +817,17 @@ See [Deployment Guide](./docs/guides/deployment.md) for detailed instructions.
 ### Reporting Issues
 
 **Security Issues:**
+
 - Email: security@example.com (DO NOT create public issue)
 - See [Security Policy](./SECURITY.md)
 
 **Bug Reports:**
+
 - Use [Bug Template](./.github/ISSUE_TEMPLATE/bug.yml)
 - Include: OS, Node version, reproduction steps
 
 **Feature Requests:**
+
 - Use [Feature Template](./.github/ISSUE_TEMPLATE/feature.yml)
 - Explain use case and expected behavior
 
@@ -799,6 +843,7 @@ A: No. Remove unused directories (desktop/, tools/, etc.) and their workspace en
 
 **Q: How do I switch technologies?**
 A: Adapt the template to your stack:
+
 - Replace React with Vue/Svelte in `/web/frontend`
 - Replace Express with NestJS/FastAPI in `/web/backend`
 - Use your preferred database (PostgreSQL is recommended)
@@ -812,6 +857,7 @@ A: Changes to `shared/types/src/` are automatically used by all projects through
 ### Troubleshooting
 
 **Problem: `npm install` fails**
+
 ```bash
 # Clear npm cache
 npm cache clean --force
@@ -821,6 +867,7 @@ npm install
 ```
 
 **Problem: Port already in use**
+
 ```bash
 # Find process on port 3000
 lsof -i :3000
@@ -829,6 +876,7 @@ kill -9 <PID>
 ```
 
 **Problem: TypeScript errors**
+
 ```bash
 # Ensure all tsconfig files are present
 npm run type-check --workspaces
@@ -836,6 +884,7 @@ npm run type-check --workspaces
 ```
 
 **Problem: Database connection fails**
+
 ```bash
 # Check PostgreSQL is running
 docker-compose ps
@@ -844,6 +893,7 @@ docker-compose restart postgres
 ```
 
 **Problem: GitHub Actions failing**
+
 - Check logs in GitHub Actions tab
 - Verify environment variables in repository settings
 - Ensure Node version matches `package.json` engines field
@@ -864,6 +914,7 @@ See [Troubleshooting Guide](./docs/getting-started/environment.md#troubleshootin
 ## 🎯 Roadmap
 
 ### Current (v1.0)
+
 - ✅ Monorepo with npm workspaces
 - ✅ Full-stack web template
 - ✅ GitHub Actions CI/CD
@@ -873,6 +924,7 @@ See [Troubleshooting Guide](./docs/getting-started/environment.md#troubleshootin
 - ✅ GitHub Copilot optimization
 
 ### Planned Enhancements
+
 - 🔄 Example applications
 - 📱 Mobile backend template
 - 🎨 Storybook integration
@@ -884,18 +936,21 @@ See [Troubleshooting Guide](./docs/getting-started/environment.md#troubleshootin
 ## 📞 Support & Community
 
 ### Resources
+
 - 📖 **[Full Documentation](./docs/README.md)** - Comprehensive guides
 - 🐛 **[GitHub Issues](../../issues)** - Bug reports and feature requests
 - 💬 **[GitHub Discussions](../../discussions)** - Questions and ideas
 - 🔐 **[Security Policy](./SECURITY.md)** - Report vulnerabilities responsibly
 
 ### Getting Help
+
 1. **Check Documentation** - Many questions are answered in guides
 2. **Search Issues** - Your problem might already be solved
 3. **Ask in Discussions** - Community can help
 4. **File Issue** - If it's a bug, report it
 
 ### Contributing Back
+
 - 🌟 Star the repository if helpful
 - 🍴 Fork and submit improvements
 - 📝 Improve documentation
@@ -905,31 +960,37 @@ See [Troubleshooting Guide](./docs/getting-started/environment.md#troubleshootin
 ## 📚 Learning Resources
 
 ### TypeScript
+
 - [TypeScript Handbook](https://www.typescriptlang.org/docs/) - Official documentation
 - [TypeScript Deep Dive](https://basarat.gitbook.io/typescript/) - Comprehensive guide
 - [Advanced TypeScript](https://www.typescriptlang.org/docs/handbook/2/types-from-types.html) - Advanced patterns
 
 ### Node.js & Express
+
 - [Node.js Documentation](https://nodejs.org/docs/) - Official docs
 - [Express Guide](https://expressjs.com/en/guide/routing.html) - Web framework
 - [Best Practices](https://nodejs.org/en/docs/guides/nodejs-performance-how-not-to-block-the-event-loop/) - Performance tips
 
 ### React
+
 - [React Documentation](https://react.dev/) - Official React site
 - [React Hooks Guide](https://react.dev/reference/react/hooks) - Hook patterns
 - [Advanced React](https://react.dev/learn/thinking-in-react) - Design thinking
 
 ### Testing
+
 - [Vitest Docs](https://vitest.dev/) - Unit testing
 - [Testing Library](https://testing-library.com/docs/react-testing-library/intro/) - Component testing
 - [Test Best Practices](https://github.com/goldbergyoni/javascript-testing-best-practices)
 
 ### DevOps & Deployment
+
 - [Docker Guide](https://docs.docker.com/guides/docker-overview/) - Containerization
 - [GitHub Actions](https://docs.github.com/en/actions) - CI/CD automation
 - [Cloud Deployment](https://www.typescriptlang.org/docs/handbook/2/narrowing.html) - Deploy options
 
 ### Code Quality
+
 - [SOLID Principles](https://en.wikipedia.org/wiki/SOLID) - Design principles
 - [Clean Code](https://clean-code-js.com/) - Best practices
 - [Design Patterns](https://refactoring.guru/design-patterns) - Common patterns
@@ -939,16 +1000,20 @@ See [Troubleshooting Guide](./docs/getting-started/environment.md#troubleshootin
 This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 ### License Summary
+
 ✅ **Allowed:**
+
 - Commercial use
 - Modification
 - Distribution
 - Private use
 
 ❌ **Not Allowed:**
+
 - No warranty or liability
 
 ### Attribution
+
 While not required, we appreciate credit to [WalSplitter](https://github.com/yourusername/) and linking to this repository.
 
 ---

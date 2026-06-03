@@ -5,6 +5,7 @@ Use this prompt template when implementing new features with GitHub Copilot.
 ## 📋 Before You Start
 
 Review:
+
 - [Code Standards](./.github/copilot-instructions.md#code-standards--quality) - Naming conventions, quality requirements
 - [Monorepo Structure](./docs/adr/001-monorepo-structure.md) - How workspaces are organized
 - Existing code in your workspace for patterns
@@ -70,7 +71,7 @@ Deliverables:
 
 ## 🎯 Tips for Better Results
 
-1. **Specify the Workspace**: Indicate which /web, /apps/*, /desktop/*, /tools/*, or /shared/* workspace
+1. **Specify the Workspace**: Indicate which /web, /apps/_, /desktop/_, /tools/_, or /shared/_ workspace
 2. **Reference Shared Types**: Point to shared/types/src/ for common interfaces
 3. **Follow Code Standards**: Use naming conventions from .github/copilot-instructions.md
 4. **Provide Existing Examples**: Show similar implementations in the same workspace

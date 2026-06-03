@@ -40,18 +40,21 @@ Professional guidance for building desktop applications with modern frameworks a
 ## Recommended Architecture
 
 ### Electron
+
 - Main process: app lifecycle, native APIs, file system access
 - Renderer process: UI, React/Vue/Svelte, DOM rendering
 - IPC: use `ipcMain` and `ipcRenderer` for secure communication
 - Security: disable `nodeIntegration`, enable `contextIsolation`
 
 ### Tauri
+
 - Use Rust backend for local system access
 - Keep frontend in TypeScript/React/Vue
 - Secure communication through Tauri commands
 - Smaller binaries and lower memory usage compared to Electron
 
 ### WPF
+
 - Use MVVM pattern for separation of UI and logic
 - Data binding for declarative UI updates
 - Use `ICommand` for command handling
@@ -120,5 +123,6 @@ const content = await ipcRenderer.invoke('file:read', path);
 ---
 
 **Related Resources:**
+
 - Prompts: [Feature Implementation](../prompts/01-feature-implementation.md), [Bug Fixing](../prompts/02-bug-fixing.md)
 - Standards: [copilot-instructions.md](../copilot-instructions.md)

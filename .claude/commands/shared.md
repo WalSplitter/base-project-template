@@ -18,11 +18,12 @@ shared/types/src/
 ```
 
 **Key types already available:**
+
 ```typescript
-IApiResponse<T>          // { success: true, data: T } | { success: false, error, code }
-IPaginatedResponse<T>    // { items: T[], total, hasMore, pageInfo }
-IUser                    // Core user shape
-IAuthPayload             // JWT payload
+IApiResponse<T>; // { success: true, data: T } | { success: false, error, code }
+IPaginatedResponse<T>; // { items: T[], total, hasMore, pageInfo }
+IUser; // Core user shape
+IAuthPayload; // JWT payload
 ```
 
 ## Adding new shared types
@@ -49,6 +50,7 @@ shared/utils/src/
 - Breaking changes to shared types require updating all consuming workspaces
 
 ## Testing shared code
+
 ```bash
 npm run test -w shared/types
 npm run test:coverage -w shared/types

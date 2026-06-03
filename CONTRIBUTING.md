@@ -42,8 +42,8 @@ interface IUserProfile {}
 const MAX_RETRIES = 3;
 
 // Files & Folders: kebab-case
-src/user-service.ts
-src/components/user-profile.tsx
+src / user - service.ts;
+src / components / user - profile.tsx;
 ```
 
 ### File Organization
@@ -114,25 +114,31 @@ git commit -m "perf(database): add query indexing for user lookups"
 
 ```markdown
 ## Description
+
 Brief description of changes
 
 ## Type of Change
+
 - [ ] New feature
 - [ ] Bug fix
 - [ ] Breaking change
 - [ ] Documentation update
 
 ## Related Issue
+
 Closes #123
 
 ## Changes Made
+
 - Change 1
 - Change 2
 
 ## Testing
+
 Describe testing performed
 
 ## Checklist
+
 - [ ] Code follows style guidelines
 - [ ] Tests added/updated
 - [ ] Documentation updated
@@ -155,7 +161,7 @@ describe('UserService', () => {
   it('should create user with valid email', async () => {
     const result = await userService.create({
       email: 'test@example.com',
-      name: 'Test User'
+      name: 'Test User',
     });
     expect(result.id).toBeDefined();
   });
@@ -164,7 +170,7 @@ describe('UserService', () => {
     await expect(
       userService.create({
         email: 'invalid',
-        name: 'Test'
+        name: 'Test',
       })
     ).rejects.toThrow(ValidationError);
   });
@@ -208,10 +214,7 @@ delay += 1000;
  * @example
  * const user = await createUser('user@example.com', 'password123');
  */
-export async function createUser(
-  email: string,
-  password: string
-): Promise<IUser> {
+export async function createUser(email: string, password: string): Promise<IUser> {
   // Implementation
 }
 ```
@@ -219,6 +222,7 @@ export async function createUser(
 ### README Updates
 
 Update relevant README files when:
+
 - Adding new directory/feature
 - Changing how to run/build/test
 - Updating dependencies
@@ -232,6 +236,7 @@ Update relevant README files when:
 **Description**: Clear description of the bug
 
 **Steps to Reproduce**:
+
 1. Do X
 2. Do Y
 3. See Z

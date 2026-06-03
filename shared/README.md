@@ -131,7 +131,7 @@ export class StringUtils {
   static pascalCase(str: string): string {
     return str
       .split(/[-_\s]/g)
-      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join('');
   }
 
@@ -171,7 +171,7 @@ export class Validators {
   static readonly PASSWORD_SCHEMA = z.string().min(8).max(128);
   static readonly UUID_SCHEMA = z.string().uuid();
   static readonly URL_SCHEMA = z.string().url();
-  
+
   static validateEmail(email: string): boolean {
     return this.EMAIL_SCHEMA.safeParse(email).success;
   }
@@ -289,15 +289,12 @@ export class Logger {
   constructor(moduleName: string) {
     this.logger = winston.createLogger({
       defaultMeta: { module: moduleName },
-      format: winston.format.combine(
-        winston.format.timestamp(),
-        winston.format.json()
-      ),
+      format: winston.format.combine(winston.format.timestamp(), winston.format.json()),
       transports: [
         new winston.transports.Console(),
         new winston.transports.File({ filename: 'error.log', level: 'error' }),
-        new winston.transports.File({ filename: 'combined.log' })
-      ]
+        new winston.transports.File({ filename: 'combined.log' }),
+      ],
     });
   }
 
@@ -353,9 +350,9 @@ export class UserService {
 
     // Use utilities
     const normalizedName = StringUtils.pascalCase(input.name);
-    
+
     this.logger.info('Creating user', { email: input.email });
-    
+
     // Implementation...
   }
 }
@@ -368,13 +365,7 @@ export class UserService {
 ```json
 // root package.json
 {
-  "workspaces": [
-    "shared/*",
-    "apps/*",
-    "web/*",
-    "tools/*",
-    "desktop/*"
-  ]
+  "workspaces": ["shared/*", "apps/*", "web/*", "tools/*", "desktop/*"]
 }
 ```
 
