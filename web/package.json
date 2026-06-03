@@ -5,15 +5,15 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "npm run dev --workspaces",
-    "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
-    "test:watch": "npm run test:watch --workspaces",
-    "test:coverage": "npm run test:coverage --workspaces",
-    "lint": "npm run lint --workspaces",
-    "lint:fix": "npm run lint:fix --workspaces",
-    "type-check": "npm run type-check --workspaces",
-    "clean": "npm run clean --workspaces"
+    "dev": "npm run dev -w frontend & npm run dev -w backend",
+    "build": "npm run build -w frontend && npm run build -w backend",
+    "test": "npm run test -w frontend && npm run test -w backend",
+    "test:watch": "npm run test:watch -w frontend && npm run test:watch -w backend",
+    "test:coverage": "npm run test:coverage -w frontend && npm run test:coverage -w backend",
+    "lint": "npm run lint -w frontend && npm run lint -w backend",
+    "lint:fix": "npm run lint:fix -w frontend && npm run lint:fix -w backend",
+    "type-check": "npm run type-check -w frontend && npm run type-check -w backend",
+    "clean": "npm run clean -w frontend && npm run clean -w backend"
   },
   "workspaces": [
     "frontend",
