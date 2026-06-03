@@ -35,10 +35,10 @@ This comprehensive template repository provides everything you need to build pro
 **Start Here:**
 - 🚀 [Quick Start (5 min)](./docs/getting-started/README.md)
 - ⚙️ [Environment Setup](./docs/getting-started/environment.md)
-- 📖 [Development Guidelines](./.github/copilot-instructions.md)
+- 📖 [Development Guidelines](./.github/docs/README.md)
 
 **Development:**
-- 🤖 [GitHub Copilot Prompts](./.github/prompts/)
+- 🤖 [GitHub Copilot Prompts](./.github/docs/README.md)
 - 🏗️ [Architecture & ADRs](./docs/adr/)
 - 📋 [API Design Guide](./.github/prompts/04-api-design.md)
 
@@ -235,7 +235,7 @@ make help                # Show all Makefile commands
 
 ### 6️⃣ Essential Reading
 
-1. 📖 **[Development Guidelines](./.github/copilot-instructions.md)** - Code standards & practices
+1. 📖 **[Development Guidelines](./.github/docs/README.md)** - Code standards & practices
 2. 🤖 **[Quick Start Prompts](./.github/prompts/00-quick-start.md)** - Using GitHub Copilot effectively
 3. 🏗️ **[Architecture Guide](./ARCHITECTURE.md)** - Design decisions & patterns
 4. 📚 **[Setup Instructions](./SETUP.md)** - Detailed configuration
@@ -243,7 +243,7 @@ make help                # Show all Makefile commands
 ### 7️⃣ First Contribution
 
 1. Create feature branch: `git checkout -b feature/my-feature`
-2. Make changes following [guidelines](./.github/copilot-instructions.md)
+2. Make changes following [guidelines](./.github/docs/README.md)
 3. Test locally: `npm run test && npm run lint`
 4. Commit using conventional format: `git commit -m "feat(module): add feature"`
 5. Push and create PR: `git push origin feature/my-feature`
@@ -260,6 +260,8 @@ base-project-template/
 │   │   ├── bug.yml
 │   │   └── feature.yml
 │   ├── PULL_REQUEST_TEMPLATE.md   # PR template
+│   ├── docs/
+│   │   └── README.md               # Complete development guidelines & prompts
 │   ├── copilot-instructions.md    # Development standards & guidelines
 │   ├── SKILLS.md                  # Programming patterns & techniques
 │   ├── prompts/                   # GitHub Copilot prompts
@@ -375,7 +377,7 @@ base-project-template/
   - [ADR Template](./docs/adr/template.md)
 
 ### Development
-- [Development Guidelines](./.github/copilot-instructions.md) - Code standards, conventions, practices
+- [Development Guidelines](./.github/docs/README.md) - Code standards, conventions, practices
 - [Programming Skills](./.github/SKILLS.md) - Patterns, best practices, design patterns
 - [Contributing Guide](./CONTRIBUTING.md) - How to contribute and submit PRs
 - [Prompt Templates](./.github/prompts/) - GitHub Copilot optimized prompts

@@ -6,14 +6,14 @@ This directory contains all GitHub configuration, Copilot instructions, programm
 
 ### 📋 Main Documentation
 
-- **[copilot-instructions.md](copilot-instructions.md)** - Complete GitHub Copilot development guidelines
+- **[copilot-instructions.md](../copilot-instructions.md)** - Complete GitHub Copilot development guidelines
   - Code standards and conventions
   - Development workflow best practices
   - Prompt engineering techniques
   - Error handling strategies
   - Security and performance considerations
 
-- **[SKILLS.md](SKILLS.md)** - Programming patterns and techniques reference
+- **[SKILLS.md](../SKILLS.md)** - Programming patterns and techniques reference
   - Type safety and TypeScript best practices
   - Async programming patterns
   - Error handling implementations
@@ -27,49 +27,49 @@ This directory contains all GitHub configuration, Copilot instructions, programm
 
 The `prompts/` directory contains specialized prompts for different development scenarios:
 
-- **[00-quick-start.md](prompts/00-quick-start.md)** - Getting started with Vibe Coding
+- **[00-quick-start.md](../prompts/00-quick-start.md)** - Getting started with Vibe Coding
   - Project type selection
   - Essential Copilot commands
   - Common development patterns
   - File organization reference
   - Troubleshooting tips
 
-- **[01-feature-implementation.md](prompts/01-feature-implementation.md)** - Feature development template
+- **[01-feature-implementation.md](../prompts/01-feature-implementation.md)** - Feature development template
   - Context specification
   - Requirements definition
   - Constraint documentation
   - Deliverable checklist
   - Example usage walkthrough
 
-- **[02-bug-fixing.md](prompts/02-bug-fixing.md)** - Bug fixing and debugging template
+- **[02-bug-fixing.md](../prompts/02-bug-fixing.md)** - Bug fixing and debugging template
   - Problem definition
   - Investigation approach
   - Solution strategies
   - Debugging checklist
   - Common fix patterns
 
-- **[03-refactoring.md](prompts/03-refactoring.md)** - Code quality and refactoring template
+- **[03-refactoring.md](../prompts/03-refactoring.md)** - Code quality and refactoring template
   - Current state assessment
   - Refactoring goals
   - Quality improvement metrics
   - Design pattern applications
   - Code quality metrics
 
-- **[04-api-design.md](prompts/04-api-design.md)** - API and integration design template
+- **[04-api-design.md](../prompts/04-api-design.md)** - API and integration design template
   - API specification structure
   - Request/response schemas
   - Implementation requirements
   - REST best practices
   - GraphQL integration guide
 
-- **[05-testing-strategy.md](prompts/05-testing-strategy.md)** - Testing approach template
+- **[05-testing-strategy.md](../prompts/05-testing-strategy.md)** - Testing approach template
   - Test planning
   - Mocking strategies
   - AAA pattern (Arrange-Act-Assert)
   - Integration testing
   - Coverage targets
 
-- **[06-performance-optimization.md](prompts/06-performance-optimization.md)** - Performance tuning template
+- **[06-performance-optimization.md](../prompts/06-performance-optimization.md)** - Performance tuning template
   - Issue identification
   - Root cause analysis
   - Optimization strategies
@@ -80,10 +80,10 @@ The `prompts/` directory contains specialized prompts for different development 
 
 ### For Starting a New Feature
 
-1. **Read Quick Start**: Start with [prompts/00-quick-start.md](prompts/00-quick-start.md)
+1. **Read Quick Start**: Start with [prompts/00-quick-start.md](../prompts/00-quick-start.md)
 2. **Choose Template**: Select appropriate prompt from the `prompts/` directory
-3. **Reference Guidelines**: Use [copilot-instructions.md](copilot-instructions.md) for standards
-4. **Check Skills**: Review [SKILLS.md](SKILLS.md) for implementation patterns
+3. **Reference Guidelines**: Use [copilot-instructions.md](../copilot-instructions.md) for standards
+4. **Check Skills**: Review [SKILLS.md](../SKILLS.md) for implementation patterns
 
 ### For Development Workflow
 
