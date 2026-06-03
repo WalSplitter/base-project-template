@@ -12,8 +12,8 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
-    "lint": "eslint src --ext ts",
-    "lint:fix": "eslint src --ext ts --fix",
+    "lint": "eslint . --ext ts",
+    "lint:fix": "eslint . --ext ts --fix",
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist .turbo"
   },
