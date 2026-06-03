@@ -446,6 +446,17 @@ npm run type-check
 git commit -m "feat(backend): add user service with validation and error handling"
 ```
 
+## 🤖 With Claude
+
+This repository also includes guidance and quick commands tailored for Claude users.
+
+- **Guidelines:** See [CLAUDE.md](CLAUDE.md) for development standards written with Claude in mind.
+- **Interactive commands:** The `.claude/` folder contains `settings.json` and command templates (e.g. `quick-start.md`, `feature.md`) that Claude can use to provide contextual, repo-aware prompts.
+- **How to use:** Open the files under `.claude/commands` to see available slash-style prompts (e.g. `/project:feature`, `/project:api`) and paste them into Claude chat or use your Claude integration to run them against the repo.
+
+If you use both GitHub Copilot and Claude, prefer Copilot for inline code suggestions and Claude for higher-level planning and multi-step tasks.
+
+
 ## 💡 Development Workflow
 
 ### With GitHub Copilot
