@@ -176,21 +176,21 @@ npm install @project/types
 
 ## Decision Matrix
 
-| Need                         | Best Choice            | Directory                 |
-| ---------------------------- | ---------------------- | ------------------------- |
+| Need                         | Best Choice            | Directory                                |
+| ---------------------------- | ---------------------- | ---------------------------------------- |
 | Full-stack web app           | React + Express        | `apps/web-frontend` + `apps/web-backend` |
-| Frontend only                | React/Vue/Svelte       | `apps/web-frontend`       |
-| Backend only                 | Express/NestJS/FastAPI | `/apps`                   |
-| REST API                     | NestJS/FastAPI         | `/apps/api-service`       |
-| Real-time API                | Socket.IO + Express    | `/apps/websocket-service` |
-| Background jobs              | Bull/Celery            | `/apps/worker-service`    |
-| Desktop app (cross-platform) | Electron/Tauri         | `/desktop`                |
-| Desktop app (Windows only)   | WPF                    | `/desktop`                |
-| CLI tool                     | Commander/Yargs        | `/tools`                  |
-| Code generator               | Templating engine      | `/tools/code-generator`   |
-| Shared types                 | TypeScript only        | `/shared/types`           |
-| Shared utilities             | Pure functions         | `/shared/utils`           |
-| Error handling               | Custom classes         | `/shared/errors`          |
+| Frontend only                | React/Vue/Svelte       | `apps/web-frontend`                      |
+| Backend only                 | Express/NestJS/FastAPI | `/apps`                                  |
+| REST API                     | NestJS/FastAPI         | `/apps/api-service`                      |
+| Real-time API                | Socket.IO + Express    | `/apps/websocket-service`                |
+| Background jobs              | Bull/Celery            | `/apps/worker-service`                   |
+| Desktop app (cross-platform) | Electron/Tauri         | `/desktop`                               |
+| Desktop app (Windows only)   | WPF                    | `/desktop`                               |
+| CLI tool                     | Commander/Yargs        | `/tools`                                 |
+| Code generator               | Templating engine      | `/tools/code-generator`                  |
+| Shared types                 | TypeScript only        | `/shared/types`                          |
+| Shared utilities             | Pure functions         | `/shared/utils`                          |
+| Error handling               | Custom classes         | `/shared/errors`                         |
 
 ---
 

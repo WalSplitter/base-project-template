@@ -201,14 +201,14 @@ VITE_ENV=development
 
 ### 4️⃣ Choose Your Path
 
-| Goal                 | Workspace                    | Command                                          | Port                             |
-| -------------------- | ---------------------------- | ------------------------------------------------ | -------------------------------- |
-| **Full-Stack Web**   | `apps/web-frontend` + `apps/web-backend` | `npm run dev --workspaces`         | 5173 (frontend) + 3000 (backend) |
-| **Backend API Only** | `apps/web-backend`           | `npm run dev -w @base-template/web-backend`      | 3000                             |
-| **Frontend Only**    | `apps/web-frontend`          | `npm run dev -w @base-template/web-frontend`     | 5173                             |
-| **API Service**      | `apps/api`                   | `npm run dev -w @base-template/api`              | configurable                     |
-| **Desktop App**      | `desktop/`                   | See [desktop guide](./desktop/README.md)         | Varies                           |
-| **CLI Tool**         | `tools/`                     | See [tools guide](./tools/README.md)             | N/A                              |
+| Goal                 | Workspace                                | Command                                      | Port                             |
+| -------------------- | ---------------------------------------- | -------------------------------------------- | -------------------------------- |
+| **Full-Stack Web**   | `apps/web-frontend` + `apps/web-backend` | `npm run dev --workspaces`                   | 5173 (frontend) + 3000 (backend) |
+| **Backend API Only** | `apps/web-backend`                       | `npm run dev -w @base-template/web-backend`  | 3000                             |
+| **Frontend Only**    | `apps/web-frontend`                      | `npm run dev -w @base-template/web-frontend` | 5173                             |
+| **API Service**      | `apps/api`                               | `npm run dev -w @base-template/api`          | configurable                     |
+| **Desktop App**      | `desktop/`                               | See [desktop guide](./desktop/README.md)     | Varies                           |
+| **CLI Tool**         | `tools/`                                 | See [tools guide](./tools/README.md)         | N/A                              |
 
 ### 5️⃣ Workspace Commands Reference
 
@@ -650,12 +650,7 @@ npm run lint -w @base-template/api
 
 ```json
 {
-  "workspaces": [
-    "apps/*",
-    "desktop/*",
-    "tools/*",
-    "shared/*"
-  ]
+  "workspaces": ["apps/*", "desktop/*", "tools/*", "shared/*"]
 }
 ```
 
@@ -715,12 +710,12 @@ npm run test:coverage
 
 ### Code Quality Tools
 
-| Tool           | Purpose       | Config              |
-| -------------- | ------------- | ------------------- |
-| **ESLint**     | Linting       | `eslint.config.js`  |
-| **Prettier**   | Formatting    | `.prettierrc.json`  |
-| **TypeScript** | Type checking | `tsconfig.json`     |
-| **Vitest**     | Unit testing  | `vitest.config.ts`  |
+| Tool           | Purpose       | Config             |
+| -------------- | ------------- | ------------------ |
+| **ESLint**     | Linting       | `eslint.config.js` |
+| **Prettier**   | Formatting    | `.prettierrc.json` |
+| **TypeScript** | Type checking | `tsconfig.json`    |
+| **Vitest**     | Unit testing  | `vitest.config.ts` |
 
 ### Automated Quality Checks
 

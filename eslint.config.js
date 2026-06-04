@@ -24,22 +24,17 @@ export default tseslint.config(
       'no-var': 'error',
       eqeqeq: ['error', 'always'],
       curly: ['error', 'all'],
-      "@typescript-eslint/no-unused-vars": [
-          "error",
-          {
-            argsIgnorePattern: "^_",
-            varsIgnorePattern: "^_"
-          }
-        ],
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+        },
+      ],
     },
   },
 
   {
-    ignores: [
-      '**/node_modules/**',
-      '**/dist/**',
-      '**/build/**',
-      '**/coverage/**',
-    ],
+    ignores: ['**/node_modules/**', '**/dist/**', '**/build/**', '**/coverage/**'],
   }
 );
