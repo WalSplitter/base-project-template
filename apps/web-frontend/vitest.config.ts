@@ -1,8 +1,8 @@
-import vitest from 'vitest/config';
+import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
-export default vitest.defineConfig({
+export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
