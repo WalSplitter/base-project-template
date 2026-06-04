@@ -251,6 +251,7 @@ npm run build            # Build all workspaces
 npm run test             # Test all workspaces
 npm run lint             # Lint all workspaces
 npm run type-check       # Type check all
+npm run format:check     # Format check all
 make docker-up           # Start PostgreSQL & Redis
 make docker-down         # Stop containers
 make help                # Show all Makefile commands
