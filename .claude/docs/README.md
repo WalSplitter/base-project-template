@@ -16,7 +16,7 @@ How to use:
 Best practices:
 
 - Use Copilot for inline code completions and Claude for higher-level planning and multi-step tasks.
-- Keep `$ARGUMENTS` concise and provide workspace path (e.g. `web/backend`) when relevant.
+- Keep `$ARGUMENTS` concise and provide workspace path (e.g. `apps/web-backend`) when relevant.
 - Review and test generated code locally before committing.
 
 If you want changes to these templates for a specific Claude setup, open an issue or submit a PR with suggested edits.

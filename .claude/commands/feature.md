@@ -4,7 +4,7 @@ Implement the following feature: $ARGUMENTS
 
 ## Context to gather first
 
-- Which workspace? (`web`, `apps/*`, `desktop/*`, `tools/*`, `shared/*`)
+- Which workspace? (`apps/web-frontend`, `apps/web-backend`, `apps/api`, `desktop/*`, `tools/*`, `shared/*`)
 - Are there existing similar implementations to reference?
 - Which shared types from `shared/types/src/index.ts` apply?
 
@@ -21,7 +21,7 @@ Implement the following feature: $ARGUMENTS
 
 - TypeScript strict mode – no `any` types
 - Naming: `camelCase` (vars/functions), `PascalCase` (types/classes), `UPPER_SNAKE_CASE` (constants)
-- Logging via Pino (`web/backend/src/utils/logger.ts`)
+- Logging via Pino (`apps/web-backend/src/utils/logger.ts`)
 - Validation via Joi (backend) or Zod (frontend/shared)
 - Tests in `*.test.ts` alongside source
 

@@ -1,6 +1,6 @@
 # Web Development Patterns
 
-Domain-specific guidance for the `/web` workspace (React frontend + Express backend).
+Domain-specific guidance for the `apps/web-frontend` and `apps/web-backend` workspaces (React frontend + Express backend).
 
 ## Frontend (React + TypeScript)
 
@@ -41,7 +41,7 @@ const HeavyPage = lazy(() => import('./pages/HeavyPage'));
 **Route structure:**
 
 ```
-web/backend/src/
+apps/web-backend/src/
 ├── routes/         ← Express routers
 ├── controllers/    ← Request handling logic
 ├── services/       ← Business logic
@@ -67,13 +67,14 @@ export async function getUser(req: Request, res: Response, next: NextFunction) {
 ## Auth flow
 
 - JWT issued on login, stored in httpOnly cookie or Authorization header
-- Verify via `web/backend/src/middleware/auth.ts`
+- Verify via `apps/web-backend/src/middleware/auth.ts`
 - Refresh tokens for long sessions
 
-## Testing in web workspace
+## Testing
 
 ```bash
-npm run test -w web               # All tests
-npm run test:watch -w web/frontend  # Frontend only, watch
-npm run test:watch -w web/backend   # Backend only, watch
+npm run test -w @base-template/web-frontend   # Frontend tests
+npm run test -w @base-template/web-backend    # Backend tests
+npm run test:watch -w @base-template/web-frontend  # Frontend, watch mode
+npm run test:watch -w @base-template/web-backend   # Backend, watch mode
 ```

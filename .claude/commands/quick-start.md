@@ -15,7 +15,7 @@ npm run dev --workspaces
 ## Choose Your Workspace
 
 ```
-Web Application (React + Express)       → /web
+Web Application (React + Express)       → apps/web-frontend + apps/web-backend
 Backend Services (Node.js + TypeScript) → /apps/*
 Desktop Application (Electron/Tauri)    → /desktop/*
 Command-Line Tool (Node.js CLI)         → /tools/*
@@ -50,11 +50,13 @@ Shared Libraries (Types/Utils)          → /shared/*
 ## Common Commands
 
 ```bash
-npm run dev -w web                   # Start web workspace
-npm run test:watch -w web            # Tests in watch mode
-npm run test:coverage -w web         # Coverage report
+npm run dev -w @base-template/web-frontend   # Start frontend
+npm run dev -w @base-template/web-backend    # Start backend
+npm run test:watch -w @base-template/web-backend  # Tests in watch mode
+npm run test:coverage -w @base-template/web-backend  # Coverage report
 npm run type-check --workspaces      # Check all types
-npm run lint:fix -w web              # Fix linting issues
+npm run lint:fix -w @base-template/web-frontend  # Fix frontend linting
+npm run lint:fix -w @base-template/web-backend   # Fix backend linting
 make docker-up                       # Start Postgres + Redis
 ```
 

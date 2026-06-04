@@ -59,14 +59,14 @@ vercel login
   "version": 2,
   "builds": [
     {
-      "src": "web/backend/dist/index.js",
+      "src": "apps/web-backend/dist/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "web/backend/dist/index.js"
+      "dest": "apps/web-backend/dist/index.js"
     }
   ]
 }
@@ -81,7 +81,7 @@ vercel --prod
 ### Option 3: Railway.app
 
 1. Connect GitHub repository
-2. Select `web/backend` as root directory
+2. Select `apps/web-backend` as root directory
 3. Set environment variables
 4. Deploy
 
@@ -103,7 +103,7 @@ vercel --prod
 vercel
 ```
 
-Select `web/frontend` as root directory.
+Select `apps/web-frontend` as root directory.
 
 #### 2. Configure `vercel.json`
 
@@ -149,7 +149,7 @@ netlify deploy --prod
 npm run build
 
 # Deploy to S3
-aws s3 sync web/frontend/dist s3://my-bucket/
+aws s3 sync apps/web-frontend/dist s3://my-bucket/
 
 # Invalidate CloudFront
 aws cloudfront create-invalidation \

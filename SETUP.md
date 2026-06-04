@@ -1,277 +1,129 @@
-# Project Setup Guide
+# ADR-001: Monorepo Structure with npm Workspaces
 
-## Prerequisites
+**Status**: Accepted
 
-Before you begin, ensure you have the following installed:
+**Date**: 2026-06-01
 
-### Required
+**Deciders**: Architecture Team
 
-- **Node.js**: 18.0.0 or later
-  - Download: https://nodejs.org/
-  - Verify: `node --version`
+---
 
-- **npm**: 9.0.0 or later (included with Node.js)
-  - Verify: `npm --version`
+## Context
 
-- **Git**: Latest stable version
-  - Download: https://git-scm.com/
+The project needs to support multiple applications (web, desktop, CLI tools) while maintaining:
 
-### Recommended
+- Code reusability across projects (shared types, utilities, components)
+- Independent build and deployment pipelines
+- Clear separation of concerns
+- Easy dependency management
 
-- **Visual Studio Code**: Latest version
-  - Download: https://code.visualstudio.com/
-  - Extensions: ESLint, Prettier, GitLens
+Multiple solutions exist: monorepo, polyrepo, or standalone packages.
 
-- **Docker** (for database and services)
-  - Download: https://www.docker.com/products/docker-desktop/
+## Decision
 
-## Installation
+**We will use npm Workspaces for monorepo management** rather than Lerna or separate repositories.
 
-### 1. Clone the Repository
+This enables:
 
-```bash
-git clone https://github.com/yourusername/base-project-template.git
-cd base-project-template
-```
+1. Unified Node.js tooling experience
+2. Shared dependencies at root level
+3. Efficient testing and linting across packages
+4. Clear workspace definitions in package.json
+5. Native npm support (no external tool required)
 
-### 2. Install Dependencies
+### Implementation
 
-```bash
-npm install
-```
-
-This will install all dependencies for the root project and all workspaces.
-
-### 3. Setup Environment Variables
-
-```bash
-cp .env.example .env
-```
-
-Edit `.env` and fill in your configuration:
-
-```env
-NODE_ENV=development
-PORT=3000
-DATABASE_URL=postgresql://user:password@localhost:5432/dbname
-JWT_SECRET=your-secret-key-here
-```
-
-### 4. Database Setup (if using PostgreSQL)
-
-```bash
-# Using Docker
-docker run --name postgres -e POSTGRES_PASSWORD=password -p 5432:5432 -d postgres
-
-# Or use your own PostgreSQL instance
-psql -U postgres -c "CREATE DATABASE dbname;"
-```
-
-## Development
-
-### Run Development Server
-
-```bash
-npm run dev
-```
-
-This starts all development servers in watch mode.
-
-### Run Specific Project
-
-```bash
-# Web application
-npm run dev -w web
-
-# API service
-npm run dev -w apps/api
-
-# Desktop app
-npm run dev -w desktop/electron
-```
-
-### Code Quality
-
-```bash
-# Format code
-npm run format
-
-# Check formatting
-npm run format:check
-
-# Lint code
-npm run lint
-
-# Fix lint issues
-npm run lint:fix
-
-# Type check
-npm run type-check
-```
-
-### Testing
-
-```bash
-# Run all tests
-npm run test
-
-# Run tests in watch mode
-npm run test:watch
-
-# Run with coverage
-npm run test:coverage
-```
-
-### Build
-
-```bash
-# Build all projects
-npm run build
-
-# Build specific project
-npm run build -w web
-```
-
-## Project Structure
-
-```
-base-project-template/
-├── web/                    # Full-stack web application
-│   ├── src/
-│   ├── package.json
-│   └── tsconfig.json
-├── apps/
-│   ├── api/               # REST API service
-│   ├── mobile/            # Mobile app service
-│   └── admin/             # Admin dashboard
-├── desktop/
-│   ├── electron/          # Electron desktop app
-│   └── tauri/             # Tauri desktop app
-├── tools/
-│   ├── cli/               # Command-line tools
-│   ├── generators/        # Code generators
-│   └── scripts/           # Utility scripts
-├── shared/
-│   ├── types/             # Shared TypeScript types
-│   ├── utils/             # Shared utilities
-│   ├── config/            # Shared configuration
-│   └── components/        # Shared React components
-├── docs/                  # Documentation
-├── .github/
-│   ├── copilot-instructions.md   # Development guidelines
-│   ├── prompts/           # Copilot prompt templates
-│   ├── skills/            # Copilot skill guides
-│   └── workflows/         # GitHub Actions
-├── package.json           # Root package configuration
-├── tsconfig.json          # TypeScript configuration
-├── .eslintrc.json         # ESLint configuration
-└── .prettierrc.json       # Prettier configuration
-```
-
-## Troubleshooting
-
-### Port Already in Use
-
-```bash
-# Find process using port 3000
-lsof -i :3000
-
-# Kill process
-kill -9 <PID>
-```
-
-### Database Connection Issues
-
-```bash
-# Check PostgreSQL is running
-psql -U postgres -c "SELECT 1;"
-
-# Check .env configuration
-cat .env | grep DATABASE_URL
-```
-
-### Node Module Issues
-
-```bash
-# Clear npm cache
-npm cache clean --force
-
-# Reinstall dependencies
-rm -rf node_modules package-lock.json
-npm install
-```
-
-### Git Issues
-
-```bash
-# Update git submodules (if applicable)
-git submodule update --init --recursive
-
-# Check git configuration
-git config --list
-```
-
-## IDE Setup
-
-### VS Code
-
-1. Install recommended extensions:
-   - ESLint
-   - Prettier
-   - TypeScript Vue Plugin
-   - GitLens
-
-2. Create `.vscode/settings.json`:
+Root `package.json` defines workspaces:
 
 ```json
 {
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "workspaces": ["apps/*", "desktop/*", "tools/*", "shared/*"]
 }
 ```
 
-### IntelliJ IDEA
+Each workspace has its own `package.json` for specific dependencies.
 
-1. Install ESLint plugin
-2. Enable ESLint in Settings > Languages & Frameworks > JavaScript > Code Quality Tools > ESLint
-3. Configure Prettier in Settings > Languages & Frameworks > JavaScript > Prettier
+## Consequences
 
-## Git Workflow
+### Positive
 
-### Create Feature Branch
+- ✅ Simplified tooling (native npm support)
+- ✅ Easier onboarding for new developers
+- ✅ Better code reusability
+- ✅ Unified deployment process
+- ✅ Shared TypeScript and ESLint configuration
+- ✅ Reduced node_modules footprint
 
-```bash
-git checkout -b feature/my-feature
-```
+### Negative
 
-### Commit Changes
+- ⚠️ Requires consistent Node.js version across workspaces
+- ⚠️ Shared dependencies can cause version conflicts
+- ⚠️ More complex CI/CD configuration
 
-Follow [Conventional Commits](https://www.conventionalcommits.org/):
+### Risks
 
-```bash
-git commit -m "feat(module): add new feature"
-git commit -m "fix(module): resolve issue #123"
-git commit -m "docs: update README"
-```
+- **Dependency conflicts**: Mitigated by root-level lock file
+- **Performance**: Mitigated by proper caching in CI/CD
+- **Complexity**: Mitigated by clear documentation and examples
 
-### Push and Create PR
+## Alternatives Considered
 
-```bash
-git push origin feature/my-feature
-```
+### Alternative 1: Polyrepo (Separate Repositories)
 
-Then create a Pull Request on GitHub.
+Pros:
 
-## Getting Help
+- Independent versioning and releases
+- Cleaner separation of concerns
 
-- 📖 [Documentation](./docs/)
-- 🤝 [Contributing Guide](./CONTRIBUTING.md)
-- 📋 [Development Guidelines](./.github/copilot-instructions.md)
-- 💬 [GitHub Discussions](https://github.com/yourusername/base-project-template/discussions)
+Cons:
+
+- Difficult to share code between projects
+- Complex dependency management
+- Duplicated configuration
+
+Why rejected: Increases maintenance burden and reduces code reusability.
+
+### Alternative 2: Lerna + npm Workspaces
+
+Pros:
+
+- Powerful versioning and publishing tools
+- Community standard for monorepos
+
+Cons:
+
+- Additional learning curve
+- Extra tooling complexity
+- Slower for small teams
+
+Why rejected: Overkill for current needs; native npm workspaces are sufficient.
+
+### Alternative 3: Yarn/pnpm Workspaces
+
+Pros:
+
+- Better performance
+- Stricter dependency management
+
+Cons:
+
+- Requires learning different package manager
+- Less common in enterprise environments
+- Integration issues with tooling
+
+Why rejected: npm is standard; no compelling reason to switch at this stage.
+
+## Related Decisions
+
+- ADR-002: TypeScript Strict Mode
+- ADR-003: API Design
+- [Monorepo Setup Guide](../guides/monorepo-setup.md)
+
+## References
+
+- [npm Workspaces Documentation](https://docs.npmjs.com/cli/v8/using-npm/workspaces)
+- [Monorepo Benefits](https://monorepo.tools/)
+- [Google Monorepo Architecture](https://blog.google/products/chrome/how-we-organize-code-google-scale/)
 
 ---
 

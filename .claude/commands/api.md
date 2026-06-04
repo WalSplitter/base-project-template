@@ -4,9 +4,9 @@ Design and implement the following API endpoint: $ARGUMENTS
 
 ## Before starting
 
-- Check existing endpoints in `web/backend/src/routes/`
+- Check existing endpoints in `apps/web-backend/src/routes/`
 - Review shared types in `shared/types/src/index.ts` (`IApiResponse`, `IPaginatedResponse`)
-- Confirm auth requirements (JWT via `web/backend/src/middleware/auth.ts` or public)
+- Confirm auth requirements (JWT via `apps/web-backend/src/middleware/auth.ts` or public)
 
 ## Endpoint specification template
 
@@ -54,7 +54,7 @@ DELETE /api/v1/users/:id      # Delete
 ## Test with
 
 ```bash
-npm run dev -w web
+npm run dev -w @base-template/web-backend
 curl -X POST http://localhost:3000/api/v1/<endpoint> \
   -H "Content-Type: application/json" \
   -d '{ ... }'
@@ -62,7 +62,7 @@ curl -X POST http://localhost:3000/api/v1/<endpoint> \
 
 ## Deliverables
 
-1. Express route handler in `web/backend/src/routes/`
+1. Express route handler in `apps/web-backend/src/routes/`
 2. Request/response types added to `shared/types/src/index.ts`
 3. Unit tests covering success + all error cases (Vitest)
 4. Conventional commit: `feat(api): <description>`

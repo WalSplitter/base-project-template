@@ -59,7 +59,7 @@ What to Test:
 - Error scenarios: Database down, user not found, auth failure
 - Integration: Database query, caching layer
 
-Test RequiremVitest (configured in web/backend/vitest.config.ts)
+Test RequiremVitest (configured in apps/web-backend/vitest.config.ts)
 - Type: Unit + Integration
 - Mock targets: Database queries, Redis cache, external services
 - Coverage goal: 80%+ (measure with npm run test:coverage)
@@ -90,9 +90,9 @@ Deliverables:
 
 Run tests:
 \`\`\`bash
-npm run test -w web              # Run tests in web workspace
-npm run test:watch -w web        # Watch mode
-npm run test:coverage -w web     # With coverage
+npm run test -w @base-template/web-backend  # Run tests in web-backend
+npm run test:watch -w @base-template/web-backend  # Watch mode
+npm run test:coverage -w @base-template/web-backend  # With coverage
 \`\`\`
 ```
 

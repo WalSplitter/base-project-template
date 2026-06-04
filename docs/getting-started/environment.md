@@ -125,7 +125,7 @@ Create `.vscode/launch.json`:
       "name": "Backend",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceFolder}/web/backend/src/index.ts",
+      "program": "${workspaceFolder}/apps/web-backend/src/index.ts",
       "preLaunchTask": "npm: dev",
       "skipFiles": ["<node_internals>/**"]
     }

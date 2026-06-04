@@ -12,7 +12,7 @@
     "test": "vitest",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
-    "lint": "echo \"api lint disabled temporarily\"",
+    "lint": "echo \"api has no source files yet\"",
     "lint:fix": "eslint src --ext ts --fix",
     "type-check": "tsc --noEmit",
     "clean": "rimraf dist .turbo"

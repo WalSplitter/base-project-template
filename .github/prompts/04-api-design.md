@@ -6,7 +6,7 @@ Use this prompt template when designing APIs and integrations with GitHub Copilo
 
 Review:
 
-- Existing endpoints in web/backend/src/routes/
+- Existing endpoints in apps/web-backend/src/routes/
 - Shared types in shared/types/src/index.ts (IApiResponse, IPaginatedResponse)
 - [Code Standards](./.github/copilot-instructions.md) - Naming conventions
 - Security: Helmet.js headers, CORS, rate limiting, input validation (Joi)
@@ -16,7 +16,7 @@ Review:
 ```
 API Specification:
 Endpoint: [METHOD] /api/v1/[RESOURCE]/[ACTION]
-Workspace: web/backend (or other service)
+Workspace: apps/web-backend (or other service)
 Purpose: [WHAT_DOES_IT_DO]
 Use case: [WHEN_IS_IT_USED]
 
@@ -26,7 +26,7 @@ Request:
 - Query params: [OPTIONAL_FILTERS]
 - Headers: Standard + Authorization (Bearer token if needed)
 - Body schema: Use Joi validation, reference shared/types/
-- Authentication: JWT (web/backend/src/middleware/auth.ts) or none for public
+- Authentication: JWT (apps/web-backend/src/middleware/auth.ts) or none for public
 - Rate limiting: Apply rate-limit middleware if needed
 - Content-Type: application/json
 
@@ -51,10 +51,10 @@ Implementation requirements:
 - Database operations: Use parameterized queries (PostgreSQL), prevent SQL injection
 - External integrations: Document API calls, add error handling, timeouts
 - Caching: Use Redis for frequently accessed data (optional, enable in docker-compose)
-- Logging: Use Pino logger for all operations (web/backend/src/utils/logger.ts)
+- Logging: Use Pino logger for all operations (apps/web-backend/src/utils/logger.ts)
 
 Deliverables:
-1. Express route handler in web/backend/src/routes/ with Helmet security
+1. Express route handler in apps/web-backend/src/routes/ with Helmet security
 2. Request/response types in shared/types/src/index.ts with JSDoc
 3. Unit tests (vitest) covering success and error cases
 4. Integration tests with mocked external services
@@ -63,7 +63,7 @@ Deliverables:
 
 Test with:
 \`\`\`bash
-npm run dev -w web  # Start backend on :3000
+npm run dev -w @base-template/web-backend  # Start backend on :3000
 curl http://localhost:3000/api/v1/endpoint
 \`\`\`
 ```

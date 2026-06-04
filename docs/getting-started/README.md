@@ -7,7 +7,7 @@ Welcome! This guide will help you get started with the Base Project Template qui
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/base-project-template.git
+git clone https://github.com/WalSplitter/base-project-template.git
 cd base-project-template
 ```
 
@@ -45,7 +45,7 @@ npm run dev
 
 ### ✅ Project Structure
 
-- Full-stack web application (web/)
+- Full-stack web applications (apps/web-frontend + apps/web-backend)
 - Backend services (apps/)
 - Desktop applications (desktop/)
 - CLI tools (tools/)
@@ -74,8 +74,10 @@ npm run dev
 Full-stack web app with React frontend and Express backend:
 
 ```bash
-cd web
-npm run dev
+npm run dev -w @base-template/web-frontend
+npm run dev -w @base-template/web-backend
+# or start both:
+npm run dev --workspaces
 ```
 
 **Technologies**: React, TypeScript, Vite, Express, PostgreSQL
@@ -135,8 +137,8 @@ npm run build
    - [Code Patterns](./.github/SKILLS.md)
 
 3. **Try Examples**
-   - Explore `web/frontend/` for React components
-   - Check `web/backend/` for API setup
+   - Explore `apps/web-frontend/` for React components
+   - Check `apps/web-backend/` for API setup
    - Browse `shared/types/` for TypeScript types
 
 4. **Start Coding**
@@ -149,11 +151,11 @@ npm run build
 ```bash
 # Development
 npm run dev              # Start all dev servers
-npm run dev -w web     # Start only web app
+npm run dev -w @base-template/web-frontend && npm run dev -w @base-template/web-backend     # Start only web app
 
 # Building
 npm run build           # Build all projects
-npm run build -w api   # Build specific project
+npm run build -w @base-template/api   # Build specific project
 
 # Code Quality
 npm run lint            # Lint all code
@@ -211,8 +213,8 @@ npm run prepare
 
 ## Getting Help
 
-- 💬 [GitHub Discussions](https://github.com/yourusername/base-project-template/discussions)
-- 🐛 [Report Issues](https://github.com/yourusername/base-project-template/issues)
+- 💬 [GitHub Discussions](https://github.com/WalSplitter/base-project-template/discussions)
+- 🐛 [Report Issues](https://github.com/WalSplitter/base-project-template/issues)
 - 🔒 [Security Issues](../SECURITY.md)
 
 ## Next: Choose Your Path

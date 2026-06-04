@@ -37,7 +37,7 @@ Root `package.json` defines workspaces:
 
 ```json
 {
-  "workspaces": ["web", "apps/*", "desktop/*", "tools/*", "shared/*"]
+  "workspaces": ["apps/*", "desktop/*", "tools/*", "shared/*"]
 }
 ```
 

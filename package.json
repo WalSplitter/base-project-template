@@ -4,16 +4,16 @@
   "description": "Professional, production-ready template for modern applications with best practices and GitHub Copilot optimization",
   "license": "MIT",
   "author": "WalSplitter",
+  "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/base-project-template"
+    "url": "https://github.com/WalSplitter/base-project-template"
   },
   "engines": {
     "node": ">=18.0.0",
     "npm": ">=9.0.0"
   },
   "workspaces": [
-    "web",
     "apps/*",
     "desktop/*",
     "tools/*",
@@ -22,17 +22,17 @@
   "scripts": {
     "install-all": "npm install",
     "dev": "npm run dev --workspaces",
-    "build": "npm run build --workspaces",
-    "test": "npm run test --workspaces",
+    "build": "npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
     "test:watch": "npm run test:watch --workspaces",
-    "test:coverage": "npm run test:coverage --workspaces",
-    "lint": "echo \"lint temporarily disabled\"",
-    "lint:fix": "npm run lint:fix --workspaces",
+    "test:coverage": "npm run test:coverage --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "lint:fix": "npm run lint:fix --workspaces --if-present",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "clean": "npm run clean --workspaces && npm run clean-root",
     "clean-root": "rimraf node_modules package-lock.json",
-    "type-check": "npm run type-check --workspaces",
+    "type-check": "npm run type-check --workspaces --if-present",
     "type-check:watch": "npm run type-check:watch --workspaces",
     "precommit": "npm run lint && npm run type-check && npm run format:check"
   },

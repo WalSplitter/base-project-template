@@ -18,9 +18,8 @@ Building full-stack web applications with separate frontend and backend.
 ### Get Started
 
 ```bash
-cd web/
-npm install
-npm run dev
+npm run dev -w @base-template/web-frontend
+npm run dev -w @base-template/web-backend
 ```
 
 ### Best For
@@ -179,8 +178,8 @@ npm install @project/types
 
 | Need                         | Best Choice            | Directory                 |
 | ---------------------------- | ---------------------- | ------------------------- |
-| Full-stack web app           | React + Express        | `/web`                    |
-| Frontend only                | React/Vue/Svelte       | `/web/frontend`           |
+| Full-stack web app           | React + Express        | `apps/web-frontend` + `apps/web-backend` |
+| Frontend only                | React/Vue/Svelte       | `apps/web-frontend`       |
 | Backend only                 | Express/NestJS/FastAPI | `/apps`                   |
 | REST API                     | NestJS/FastAPI         | `/apps/api-service`       |
 | Real-time API                | Socket.IO + Express    | `/apps/websocket-service` |
@@ -201,7 +200,7 @@ npm install @project/types
 
 ```bash
 # Keep only what you need
-rm -rf web/          # If not building web app
+rm -rf apps/web-frontend apps/web-backend  # If not building web app
 rm -rf apps/         # If not building backend
 rm -rf desktop/      # If not building desktop app
 rm -rf tools/        # If not building CLI tools
@@ -219,7 +218,7 @@ rm -rf tools/        # If not building CLI tools
 
 ```json
 {
-  "workspaces": ["apps/*", "web/*", "tools/*", "shared/*", "desktop/*"]
+  "workspaces": ["apps/*", "desktop/*", "tools/*", "shared/*"]
 }
 ```
 
@@ -229,7 +228,7 @@ rm -rf tools/        # If not building CLI tools
 
 ### Web Application
 
-1. Read: `/web/README.md`
+1. Read: `apps/web-frontend/` and `apps/web-backend/`
 2. Choose frontend framework
 3. Choose backend framework
 4. Setup database

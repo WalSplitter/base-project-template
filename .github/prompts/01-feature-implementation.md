@@ -45,7 +45,7 @@ Deliverables:
 
 ```
 Context:
-I'm building a user authentication feature in the web/backend workspace.
+I'm building a user authentication feature in the apps/web-backend workspace.
 Monorepo structure: npm Workspaces with shared types in shared/types/
 Existing patterns: Express middleware, error handlers in src/middleware/, services in src/services/
 

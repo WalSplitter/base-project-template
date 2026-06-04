@@ -8,7 +8,7 @@ Quick reference for efficient development with GitHub Copilot using this product
 
 ```bash
 # Clone and install
-git clone https://github.com/yourusername/base-project-template.git
+git clone https://github.com/WalSplitter/base-project-template.git
 cd base-project-template
 npm install
 
